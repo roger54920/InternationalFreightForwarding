@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/layout_ll_head_mm_bg">
+
+    <include layout="@layout/iff_title_layout" />
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w78dp_w_666_15sp"
+                android:text="包&#8201;装&#8201;种&#8201;类" />
+
+            <EditText
+                android:id="@+id/packaging_types_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入货物包装种类" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w78dp_w_666_15sp"
+                android:text="合同协议号" />
+
+            <EditText
+                android:inputType="number|phone"
+                android:id="@+id/contract_agreement_number_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入货物合同协议号" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="随附单据"
+            android:textColor="@color/iff_999999"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/add_attachments_btn"
+            android:layout_width="85dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_blue_shape"
+            android:gravity="center"
+            android:text="添加附件"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/add_attachments_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/next_step_btn" />
+
+        <Button
+            android:id="@+id/next_step_btn"
+            android:layout_width="255dp"
+            android:layout_height="44dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_login_bg_style"
+            android:gravity="center"
+            android:text="@string/next_step"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="24sp" />
+    </RelativeLayout>
+</LinearLayout>

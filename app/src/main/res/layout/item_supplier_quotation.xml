@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/supplier_quotation_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    style="@style/padding_left_right_13dp"
+    android:background="@color/iff_FFFFFF"
+    android:orientation="vertical">
+    <TextView
+        android:padding="5dp"
+        android:id="@+id/order_number_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/iff_FFFFFF"
+        android:text="订单号XXXX1渠道商竞标信息"
+        android:textColor="@color/iff_666666"
+        android:textSize="14sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <RadioButton
+            android:layout_marginRight="15dp"
+            android:id="@+id/supplier_quotation_rb"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/radio_button_style"
+            android:button="@null"
+            android:clickable="false" />
+
+        <TextView
+            android:id="@+id/supplier_quotation_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@+id/supplier_quotation_rb"
+            android:gravity="center_vertical"
+            android:text="渠道商1          125万"
+            android:textColor="@color/iff_333333"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/note_information"
+            android:layout_width="match_parent"
+            android:layout_height="16.5dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/supplier_quotation_tv"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/supplier_quotation_rb"
+            android:text="备注信息"
+            android:textColor="@color/iff_999999"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <include layout="@layout/iff_line_view_layout" />
+</LinearLayout>

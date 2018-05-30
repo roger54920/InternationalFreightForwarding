@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+    <include layout="@layout/iff_title_layout" />
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w89dp_w_666_15sp"
+                android:text="运抵国&#8201;(地区)" />
+
+            <EditText
+                android:id="@+id/transport_to_country_region_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入货物运抵国" />
+
+            <Button
+                android:id="@+id/transport_to_country_region_btn"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w89dp_w_666_15sp"
+                android:text="邮&#8201;&#8201;&#8201;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;编" />
+
+            <EditText
+                android:inputType="number|phone"
+                android:id="@+id/zip_code_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入运抵国邮编" />
+
+            <Button
+                android:id="@+id/FBA_warehouse_btn"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="FBA仓" />
+
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w89dp_w_666_15sp"
+                android:text="目&#8201;的&#8201;地&#8201;城&#8201;市" />
+
+            <EditText
+                android:id="@+id/destination_city_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入目的地城市" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w89dp_w_666_15sp"
+                android:text="收&#8201;&#8201;&#8201;货&#8201;&#8201;&#8201;地&#8201;&#8201;&#8201;址" />
+
+            <EditText
+                android:id="@+id/receiving_address_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的收货地址" />
+
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/next_step_btn"
+        android:layout_width="255dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_login_bg_style"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="@string/next_step"
+        android:textColor="@color/iff_FFFFFF"
+        android:textSize="24sp" />
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+
+    <include layout="@layout/iff_title_layout" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.example.ysww.internationalfreightforwarding.custom.MyScrollview
+            android:id="@+id/my_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/close_the_order_reply_problem_btn"
+            android:layout_marginBottom="15dp">
+            <include layout="@layout/iff_order_details_layout" />
+        </com.example.ysww.internationalfreightforwarding.custom.MyScrollview>
+
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/close_the_order_reply_problem_btn"
+            android:layout_width="255dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_not_disable_shape"
+            android:gravity="center"
+            android:text="@string/close_the_order"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg"
+    android:id="@+id/new_order_ll">
+
+    <include layout="@layout/iff_title_layout" />
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="8dp">
+
+        <LinearLayout style="@style/layout_width_height_mw">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_number"
+                android:textColor="@color/iff_666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/order_number_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="201803041251"
+                android:textColor="@color/iff_151515"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_mv_4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/business_unit"
+                android:textColor="@color/iff_666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/business_unit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="******分公司"
+                android:textColor="@color/iff_151515"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_mv_4dp">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="运输方式" />
+
+            <RadioGroup
+                android:id="@+id/type_of_shipping_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/type_of_shipping_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="空运" />
+
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="海运" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="其他" />
+            </RadioGroup>
+        </LinearLayout>
+        <LinearLayout style="@style/ll_mv_4dp">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="清关方式" />
+
+            <RadioGroup
+                android:id="@+id/customs_clearance_method_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/customs_clearance_method_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="正式报关" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="简易报关" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="委托代理" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_mv_4dp">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="服务方式" />
+
+            <RadioGroup
+                android:id="@+id/service_mode_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/service_mode_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="门到门" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="门到港" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="港到港" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="发货单位" />
+
+            <EditText
+                android:id="@+id/forwarding_unit_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的发货单位" />
+
+            <Button
+                android:id="@+id/forwarding_unit_btn"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="提货地址" />
+
+            <EditText
+                android:id="@+id/delivery_address_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的提货地址" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="出口口岸" />
+
+            <EditText
+                android:id="@+id/port_of_export_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的出口口岸" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="出口日期" />
+
+            <EditText
+                android:enabled="false"
+                android:inputType="phone|number"
+                android:id="@+id/export_date_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请选择您的出口日期" />
+
+            <Button
+                android:id="@+id/export_date_btn"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="品&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;名" />
+
+            <EditText
+                android:id="@+id/product_name_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的货物名称" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:layout_gravity="center_vertical"
+                android:text="保&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;险" />
+
+            <RadioGroup
+                android:id="@+id/insurance_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/insurance_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="是" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="否" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/next_step_btn"
+        android:layout_width="255dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_login_bg_style"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="@string/next_step"
+        android:textColor="@color/iff_FFFFFF"
+        android:textSize="24sp" />
+</LinearLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="135dp"
+        android:src="@mipmap/ic_launcher" />
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/phone_number_et"
+            style="@style/login_et"
+            android:layout_marginTop="30dp"
+            android:hint="@string/input_phone_number"
+            android:inputType="phone|number"
+            android:maxLength="11" />
+
+        <EditText
+            android:id="@+id/password_et"
+            style="@style/login_et"
+            android:layout_marginTop="10dp"
+            android:hint="@string/input_password"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_login_bg_style"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="如您遗忘密码，请致电"
+                android:textColor="@color/iff_999999"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/phone_number_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*******"
+                android:textColor="@color/iff_4A90E2"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="询问后台工作人员"
+                android:textColor="@color/iff_999999"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

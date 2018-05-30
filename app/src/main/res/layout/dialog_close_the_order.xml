@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="186dp"
+        android:background="@color/iff_FFFFFF">
+        <EditText
+            android:id="@+id/close_the_order_et"
+            android:layout_width="282.5dp"
+            android:layout_height="127.5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/details_of_goods_bg_style"
+            android:gravity="left"
+            android:hint="请填写您关闭订单的原因，后台将为您记录"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="5dp"
+            android:textColor="@color/iff_333333"
+            android:textColorHint="@color/iff_999999"
+            android:textCursorDrawable="@drawable/edit_cursor_shape"
+            android:textSize="12sp" />
+
+        <Button
+            android:enabled="false"
+            android:id="@+id/btn_determine"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/btn_close_bg_style"
+            android:text="@string/determine"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</LinearLayout>

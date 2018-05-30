@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+
+    <include layout="@layout/iff_title_layout" />
+
+    <include layout="@layout/iff_order_details_layout"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/deliver_goods_btn"
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:background="@drawable/btn_not_disable_shape"
+            android:gravity="center"
+            android:text="发货"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:id="@+id/modify_btn"
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:background="@drawable/btn_not_disable_shape"
+            android:gravity="center"
+            android:text="修改"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="18sp" />
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/remarks_btn"
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:background="@drawable/btn_not_disable_shape"
+            android:gravity="center"
+            android:text="备注"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

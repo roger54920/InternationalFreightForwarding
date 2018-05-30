@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    style="@style/padding_left_right_13dp"
+    android:background="@color/iff_FFFFFF"
+    android:layout_height="45dp">
+    <TextView
+        android:ellipsize="end"
+        android:id="@+id/attachments_name"
+        android:textSize="14sp"
+        android:text="XXXXX.xlsx"
+        android:singleLine="true"
+        android:layout_toLeftOf="@+id/attachments_close"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/iff_666666"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/attachments_close"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_close"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+    <View
+        android:layout_alignParentBottom="true"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/iff_C3C3C3"/>
+</RelativeLayout>

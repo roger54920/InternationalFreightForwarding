@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+    <include layout="@layout/iff_title_layout" />
+
+    <LinearLayout
+        android:paddingBottom="15dp"
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="@string/medium_speed_single_number" />
+
+            <EditText
+                android:id="@+id/freight_single_number_et"
+                style="@style/collect_send_information_et"
+                android:hint="@string/input_freight_single_number" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="@string/receiving_sending_time" />
+
+            <EditText
+                android:id="@+id/receiving_sending_time_et"
+                style="@style/collect_send_information_et"
+                android:hint="@string/input_receiving_sending_time" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="运&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;费" />
+
+            <EditText
+                android:id="@+id/freight_et"
+                style="@style/collect_send_information_et"
+                android:hint="@string/input_freight" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="收货地址" />
+
+            <EditText
+                android:id="@+id/receiving_address_et"
+                style="@style/collect_send_information_et"
+                android:hint="请输入收货地址" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/complete_btn"
+        android:layout_width="255dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_not_disable_shape"
+        android:gravity="center"
+        android:text="@string/complete"
+        android:textColor="@color/iff_FFFFFF"
+        android:textSize="18sp" />
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+    <include layout="@layout/iff_title_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.example.ysww.internationalfreightforwarding.custom.MyScrollview
+            android:id="@+id/my_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_ll"
+            android:layout_marginBottom="15dp">
+            <include layout="@layout/iff_order_details_layout" />
+        </com.example.ysww.internationalfreightforwarding.custom.MyScrollview>
+        <LinearLayout
+            android:id="@+id/bottom_ll"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            style="@style/padding_left_right_13dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:id="@+id/supplier_quotation_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_not_disable_shape"
+                android:gravity="center"
+                android:text="@string/supplier_quotation"
+                android:textColor="@color/iff_FFFFFF"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/fill_in_the_clearing_information_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/btn_not_disable_shape"
+                android:gravity="center"
+                android:text="渠道商提问"
+                android:textColor="@color/iff_FFFFFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

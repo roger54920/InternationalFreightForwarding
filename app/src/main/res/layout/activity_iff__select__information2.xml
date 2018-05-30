@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+
+    <include layout="@layout/iff_title_layout" />
+
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="收货地址" />
+
+            <EditText
+                android:id="@+id/selection_receiving_address_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的收货地址" />
+
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="货&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;值" />
+
+            <EditText
+                android:inputType="phone|number"
+                android:id="@+id/value_of_goods_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的货物价值" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="期望报价" />
+
+            <EditText
+                android:inputType="phone|number"
+                android:id="@+id/offer_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的期望报价" />
+            <TextView
+                android:layout_marginLeft="-15dp"
+                style="@style/w60dp_w_666_15sp"
+                android:text="元" />
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="运输时限" />
+
+            <EditText
+                android:inputType="number|phone"
+                android:id="@+id/transportation_time_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的运输时限" />
+            <TextView
+                android:layout_marginLeft="-15dp"
+                style="@style/w60dp_w_666_15sp"
+                android:text="天" />
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="体积大小" />
+
+            <EditText
+                android:inputType="number|phone"
+                android:id="@+id/volume_size_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入您的体积大小" />
+
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="生产厂家" />
+
+            <EditText
+                android:id="@+id/manufacturer_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入生产厂家" />
+
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="许可证号" />
+
+            <EditText
+                android:inputType="phone|number"
+                android:id="@+id/license_key_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入许可证号" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="批准文号" />
+
+            <EditText
+                android:id="@+id/approval_number_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入批准文号" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="征免性质" />
+
+            <EditText
+                android:id="@+id/exempted_nature_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入征免性质" />
+
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/complete_btn"
+        android:layout_width="255dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_login_bg_style"
+        android:gravity="center"
+        android:text="@string/complete"
+        android:textColor="@color/iff_FFFFFF"
+        android:textSize="24sp" />
+</LinearLayout>

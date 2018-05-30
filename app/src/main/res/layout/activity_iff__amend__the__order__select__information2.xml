@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+
+    <include layout="@layout/iff_title_layout" />
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="生产厂家" />
+
+            <EditText
+                android:id="@+id/manufacturer_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入生产厂家" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="许可证号" />
+
+            <EditText
+                android:id="@+id/license_key_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入许可证号" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="批准文号" />
+
+            <EditText
+                android:id="@+id/approval_number_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入批准文号" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="免征性质" />
+
+            <EditText
+                android:id="@+id/exempted_nature_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入免征性质" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="8dp">
+
+        <LinearLayout style="@style/ll_mv_4dp">
+
+            <TextView
+                style="@style/w90dp_w_666_15sp"
+                android:text="关税支付方式" />
+
+            <RadioGroup
+                android:id="@+id/tariff_payment_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/tariff_payment_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="收件人付" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="寄件人付" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout style="@style/ll_mv_4dp">
+
+            <TextView
+                style="@style/w90dp_w_666_15sp"
+                android:text="交货方式" />
+
+            <RadioGroup
+                android:id="@+id/delivery_mode_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/delivery_mode_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="自送渠道仓库" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="渠道上门" />
+
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="15dp"
+        android:background="@color/iff_FFFFFF"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="@string/medium_speed_single_number" />
+
+            <EditText
+                android:id="@+id/freight_single_number_et"
+                style="@style/collect_send_information_et"
+                android:hint="@string/input_freight_single_number" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="@string/receiving_sending_time" />
+
+            <EditText
+                android:id="@+id/receiving_sending_time_et"
+                style="@style/collect_send_information_et"
+                android:hint="@string/input_receiving_sending_time" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="运&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;费" />
+
+            <EditText
+                android:id="@+id/freight_et"
+                style="@style/collect_send_information_et"
+                android:hint="@string/input_freight" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="收货地址" />
+
+            <EditText
+                android:id="@+id/receiving_address_et"
+                style="@style/collect_send_information_et"
+                android:hint="请输入收货地址" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/complete_btn"
+        android:layout_width="255dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_login_bg_style"
+        android:gravity="center"
+        android:text="@string/complete"
+        android:textColor="@color/iff_FFFFFF"
+        android:textSize="24sp" />
+</LinearLayout>

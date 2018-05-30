@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_order_details_ll"
+    style="@style/padding_left_right_13dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="6dp"
+    android:background="@color/iff_FFFFFF"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingTop="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="订单号："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/order_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10000000012"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="经营公司："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/operating_company_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXXXXXXX分公司"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发货单位："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/forwarding_unit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京XXXXX公司"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="货源地："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/source_of_the_goods_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="出口口岸："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/export_ports_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="出口日期："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/export_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20180328"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运输方式："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/type_of_shipping_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="空运"
+            android:textColor="@color/iff_2A2A2A" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="付款方式："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/payment_method_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预付"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="清关方式："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/customs_clearance_method_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正式报关"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运抵国（地区）："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/transport_to_the_country_region_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="香港"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="目的地城市："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/destination_city_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="香港"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邮编："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/zip_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100001"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收货地址："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/receiving_address_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="香港九龙"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/number_weight_size_rv"
+        style="@style/layout_width_height_mw" />
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总件数："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/total_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总重量（KG）："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/total_weight_kg_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1250"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="体积大小："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/volume_weight_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1125"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="品名："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/product_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="惠普电脑"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_mv_4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="3dp"
+            android:text="货值："
+            android:textColor="@color/iff_999999" />
+
+        <TextView
+            android:id="@+id/value_of_goods_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="250万元"
+            android:textColor="@color/iff_2A2A2A" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/details_of_goods_ll"
+    android:layout_width="match_parent"
+    android:layout_height="108dp"
+    android:background="@drawable/details_of_goods_bg_style"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="-10dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/number_tv"
+                style="@style/ww_666_15sp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:text="件数" />
+
+            <EditText
+                android:id="@+id/number_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/number_tv"
+                android:background="@color/transparence"
+                android:gravity="center_vertical"
+                android:hint="请输入货物件数"
+                android:inputType="number|phone"
+                android:maxLength="6"
+                android:paddingTop="1.5dp"
+                android:singleLine="true"
+                android:textColor="@color/iff_333333"
+                android:textColorHint="@color/iff_999999"
+                android:textCursorDrawable="@drawable/edit_cursor_shape"
+                android:textSize="14sp" />
+
+
+            <View
+                android:layout_width="145dp"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/iff_C3C3C3" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/weight_tv"
+                style="@style/ww_666_15sp"
+                android:layout_marginTop="3dp"
+                android:text="重量(KG)" />
+
+            <EditText
+                android:id="@+id/weight_et"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_toRightOf="@+id/weight_tv"
+                android:background="@color/transparence"
+                android:gravity="center_vertical"
+                android:hint="请输入货物重量"
+                android:inputType="number|phone"
+                android:maxLength="12"
+                android:paddingTop="1.5dp"
+                android:singleLine="true"
+                android:textColor="@color/iff_333333"
+                android:textColorHint="@color/iff_999999"
+                android:textCursorDrawable="@drawable/edit_cursor_shape"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/iff_C3C3C3" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/details1_ll"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/inch_tv"
+            style="@style/ww_666_15sp"
+            android:layout_marginLeft="3dp"
+            android:text="尺寸(CM)" />
+
+        <EditText
+            android:layout_centerVertical="true"
+            android:id="@+id/inch_length_et"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/inch_tv"
+            android:background="@drawable/small_frame_style"
+            android:hint="长度"
+            android:inputType="number|phone"
+            android:maxLength="4"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/iff_333333"
+            android:textColorHint="@color/iff_999999"
+            android:textCursorDrawable="@drawable/edit_cursor_shape"
+            android:textSize="14sp" />
+        <EditText
+            android:layout_centerVertical="true"
+            android:id="@+id/inch_width_et"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/inch_length_et"
+            android:background="@drawable/small_frame_style"
+            android:hint="宽度"
+            android:inputType="number|phone"
+            android:maxLength="4"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/iff_333333"
+            android:textColorHint="@color/iff_999999"
+            android:textCursorDrawable="@drawable/edit_cursor_shape"
+            android:textSize="14sp" />
+        <EditText
+            android:layout_centerVertical="true"
+            android:id="@+id/inch_height_et"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/inch_width_et"
+            android:background="@drawable/small_frame_style"
+            android:hint="高度"
+            android:inputType="number|phone"
+            android:maxLength="4"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/iff_333333"
+            android:textColorHint="@color/iff_999999"
+            android:textCursorDrawable="@drawable/edit_cursor_shape"
+            android:textSize="14sp" />
+        <Button
+            android:id="@+id/ibtn_number_weight_inch"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/add_icon2" />
+
+    </RelativeLayout>
+</LinearLayout>

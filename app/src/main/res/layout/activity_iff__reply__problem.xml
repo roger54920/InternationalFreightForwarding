@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+
+    <include layout="@layout/iff_title_layout" />
+
+
+    <RelativeLayout
+        android:id="@+id/chat_information_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="6dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/quotation_information_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/input_box_rl"/>
+
+        <RelativeLayout
+            style="@style/padding_left_right_13dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/input_box_rl"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true">
+
+            <EditText
+                android:maxLength="120"
+                android:id="@+id/question_information_et"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_toLeftOf="@+id/submission_reply_btn"
+                android:background="@drawable/details_of_goods_bg_style"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:textColor="@color/iff_333333"
+                android:textCursorDrawable="@drawable/edit_cursor_shape"
+                android:textSize="14sp" />
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/submission_reply_btn"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_reply_problem_style"
+                android:gravity="center"
+                android:text="提交回复"
+                android:textColor="@color/iff_FFFFFF"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+</LinearLayout>

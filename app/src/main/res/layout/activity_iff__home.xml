@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout_ll_head_mm_bg">
+
+    <include layout="@layout/iff_title_layout" />
+
+    <RelativeLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="6dp">
+
+        <RelativeLayout
+            android:id="@+id/copy_rl"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@color/iff_FFFFFF"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/copy_img"
+                style="@style/home_icon"
+                android:src="@drawable/copy" />
+
+            <TextView
+                android:id="@+id/copy_tv"
+                style="@style/home_icon_text"
+                android:layout_below="@+id/copy_img"
+                android:text="@string/quotation_order_delivery" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/comments_rl"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/iff_FFFFFF"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/comments_img"
+                style="@style/home_icon"
+                android:src="@drawable/comments" />
+
+            <TextView
+                android:id="@+id/comments_tv"
+                style="@style/home_icon_text"
+                android:layout_below="@+id/comments_img"
+                android:text="@string/supplier_questions" />
+
+            <TextView
+                android:id="@+id/supplier_questions_number_tv"
+                style="@style/home_small_circle"
+                android:layout_below="@id/comments_tv"
+                android:layout_marginLeft="115dp"
+                android:text="2"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="7dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@color/iff_F7F7F7" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/padding_left_right_13dp"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginTop="7dp">
+
+        <RelativeLayout
+            android:id="@+id/information_supplement_rl"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:background="@color/iff_FFFFFF"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/information_supplement_img"
+                style="@style/home_icon"
+                android:src="@drawable/information_supplement" />
+
+            <TextView
+                android:id="@+id/information_supplement_tv"
+                style="@style/home_icon_text"
+                android:layout_below="@+id/information_supplement_img"
+                android:text="@string/information_supplement" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/historical_order_rl"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_alignParentRight="true"
+            android:background="@color/iff_FFFFFF"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/historical_order_img"
+                style="@style/home_icon"
+                android:src="@drawable/historical_order" />
+
+            <TextView
+                android:id="@+id/historical_order_tv"
+                style="@style/home_icon_text"
+                android:layout_below="@+id/historical_order_img"
+                android:text="@string/historical_order" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="7dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@color/iff_F7F7F7" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/add_new_order_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/add_icon" />
+    </RelativeLayout>
+</LinearLayout>
