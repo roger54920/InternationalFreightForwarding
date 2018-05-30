@@ -23,7 +23,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * 首页
+ * 首页 更新到git
  */
 public class IFF_HomeActivity extends Activity {
 
