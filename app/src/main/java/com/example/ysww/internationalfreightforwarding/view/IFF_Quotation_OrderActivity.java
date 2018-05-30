@@ -35,7 +35,7 @@ import butterknife.OnClick;
 /**
  * 订单列表
  */
-public class IFF_Quotation_OrderActivity extends Activity implements QuotationOrderListView{
+public class IFF_Quotation_OrderActivity extends Activity implements QuotationOrderListView {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -90,78 +90,42 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         statisticalOrderListPresenter.attach(this);
         statisticalOrderListPresenter.quotationOrderListResult("{\"quoteStatus\":\"10\"}", this, lazyLoadProgressDialog);
     }
+
     private void initAdapter() {
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
-        if (Constants.SOURCE_PAGE.equals("copy")) {
-            quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.DataBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
-                @Override
-                protected void convert(ViewHolder holder, QuotationOrderListBean.DataBean dataBean, int position) {
-                    holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "有" + dataBean.getCompanyCode() + "个渠道商参与竞标");
-                    if (quotationOrderList.size() == position + 1) {
-                        holder.setVisible(R.id.view, false);
-                    }
-                }
-            };
-            quotationOrderRv.setAdapter(quotationOrderAdapter);
-            //三种状态 未报价 已报价 已确认
-            quotationOrderAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    EventBus.getDefault().postSticky(quotationOrderList.get(position));
-                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageIntent(IFF_Order_DetailsActivity.class,Constants.SOURCE_PAGE);
-                }
-
-                @Override
-                public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    return false;
-                }
-            });
-        } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-            quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.DataBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
-                @Override
-                protected void convert(ViewHolder holder, QuotationOrderListBean.DataBean dataBean, int position) {
-                    holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "有" + dataBean.getCompanyCode() + "个渠道商参与竞标");
-                    if (quotationOrderList.size() == position + 1) {
-                        holder.setVisible(R.id.view, false);
-                    }
-                }
-            };
-            quotationOrderRv.setAdapter(quotationOrderAdapter);
-            quotationOrderAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).noReferenceIntent(IFF_Collect_Send_InformationActivity.class);
-                }
-
-                @Override
-                public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    return false;
-                }
-            });
-        } else if (Constants.SOURCE_PAGE.equals("historical_order")) {
-            quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.DataBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
-                @Override
-                protected void convert(ViewHolder holder, QuotationOrderListBean.DataBean dataBean, int position) {
-                    holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "有" + dataBean.getCompanyCode() + "个渠道商参与竞标");
-                    if (quotationOrderList.size() == position + 1) {
-                        holder.setVisible(R.id.view, false);
-                    }
-                }
-            };
-            quotationOrderRv.setAdapter(quotationOrderAdapter);
-            quotationOrderAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageIntent(IFF_Order_DetailsActivity.class,Constants.SOURCE_PAGE);
-                }
-
-                @Override
-                public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                    return false;
-                }
-            });
-        }
         quotationOrderRv.setLayoutManager(new LinearLayoutManager(this));
+        quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.DataBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
+            @Override
+            protected void convert(ViewHolder holder, QuotationOrderListBean.DataBean dataBean, int position) {
+                holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "("+dataBean.getBrand()+")");
+                if (quotationOrderList.size() == position + 1) {
+                    holder.setVisible(R.id.view, false);
+                }
+            }
+        };
+        quotationOrderRv.setAdapter(quotationOrderAdapter);
+        quotationOrderAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                if (Constants.SOURCE_PAGE.equals("copy")) {
+                    //三种状态 未报价 已报价 已确认
+                    EventBus.getDefault().postSticky(quotationOrderList.get(position));
+                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageIntent(IFF_Order_DetailsActivity.class, Constants.SOURCE_PAGE);
+
+                } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
+                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).noReferenceIntent(IFF_Collect_Send_InformationActivity.class);
+
+                } else if (Constants.SOURCE_PAGE.equals("historical_order")) {
+                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageIntent(IFF_Order_DetailsActivity.class, Constants.SOURCE_PAGE);
+                }
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
+        });
+
 
     }
 
