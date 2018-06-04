@@ -43,6 +43,7 @@
                 android:textSize="14sp" />
 
             <Button
+                android:enabled="false"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/submission_reply_btn"
                 android:layout_width="80dp"

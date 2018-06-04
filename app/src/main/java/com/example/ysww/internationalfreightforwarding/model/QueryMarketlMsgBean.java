@@ -8,6 +8,7 @@ import java.util.List;
 
 public class QueryMarketlMsgBean extends BaseBean{
 
+
     private List<DataBean> data;
 
     public List<DataBean> getData() {
@@ -36,33 +37,33 @@ public class QueryMarketlMsgBean extends BaseBean{
          * addrss : right
          */
 
-        private Object id;
-        private Object chanelQuoteId;
+        private String id;
+        private String chanelQuoteId;
         private String orderNo;
         private String msgType;
         private String content;
         private int userId;
         private String userName;
-        private Object createBy;
-        private Object readeStatus;
+        private String createBy;
+        private String readeStatus;
         private String createDate;
-        private Object status;
-        private Object companyCode;
+        private String status;
+        private String companyCode;
         private String addrss;
 
-        public Object getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(Object id) {
+        public void setId(String id) {
             this.id = id;
         }
 
-        public Object getChanelQuoteId() {
+        public String getChanelQuoteId() {
             return chanelQuoteId;
         }
 
-        public void setChanelQuoteId(Object chanelQuoteId) {
+        public void setChanelQuoteId(String chanelQuoteId) {
             this.chanelQuoteId = chanelQuoteId;
         }
 
@@ -106,19 +107,19 @@ public class QueryMarketlMsgBean extends BaseBean{
             this.userName = userName;
         }
 
-        public Object getCreateBy() {
+        public String getCreateBy() {
             return createBy;
         }
 
-        public void setCreateBy(Object createBy) {
+        public void setCreateBy(String createBy) {
             this.createBy = createBy;
         }
 
-        public Object getReadeStatus() {
+        public String getReadeStatus() {
             return readeStatus;
         }
 
-        public void setReadeStatus(Object readeStatus) {
+        public void setReadeStatus(String readeStatus) {
             this.readeStatus = readeStatus;
         }
 
@@ -130,19 +131,19 @@ public class QueryMarketlMsgBean extends BaseBean{
             this.createDate = createDate;
         }
 
-        public Object getStatus() {
+        public String getStatus() {
             return status;
         }
 
-        public void setStatus(Object status) {
+        public void setStatus(String status) {
             this.status = status;
         }
 
-        public Object getCompanyCode() {
+        public String getCompanyCode() {
             return companyCode;
         }
 
-        public void setCompanyCode(Object companyCode) {
+        public void setCompanyCode(String companyCode) {
             this.companyCode = companyCode;
         }
 

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
@@ -68,8 +69,8 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
     RadioGroup insuranceRg;
     @InjectView(R.id.next_step_btn)
     Button nextStepBtn;
-    @InjectView(R.id.type_of_shipping_rb1)
-    ImageRadioButton typeOfShippingRb1;
+    @InjectView(R.id.air_transport_rb)
+    ImageRadioButton airTransportRb;
     @InjectView(R.id.customs_clearance_method_rb1)
     ImageRadioButton customsClearanceMethodRb1;
     @InjectView(R.id.service_mode_rb1)
@@ -78,6 +79,14 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
     ImageRadioButton insuranceRb1;
     @InjectView(R.id.new_order_ll)
     LinearLayout newOrderLl;
+    @InjectView(R.id.ocean_shipping_rb)
+    ImageRadioButton oceanShippingRb;
+    @InjectView(R.id.other_rb)
+    ImageRadioButton otherRb;
+    @InjectView(R.id.other_et)
+    EditText otherEt;
+    @InjectView(R.id.other_rl)
+    RelativeLayout otherRl;
 
     private String forwardingUnit, deliveryAddress, portOfExport, exportDate, productName;
     private AddOrderBean addOrderBean;
@@ -99,8 +108,8 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
             addOrderBean = new AddOrderBean();
         }
 
-        typeOfShippingRb1.setChecked(true);
-        addOrderBean.setTransType(typeOfShippingRb1.getText().toString());
+        airTransportRb.setChecked(true);
+        addOrderBean.setTransType(airTransportRb.getText().toString());
         customsClearanceMethodRb1.setChecked(true);
         addOrderBean.setCleanCustomsType(customsClearanceMethodRb1.getText().toString());
         serviceModeRb1.setChecked(true);
@@ -190,9 +199,22 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
         typeOfShippingRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.air_transport_rb:
+                        otherRb.setVisibility(View.VISIBLE);
+                        otherRl.setVisibility(View.GONE);
+                        break;
+                    case R.id.ocean_shipping_rb:
+                        otherRb.setVisibility(View.VISIBLE);
+                        otherRl.setVisibility(View.GONE);
+                        break;
+                    case R.id.other_rb:
+                        otherRb.setVisibility(View.GONE);
+                        otherRl.setVisibility(View.VISIBLE);
+                        break;
+                }
                 RadioButton rbId = (RadioButton) findViewById(typeOfShippingRg.getCheckedRadioButtonId());
                 addOrderBean.setTransType(rbId.getText().toString());
-
             }
         });
         customsClearanceMethodRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -210,7 +232,6 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
                 addOrderBean.setTransDemand(rbId.getText().toString());
             }
         });
-
     }
 
     private void isEditText() {

@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/layout_ll_head_mm_bg"
-    android:id="@+id/new_order_ll">
+    android:id="@+id/new_order_ll"
+    style="@style/layout_ll_head_mm_bg">
 
     <include layout="@layout/iff_title_layout" />
 
@@ -70,20 +70,73 @@
                 android:orientation="horizontal">
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
-                    android:id="@+id/type_of_shipping_rb1"
+                    android:id="@+id/air_transport_rb"
                     style="@style/btn_text_rb"
                     android:text="空运" />
 
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/ocean_shipping_rb"
                     style="@style/btn_text_rb"
                     android:text="海运" />
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/other_rb"
                     style="@style/btn_text_rb"
                     android:text="其他" />
+
+                <RelativeLayout
+                    android:id="@+id/other_rl"
+                    android:layout_width="0dp"
+                    android:layout_height="19dp"
+                    android:layout_weight="1"
+                    android:visibility="gone">
+
+                    <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                        android:id="@+id/other_rb1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparence"
+                        android:button="@null"
+                        android:checked="true"
+                        android:clickable="true"
+                        android:drawableLeft="@drawable/radio_button_style"
+                        android:drawablePadding="3dp"
+                        android:gravity="center_vertical"
+                        android:text=" "
+                        android:textColor="@color/iff_333333"
+                        android:textSize="14sp"
+                        app:drawableLeftHeight="16dp"
+                        app:drawableLeftWidth="16dp" />
+
+                    <EditText
+                        android:id="@+id/other_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="19dp"
+                        android:layout_toRightOf="@+id/other_rb1"
+                        android:background="@drawable/edit_not_sharpening_bg_style"
+                        android:gravity="center_vertical"
+                        android:hint="其他"
+                        android:lines="1"
+                        android:maxLength="12"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:textColor="@color/iff_333333"
+                        android:textColorHint="@color/iff_999999"
+                        android:textCursorDrawable="@drawable/edit_cursor_shape"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="3dp"
+                        android:layout_toRightOf="@+id/other_rb1" />
+                </RelativeLayout>
+
             </RadioGroup>
         </LinearLayout>
+
         <LinearLayout style="@style/ll_mv_4dp">
 
             <TextView
@@ -217,11 +270,11 @@
                 android:text="出口日期" />
 
             <EditText
-                android:enabled="false"
-                android:inputType="phone|number"
                 android:id="@+id/export_date_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请选择您的出口日期" />
+                android:enabled="false"
+                android:hint="请选择您的出口日期"
+                android:inputType="phone|number" />
 
             <Button
                 android:id="@+id/export_date_btn"
@@ -247,7 +300,9 @@
                 android:text="@string/choice"
                 android:visibility="invisible" />
         </LinearLayout>
+
         <include layout="@layout/iff_line_view_layout" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

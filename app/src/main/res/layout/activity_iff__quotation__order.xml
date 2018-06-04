@@ -5,10 +5,16 @@
     style="@style/layout_ll_head_mm_bg">
     <include
         layout="@layout/iff_title_layout" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="6dp"
-        android:id="@+id/quotation_order_rv"
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/supplier_quotation_buttom_ll">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginTop="6dp"
+            android:id="@+id/quotation_order_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
 </LinearLayout>

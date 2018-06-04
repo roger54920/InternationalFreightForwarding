@@ -137,14 +137,15 @@ public class SystemUtils {
         MyActivityManager.getInstance().finishAllActivity();
     }
     /**
-     * 来源页面intent和订单号
+     * 来源页面intent和订单号,渠道商Id
      *
      * @param cls
      */
-    public void referenceSourcePageOrderNoIntent(Class cls, String source_page,String orderNo) {
+    public void referenceSourcePageOrderNoChanneldealerIntent(Class cls, String source_page, String orderNo,String channelDealerId) {
         Intent intent = new Intent(mContext, cls);
         intent.putExtra("source_page", source_page);
         intent.putExtra("orderNo", orderNo);
+        intent.putExtra("channelUserId",channelDealerId);
         mContext.startActivity(intent);
     }
     /**

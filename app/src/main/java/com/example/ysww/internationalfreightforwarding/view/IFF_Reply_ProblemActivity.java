@@ -64,7 +64,12 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
         public void run() {
             // TODO Auto-generated method stub
             //要做的事情
-            queryMarketlMsgMethod();
+            Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
+            if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
+                putQuestionsToMethod();
+            } else if (Constants.SOURCE_PAGE.equals("communication")) {
+                communicationMethod();
+            }
             handler.postDelayed(this, 10000);
         }
     };
@@ -81,8 +86,15 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
 
     private void initViews() {
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
-        if(Constants.SOURCE_PAGE.equals("channel_quiz")){
-            iffTitleTv.setText("渠道商提问");
+        quotationInformationList = new ArrayList<>();
+        if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
+            iffTitleTv.setText(R.string.supplier_questions);
+            SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
+            putQuestionsToMethod();
+        } else if (Constants.SOURCE_PAGE.equals("communication")) {
+            iffTitleTv.setText(R.string.communication);
+            SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
+            communicationMethod();
         }
 
 
@@ -103,27 +115,54 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
 
             }
         });
-        quotationInformationList = new ArrayList<>();
-        SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
-        queryMarketlMsgMethod();
     }
 
     /**
-     * 获取订单消息明细接口
+     * 获取订单提问消息明细接口
      */
-    private void queryMarketlMsgMethod() {
+    private void putQuestionsToMethod() {
         new OkgoHttpResolve(this);
         queryMarketlMsgPresenter.attach(this);
-        queryMarketlMsgPresenter.queryMarketlMsgResult("{\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}", this, lazyLoadProgressDialog);
+        queryMarketlMsgPresenter.queryMarketlMsgResult
+                ("{\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"," +
+                                "\"msgType\":\"1\",\"channelUserId\":\"" + getIntent().getStringExtra("channelUserId") + "\"}"
+                        , this, lazyLoadProgressDialog);
     }
 
     /**
-     * 发送订单消息接口
+     * 获取订单交流消息明细接口
      */
-    private void tbordermsgSaveMethod() {
+    private void communicationMethod() {
+        new OkgoHttpResolve(this);
+        queryMarketlMsgPresenter.attach(this);
+        queryMarketlMsgPresenter.queryMarketlMsgResult
+                ("{\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\",\"msgType\":\"0\"}"
+                        , this, lazyLoadProgressDialog);
+    }
+
+    /**
+     * 发送订单交流消息接口
+     */
+    private void tbordermsgPutQuestionsToSaveMethod() {
         new OkgoHttpResolve(this);
         tbordermsgSavePresenter.attach(this);
-        tbordermsgSavePresenter.tbordermsgSaveResult("{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\",\"msgType\":\"1\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}", this, lazyLoadProgressDialog);
+        tbordermsgSavePresenter.tbordermsgSaveResult(
+                "{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\"," +
+                        "\"msgType\":\"0\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"," +
+                        "\"channelUserId\":\"" + getIntent().getStringExtra("channelUserId") + "\"}"
+                , this, lazyLoadProgressDialog);
+    }
+
+    /**
+     * 发送订单提问消息接口
+     */
+    private void tbordermsgCommunicationSaveMethod() {
+        new OkgoHttpResolve(this);
+        tbordermsgSavePresenter.attach(this);
+        tbordermsgSavePresenter.tbordermsgSaveResult(
+                "{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\"," +
+                        "\"msgType\":\"1\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}"
+                , this, lazyLoadProgressDialog);
     }
 
     private void initAdapter() {
@@ -148,7 +187,7 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
             }
         };
         quotationInformationRv.setAdapter(quotationInformationAdapter);
-        linearLayoutManager.scrollToPosition(quotationInformationList.size()-1);
+        linearLayoutManager.scrollToPosition(quotationInformationList.size() - 1);
     }
 
     private void isEditText() {
@@ -168,7 +207,11 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
                 break;
             case R.id.submission_reply_btn:
                 SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
-                tbordermsgSaveMethod();
+                if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
+                    tbordermsgPutQuestionsToSaveMethod();
+                } else if (Constants.SOURCE_PAGE.equals("communication")) {
+                    tbordermsgCommunicationSaveMethod();
+                }
                 break;
         }
     }
@@ -176,7 +219,12 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
     @Override
     public void onTbordermsgSaveFinish(Object o) {
         questionInformationEt.setText("");
-        queryMarketlMsgMethod();
+        Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
+        if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
+            putQuestionsToMethod();
+        } else if (Constants.SOURCE_PAGE.equals("communication")) {
+            communicationMethod();
+        }
     }
 
     @Override
@@ -184,7 +232,7 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
         handler.removeCallbacks(runnable);
         QueryMarketlMsgBean queryMarketlMsgBean = (QueryMarketlMsgBean) o;
         List<QueryMarketlMsgBean.DataBean> data = queryMarketlMsgBean.getData();
-        if(quotationInformationList.size()!=data.size()){
+        if (quotationInformationList.size() != data.size()) {
             quotationInformationList = data;
             initAdapter();
         }

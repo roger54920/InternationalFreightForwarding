@@ -24,7 +24,6 @@
             android:id="@+id/order_number_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10000000012"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -40,7 +39,6 @@
             android:id="@+id/operating_company_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="XXXXXXXX分公司"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -56,7 +54,6 @@
             android:id="@+id/forwarding_unit_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="北京XXXXX公司"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -72,7 +69,6 @@
             android:id="@+id/source_of_the_goods_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="北京"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -88,7 +84,6 @@
             android:id="@+id/export_ports_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="北京"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -104,7 +99,6 @@
             android:id="@+id/export_date_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20180328"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -120,7 +114,6 @@
             android:id="@+id/type_of_shipping_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="空运"
             android:textColor="@color/iff_2A2A2A" />
 
     </LinearLayout>
@@ -137,7 +130,6 @@
             android:id="@+id/payment_method_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="预付"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -153,7 +145,6 @@
             android:id="@+id/customs_clearance_method_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="正式报关"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -169,7 +160,6 @@
             android:id="@+id/transport_to_the_country_region_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="香港"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -185,7 +175,6 @@
             android:id="@+id/destination_city_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="香港"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -201,7 +190,6 @@
             android:id="@+id/zip_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100001"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -217,7 +205,6 @@
             android:id="@+id/receiving_address_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="香港九龙"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -237,7 +224,6 @@
             android:id="@+id/total_number_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -253,7 +239,6 @@
             android:id="@+id/total_weight_kg_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1250"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -269,7 +254,6 @@
             android:id="@+id/volume_weight_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1125"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 

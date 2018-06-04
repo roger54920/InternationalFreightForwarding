@@ -21,7 +21,6 @@ import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
 import com.lzy.okgo.OkGo;
 import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
@@ -52,6 +51,7 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
     private List<GetOrderMsgCountBean.DataBean> questionList;
     private GetOrderMsgCountPresenter getOrderMsgCountPresenter = new GetOrderMsgCountPresenter();
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
+    private int questionIndex=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +69,7 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
         questionList = new ArrayList<>();
         channelQuizRb.setChecked(true);
         SystemUtils.getInstance(IFF_Question_ListActivity.this).showLazyLad0neMinute(lazyLoadProgressDialog);
-        getOrderMsgCountMethod();
-
+        putQuestionsToMethod();
         questionSwitching();
 
 
@@ -85,12 +84,14 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
                     case R.id.channel_quiz_rb:
+                        questionIndex=0;
                         SystemUtils.getInstance(IFF_Question_ListActivity.this).showLazyLad0neMinute(lazyLoadProgressDialog);
-                        getOrderMsgCountMethod();
+                        putQuestionsToMethod();
                         break;
                     case R.id.communication_rb:
+                        questionIndex=1;
                         SystemUtils.getInstance(IFF_Question_ListActivity.this).showLazyLad0neMinute(lazyLoadProgressDialog);
-                        getOrderMsgCountMethod();
+                        communicationMethod();
                         break;
                 }
             }
@@ -98,37 +99,46 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
     }
 
     /**
-     * 获取营销员订单未读消息列表接口
+     * 获取营销员订单提问信息列表接口
      */
-    private void getOrderMsgCountMethod() {
+    private void putQuestionsToMethod() {
         new OkgoHttpResolve(this);
         getOrderMsgCountPresenter.attach(this);
-        getOrderMsgCountPresenter.getOrderMsgCountResult("", this, lazyLoadProgressDialog);
+        getOrderMsgCountPresenter.getOrderMsgCountResult("{\"msgType\":\"1\"}", this, lazyLoadProgressDialog);
+    }
+    /**
+     * 获取营销员订单交流信息列表接口
+     */
+    private void communicationMethod() {
+        new OkgoHttpResolve(this);
+        getOrderMsgCountPresenter.attach(this);
+        getOrderMsgCountPresenter.getOrderMsgCountResult("{\"msgType\":\"0\"}", this, lazyLoadProgressDialog);
     }
 
     private void initAdapter() {
         questionListRv.setLayoutManager(new LinearLayoutManager(this));
         questionListAdapter = new CommonAdapter<GetOrderMsgCountBean.DataBean>(this, R.layout.item_order_number_supplier, questionList) {
             @Override
-            protected void convert(ViewHolder holder, GetOrderMsgCountBean.DataBean dataBean, int position) {
-                holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderNo() + "有新的渠道商提问");
+            protected void convert(ViewHolder holder, GetOrderMsgCountBean.DataBean dataBean, final int position) {
+                holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "("+dataBean.getBrand()+")");
                 if (questionList.size() == position + 1) {
                     holder.setVisible(R.id.view, false);
                 }
+                holder.setOnClickListener(R.id.supplier_cl, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if(questionIndex==0){
+                            SystemUtils.getInstance(IFF_Question_ListActivity.this).referenceSourcePageOrderNoChanneldealerIntent
+                                    (IFF_Close_The_OrderActivity.class, "putQuestionsTo", questionList.get(position).getOrderId(),questionList.get(position).getChanelUserId());
+                        }else if(questionIndex==1){
+                            SystemUtils.getInstance(IFF_Question_ListActivity.this).referenceSourcePageOrderNoChanneldealerIntent
+                                    (IFF_Close_The_OrderActivity.class, "communication", questionList.get(position).getOrderId(),questionList.get(position).getChanelUserId());
+                        }
+                    }
+                });
             }
         };
-        questionListAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                SystemUtils.getInstance(IFF_Question_ListActivity.this).referenceSourcePageOrderNoIntent
-                        (IFF_Close_The_OrderActivity.class, "question_list", questionList.get(position).getOrderNo());
-            }
 
-            @Override
-            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                return false;
-            }
-        });
         questionListRv.setAdapter(questionListAdapter);
     }
 

@@ -83,7 +83,7 @@ public class IFF_Order_DetailsActivity extends Activity {
     @InjectView(R.id.bottom_ll)
     LinearLayout bottomLl;
 
-    private QuotationOrderListBean.DataBean dataBean;
+    private QuotationOrderListBean.PageBean.ListBean dataBean;
     private CommonAdapter<TborderInfoBean.TbOrderBean.OrderDetailListBean> orderDetailAdapter;
     private List<TborderInfoBean.TbOrderBean.OrderDetailListBean> orderDetailList;
 
@@ -98,7 +98,7 @@ public class IFF_Order_DetailsActivity extends Activity {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void onOrderDetailsEvent(QuotationOrderListBean.DataBean dataBean) {
+    public void onOrderDetailsEvent(QuotationOrderListBean.PageBean.ListBean dataBean) {
         this.dataBean = dataBean;
     }
 
@@ -113,7 +113,7 @@ public class IFF_Order_DetailsActivity extends Activity {
 
 
         if(dataBean==null){
-            dataBean = new QuotationOrderListBean.DataBean();
+            dataBean = new QuotationOrderListBean.PageBean.ListBean();
         }
         iffTitleTv.setText(R.string.order_details);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
@@ -122,12 +122,12 @@ public class IFF_Order_DetailsActivity extends Activity {
         forwardingUnitTv.setText(dataBean.getForwardingUnit());
         sourceOfTheGoodsTv.setText(dataBean.getSourceAddress());
         exportPortsTv.setText(dataBean.getExport());
-//        String departureDate = dataBean.getDepartureDate();
-//        if (departureDate.contains("00:00")) {
-//            exportDateTv.setText(departureDate.split("00:00")[0]);
-//        } else {
-//            exportDateTv.setText(departureDate);
-//        }
+        String departureDate = dataBean.getDepartureDate();
+        if (departureDate.contains("00:00")) {
+            exportDateTv.setText(departureDate.split("00:00")[0]);
+        } else {
+            exportDateTv.setText(departureDate);
+        }
         typeOfShippingTv.setText(dataBean.getTransType());
         paymentMethodTv.setText(dataBean.getPayType());
         customsClearanceMethodTv.setText(dataBean.getCleanCustomsType());
@@ -144,7 +144,7 @@ public class IFF_Order_DetailsActivity extends Activity {
 //        }
 //        totalWeightKgTv.setText(totalWeight + "");
 //        orderDetailAdapter();
-        volumeWeightTv.setText(dataBean.getVolumeSize());
+        volumeWeightTv.setText(dataBean.getVolumeSize()+"");
         productNameTv.setText(dataBean.getBrand());
         valueOfGoodsTv.setText(dataBean.getPriceValue());
     }

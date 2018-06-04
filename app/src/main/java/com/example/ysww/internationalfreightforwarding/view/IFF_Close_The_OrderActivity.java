@@ -105,11 +105,15 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     private void initViews() {
         myScrollView.smoothScrollTo(0, 0);
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
-        if (Constants.SOURCE_PAGE.equals("question_list")) {
-            closeTheOrderReplyProblemBtn.setText(R.string.reply_problem);
+        if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
+            closeTheOrderReplyProblemBtn.setText(R.string.supplier_questions);
             SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
             tborderInfoResultMethod();
-        } else {
+        } else if (Constants.SOURCE_PAGE.equals("communication")) {
+            closeTheOrderReplyProblemBtn.setText(R.string.communication);
+            SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
+            tborderInfoResultMethod();
+        }else {
             closeTheOrderReplyProblemBtn.setText(getString(R.string.close_the_order));
         }
         iffTitleTv.setText(R.string.order_details);
@@ -134,9 +138,12 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
                 break;
             case R.id.close_the_order_reply_problem_btn:
                 Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
-                if (Constants.SOURCE_PAGE.equals("question_list")) {
-                    SystemUtils.getInstance(this).referenceSourcePageOrderNoIntent
-                            (IFF_Reply_ProblemActivity.class, "put_questions_to", getIntent().getStringExtra("orderNo"));
+                if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
+                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent
+                            (IFF_Reply_ProblemActivity.class, "putQuestionsTo", getIntent().getStringExtra("orderNo"),getIntent().getStringExtra("channelUserId"));
+                } else if (Constants.SOURCE_PAGE.equals("communication")) {
+                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent
+                            (IFF_Reply_ProblemActivity.class, "communication", getIntent().getStringExtra("orderNo"),getIntent().getStringExtra("channelUserId"));
                 } else {
                     onClickCloseTheOrDer();
                 }
@@ -163,37 +170,39 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     public void onTborderInfoFinish(Object o) {
         TborderInfoBean tborderInfoBean = (TborderInfoBean) o;
         TborderInfoBean.TbOrderBean dataBean = tborderInfoBean.getTbOrder();
-        orderNumberTv.setText(dataBean.getOrderId());
-        operatingCompanyTv.setText(dataBean.getCompanyName());
-        forwardingUnitTv.setText(dataBean.getForwardingUnit());
-        sourceOfTheGoodsTv.setText(dataBean.getSourceAddress());
-        exportPortsTv.setText(dataBean.getExport());
-        String departureDate = dataBean.getDepartureDate();
-        if(departureDate.contains("00:00")){
-            exportDateTv.setText(departureDate.split("00:00")[0]);
-        }else{
-            exportDateTv.setText(departureDate);
-        }
-        typeOfShippingTv.setText(dataBean.getTransType());
-        paymentMethodTv.setText(dataBean.getPayType());
-        customsClearanceMethodTv.setText(dataBean.getCleanCustomsType());
-        transportToTheCountryRegionTv.setText(dataBean.getDestinationCountry());
-        destinationCityTv.setText(dataBean.getDestinationCity());
-        zipCode.setText(dataBean.getPostcode());
-        receivingAddressTv.setText(dataBean.getDeliveryAddress());
+        if(dataBean!=null) {
+            orderNumberTv.setText(dataBean.getOrderId());
+            operatingCompanyTv.setText(dataBean.getCompanyName());
+            forwardingUnitTv.setText(dataBean.getForwardingUnit());
+            sourceOfTheGoodsTv.setText(dataBean.getSourceAddress());
+            exportPortsTv.setText(dataBean.getExport());
+            String departureDate = dataBean.getDepartureDate();
+            if (departureDate.contains("00:00")) {
+                exportDateTv.setText(departureDate.split("00:00")[0]);
+            } else {
+                exportDateTv.setText(departureDate);
+            }
+            typeOfShippingTv.setText(dataBean.getTransType());
+            paymentMethodTv.setText(dataBean.getPayType());
+            customsClearanceMethodTv.setText(dataBean.getCleanCustomsType());
+            transportToTheCountryRegionTv.setText(dataBean.getDestinationCountry());
+            destinationCityTv.setText(dataBean.getDestinationCity());
+            zipCode.setText(dataBean.getPostcode());
+            receivingAddressTv.setText(dataBean.getDeliveryAddress());
 
-        totalNumberTv.setText(dataBean.getTotalNumber() + "");
-        orderDetailList = dataBean.getOrderDetailList();
-        double totalWeight = 0;
-        for (int i = 0; i < orderDetailList.size(); i++) {
-            totalWeight += orderDetailList.get(i).getWeight();
-        }
-        totalWeightKgTv.setText(totalWeight + "");
-        orderDetailAdapter();
+            totalNumberTv.setText(dataBean.getTotalNumber() + "");
+            orderDetailList = dataBean.getOrderDetailList();
+            double totalWeight = 0;
+            for (int i = 0; i < orderDetailList.size(); i++) {
+                totalWeight += orderDetailList.get(i).getWeight();
+            }
+            totalWeightKgTv.setText(totalWeight + "");
+            orderDetailAdapter();
 
-        volumeWeightTv.setText(dataBean.getVolumeSize());
-        productNameTv.setText(dataBean.getBrand());
-        valueOfGoodsTv.setText(dataBean.getPriceValue());
+            volumeWeightTv.setText(dataBean.getVolumeSize());
+            productNameTv.setText(dataBean.getBrand());
+            valueOfGoodsTv.setText(dataBean.getPriceValue());
+        }
     }
 
     private void orderDetailAdapter() {

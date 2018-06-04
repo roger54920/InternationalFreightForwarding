@@ -18,7 +18,12 @@ import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
 import com.example.ysww.internationalfreightforwarding.net.view.QuotationOrderListView;
 import com.example.ysww.internationalfreightforwarding.presenter.QuotationOrderListPresenter;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
+import com.example.ysww.internationalfreightforwarding.utils.MoveLocationUtil;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
+import com.example.ysww.internationalfreightforwarding.utils.ToastStopUtils;
+import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
+import com.lcodecore.tkrefreshlayout.header.SinaRefreshView;
 import com.lzy.okgo.OkGo;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -26,6 +31,7 @@ import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -45,11 +51,18 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
     ImageView titleReturnImg;
     @InjectView(R.id.quotation_order_rv)
     RecyclerView quotationOrderRv;
-    private CommonAdapter<QuotationOrderListBean.DataBean> quotationOrderAdapter;
-    private List<QuotationOrderListBean.DataBean> quotationOrderList;
+    @InjectView(R.id.refresh_layout)
+    TwinklingRefreshLayout refreshLayout;
+    private CommonAdapter<QuotationOrderListBean.PageBean.ListBean> quotationOrderAdapter;
+    private List<QuotationOrderListBean.PageBean.ListBean> quotationOrderList;
 
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
     private QuotationOrderListPresenter statisticalOrderListPresenter = new QuotationOrderListPresenter();
+
+    private int page = 1;
+    private int limit = 10;
+
+    private LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +84,16 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
             iffTitleTv.setText(R.string.historical_order);
         }
 
+        //添加头部
+        SinaRefreshView headerView = new SinaRefreshView(this);
+        headerView.setArrowResource(R.drawable.arrow);
+        headerView.setTextColor(0xff745D5C);
+        refreshLayout.setHeaderView(headerView);
+        refreshLayout.setHeaderHeight(50);
+        //添加底部
+        refreshLayout.setOverScrollBottomShow(false);
+        refreshLayout.setAutoLoadMore(true);
+
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
         SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
         statisticalOrderListMethod();
@@ -80,6 +103,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
      * 报价订单 + 信息补录 + 历史订单 订单列表
      */
     private void statisticalOrderListMethod() {
+//        String userId=getSharedPreferences("login", Context.MODE_PRIVATE).getString("userId","null");
         //分别处理
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
         if (Constants.SOURCE_PAGE.equals("copy")) {
@@ -88,16 +112,18 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         }
         new OkgoHttpResolve(this);
         statisticalOrderListPresenter.attach(this);
-        statisticalOrderListPresenter.quotationOrderListResult("{\"quoteStatus\":\"10\"}", this, lazyLoadProgressDialog);
+        statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit, this, lazyLoadProgressDialog);
     }
 
     private void initAdapter() {
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
-        quotationOrderRv.setLayoutManager(new LinearLayoutManager(this));
-        quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.DataBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
+        linearLayoutManager = new LinearLayoutManager(this);
+        quotationOrderRv.setLayoutManager(linearLayoutManager);
+        quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.PageBean.ListBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
             @Override
-            protected void convert(ViewHolder holder, QuotationOrderListBean.DataBean dataBean, int position) {
-                holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "("+dataBean.getBrand()+")");
+            protected void convert(ViewHolder holder, QuotationOrderListBean.PageBean.ListBean dataBean, int position) {
+                holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "(" + dataBean.getBrand() + ")");
+                holder.setText(R.id.order_state, dataBean.getOrderStatus());
                 if (quotationOrderList.size() == position + 1) {
                     holder.setVisible(R.id.view, false);
                 }
@@ -126,9 +152,28 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
             }
         });
 
+        refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
+            @Override
+            public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
+                page = 1;
+                refreshAndLoadDataRequests();
+            }
+
+            @Override
+            public void onLoadMore(final TwinklingRefreshLayout refreshLayout) {
+                page++;
+                refreshAndLoadDataRequests();
+            }
+        });
 
     }
-
+    /**
+     * 刷新和加载数据请求
+     */
+    private void refreshAndLoadDataRequests() {
+        statisticalOrderListMethod();
+        SystemUtils.getInstance(this).rvRefreshTimeout(refreshLayout);
+    }
     @OnClick(R.id.title_return_img)
     public void onViewClicked() {
         SystemUtils.getInstance(this).returnHomeFinishAll();
@@ -143,11 +188,49 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
 
     @Override
     public void onStatisticalOrderListFinish(Object o) {
+        SystemUtils.getInstance(this).rvRefreshSuccess(refreshLayout);
         QuotationOrderListBean quotationListBean = (QuotationOrderListBean) o;
-        List<QuotationOrderListBean.DataBean> data = quotationListBean.getData();
-        if (data != null && data.size() > 0) {
-            quotationOrderList = data;
-            initAdapter();
+        if (quotationOrderList == null) {
+            quotationOrderList = new ArrayList<>();
+        }
+        List<QuotationOrderListBean.PageBean.ListBean> list = quotationListBean.getPage().getList();
+        if (quotationListBean.getPage().getCurrPage() == 1) {
+            if (quotationListBean.getPage().getTotalCount() > 0 && list != null) {
+                refreshLayout.setVisibility(View.VISIBLE);
+                //noContent.setVisibility(View.GONE);
+                quotationOrderList.clear();
+                quotationOrderList = list;
+                initAdapter();
+                if (quotationListBean.getPage().getTotalCount() > 10) {
+                    refreshLayout.setEnableLoadmore(true);
+                    refreshLayout.setAutoLoadMore(true);
+                } else {
+                    refreshLayout.setEnableLoadmore(false);
+                    refreshLayout.setAutoLoadMore(false);
+                }
+            } else {
+                //noContent.setVisibility(View.VISIBLE);
+                refreshLayout.setVisibility(View.GONE);
+            }
+        } else {
+            if (list != null) {
+                MoveLocationUtil.MoveToPosition(linearLayoutManager, quotationOrderRv, quotationOrderList.size());
+                for (int i = 0; i < list.size(); i++) {
+                    quotationOrderList.add(list.get(i));
+                }
+                initAdapter();
+                if (list.size() == 10) {
+                    refreshLayout.setEnableLoadmore(true);
+                    refreshLayout.setAutoLoadMore(true);
+                } else {
+                    refreshLayout.setEnableLoadmore(false);
+                    refreshLayout.setAutoLoadMore(false);
+                }
+            } else {
+                ToastStopUtils.toastShow(this, "数据加载完成");
+                refreshLayout.setEnableLoadmore(false);
+                refreshLayout.setAutoLoadMore(false);
+            }
         }
     }
 

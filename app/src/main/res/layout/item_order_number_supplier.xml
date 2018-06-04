@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/supplier_cl"
+    style="@style/padding_left_right_13dp"
     android:layout_width="match_parent"
     android:layout_height="42dp"
-    android:background="@color/iff_FFFFFF"
-    style="@style/padding_left_right_13dp">
+    android:background="@color/iff_FFFFFF">
 
     <TextView
         android:id="@+id/supplier_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
-        android:singleLine="true"
         android:ellipsize="end"
         android:paddingRight="10dp"
+        android:singleLine="true"
+        android:text="test"
         android:textColor="@color/iff_666666"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,8 +36,21 @@
         android:id="@+id/imageView"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:src="@drawable/more"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/more" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/order_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="284dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@color/iff_F08430"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

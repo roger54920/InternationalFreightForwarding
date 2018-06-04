@@ -12,7 +12,7 @@ import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
 import com.example.ysww.internationalfreightforwarding.utils.ToastStopUtils;
 
 /**
- * 获取营销员订单未读消息列表接口
+ * 获取营销员订单未读消/提问息列表接口
  */
 
 public class GetOrderMsgCountPresenter implements BasePresenter<GetOrderMsgCountView> {
