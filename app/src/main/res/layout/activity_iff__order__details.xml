@@ -16,7 +16,9 @@
             <include layout="@layout/iff_order_details_layout" />
         </com.example.ysww.internationalfreightforwarding.custom.MyScrollview>
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/bottom_ll"
+            android:gravity="center_horizontal"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="15dp"
@@ -25,6 +27,7 @@
             android:layout_height="50dp">
 
             <Button
+                android:visibility="gone"
                 android:id="@+id/supplier_quotation_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,6 +38,7 @@
                 android:textSize="18sp" />
 
             <Button
+                android:visibility="gone"
                 android:id="@+id/fill_in_the_clearing_information_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +46,16 @@
                 android:background="@drawable/btn_not_disable_shape"
                 android:gravity="center"
                 android:text="渠道商提问"
+                android:textColor="@color/iff_FFFFFF"
+                android:textSize="18sp" />
+            <Button
+                android:visibility="gone"
+                android:id="@+id/information_supplement_reply_problem_btn"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:background="@drawable/btn_not_disable_shape"
+                android:gravity="center"
+                android:text="@string/communication"
                 android:textColor="@color/iff_FFFFFF"
                 android:textSize="18sp" />
         </LinearLayout>

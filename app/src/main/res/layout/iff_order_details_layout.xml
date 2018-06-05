@@ -269,7 +269,6 @@
             android:id="@+id/product_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="惠普电脑"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
@@ -286,7 +285,6 @@
             android:id="@+id/value_of_goods_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="250万元"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 </LinearLayout>

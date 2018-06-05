@@ -9,7 +9,7 @@ import java.util.List;
 public class TborderInfoBean extends BaseBean{
 
     /**
-     * tbOrder : {"orderId":"18050620383973661793","marketUserId":36,"marketUserName":null,"transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4554","totalNumber":4,"export":"54","destinationCountry":"中国","departureDate":"2018-05-06 00:00:00.0","departureDateStr":null,"destinationCity":"455","brand":"4545","quote":454,"postcode":"4554","priceValue":"455","transportationTime":"4545","deliveryAddress":"455445","forwardingUnit":"4554","orderDetailList":[{"id":1,"orderId":"18050620383973661793","number":1,"weight":455,"length":4554,"width":4545,"height":4545,"createDate":"2018-05-14 23:35:32","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:03"},{"id":7,"orderId":"18050620383973661793","number":1,"weight":4566,"length":33,"width":322,"height":33,"createDate":"2018-05-14 23:56:23","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:07"},{"id":9,"orderId":"18050620383973661793","number":1,"weight":69,"length":65,"width":69,"height":665,"createDate":"2018-05-14 23:57:54","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:09"},{"id":10,"orderId":"18050620383973661793","number":1,"weight":69,"length":65,"width":69,"height":668,"createDate":"2018-05-14 23:58:20","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:11"}],"volumeSize":"4554","packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-06 20:38:40","createBy":"展示","updateDate":null,"lastUpdateBy":null,"status":"1","orderStatus":"10","companyCode":"3","companyName":null,"channelName":null,"channelUserName":null,"quoteId":null,"quoteNum":null,"isFuelRate":null,"fuelRate":null,"isTax":null,"remark":null,"workday":null,"fuelOilQuote":null,"channelQuote":null,"quoteStatus":null,"channelQuoteId":null}
+     * tbOrder : {"totalNumber":8,"cleanCustomsType":"正式报关","orderId":"18060516293966031972","contractNo":"45454","orderStatus":"1","packageType":"包装","volumeSize":"5","manufacturer":"图","payType":"预付","quote":8,"deliveryAddress":"收货地址","tariffPayType":"收件人付","billsUrl":"magazine-unlock-03-2.3.1002-_9D89D458A0BBE371CE554463B5C5C819.jpg","departureDate":"2018-06-05 00:00:00.0","brand":"货品名称","exemptionType":"痛","export":"出口口薄","createDate":1528187380000,"companyCode":"3","sourceAddress":"提货","deliveryType":"自送渠道仓库","postcode":"455444","priceValue":"8","approvalNumber":"痛","destinationCountry":"中国","transDemand":"门到门","destinationCity":"北京","licenseKey":"6","marketUserId":36,"orderDetailList":[{"number":8,"createBy":"刘先生01","orderId":"18060516293966031972","length":9,"width":82,"weight":8,"id":37,"createDate":1528187380000,"height":2}],"createBy":"刘先生01","forwardingUnit":"发货地哦哦","transportationTime":"8","transType":"空运","status":"1"}
      */
 
     private TbOrderBean tbOrder;
@@ -24,183 +24,86 @@ public class TborderInfoBean extends BaseBean{
 
     public static class TbOrderBean {
         /**
-         * orderId : 18050620383973661793
-         * marketUserId : 36
-         * marketUserName : null
-         * transType : 空运
-         * transDemand : 门到门
-         * payType : 到付
+         * totalNumber : 8
          * cleanCustomsType : 正式报关
-         * sourceAddress : 4554
-         * totalNumber : 4
-         * export : 54
-         * destinationCountry : 中国
-         * departureDate : 2018-05-06 00:00:00.0
-         * departureDateStr : null
-         * destinationCity : 455
-         * brand : 4545
-         * quote : 454
-         * postcode : 4554
-         * priceValue : 455
-         * transportationTime : 4545
-         * deliveryAddress : 455445
-         * forwardingUnit : 4554
-         * orderDetailList : [{"id":1,"orderId":"18050620383973661793","number":1,"weight":455,"length":4554,"width":4545,"height":4545,"createDate":"2018-05-14 23:35:32","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:03"},{"id":7,"orderId":"18050620383973661793","number":1,"weight":4566,"length":33,"width":322,"height":33,"createDate":"2018-05-14 23:56:23","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:07"},{"id":9,"orderId":"18050620383973661793","number":1,"weight":69,"length":65,"width":69,"height":665,"createDate":"2018-05-14 23:57:54","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:09"},{"id":10,"orderId":"18050620383973661793","number":1,"weight":69,"length":65,"width":69,"height":668,"createDate":"2018-05-14 23:58:20","createBy":"展示","updateBy":"展示","lastUpdateDate":"2018-05-15 00:00:11"}]
-         * volumeSize : 4554
-         * packageType : null
-         * manufacturer : null
-         * contractNo : null
-         * licenseKey : null
-         * approvalNumber : null
-         * exemptionType : null
-         * tariffPayType :
-         * deliveryType :
-         * emsNo : null
-         * postingCharges : null
-         * postingTime : null
-         * billsUrl : null
-         * createDate : 2018-05-06 20:38:40
-         * createBy : 展示
-         * updateDate : null
-         * lastUpdateBy : null
-         * status : 1
-         * orderStatus : 10
+         * orderId : 18060516293966031972
+         * contractNo : 45454
+         * orderStatus : 1
+         * packageType : 包装
+         * volumeSize : 5
+         * manufacturer : 图
+         * payType : 预付
+         * quote : 8
+         * deliveryAddress : 收货地址
+         * tariffPayType : 收件人付
+         * billsUrl : magazine-unlock-03-2.3.1002-_9D89D458A0BBE371CE554463B5C5C819.jpg
+         * departureDate : 2018-06-05 00:00:00.0
+         * brand : 货品名称
+         * exemptionType : 痛
+         * export : 出口口薄
+         * createDate : 1528187380000
          * companyCode : 3
-         * companyName : null
-         * channelName : null
-         * channelUserName : null
-         * quoteId : null
-         * quoteNum : null
-         * isFuelRate : null
-         * fuelRate : null
-         * isTax : null
-         * remark : null
-         * workday : null
-         * fuelOilQuote : null
-         * channelQuote : null
-         * quoteStatus : null
-         * channelQuoteId : null
+         * sourceAddress : 提货
+         * deliveryType : 自送渠道仓库
+         * postcode : 455444
+         * priceValue : 8
+         * approvalNumber : 痛
+         * destinationCountry : 中国
+         * transDemand : 门到门
+         * destinationCity : 北京
+         * licenseKey : 6
+         * marketUserId : 36
+         * orderDetailList : [{"number":8,"createBy":"刘先生01","orderId":"18060516293966031972","length":9,"width":82,"weight":8,"id":37,"createDate":1528187380000,"height":2}]
+         * createBy : 刘先生01
+         * forwardingUnit : 发货地哦哦
+         * transportationTime : 8
+         * transType : 空运
+         * status : 1
          */
 
-        private String orderId;
-        private int marketUserId;
-        private String marketUserName;
-        private String transType;
-        private String transDemand;
-        private String payType;
-        private String cleanCustomsType;
-        private String sourceAddress;
         private int totalNumber;
-        private String export;
-        private String destinationCountry;
-        private String departureDate;
-        private String departureDateStr;
-        private String destinationCity;
-        private String brand;
+        private String cleanCustomsType;
+        private String orderId;
+        private String contractNo;
+        private String orderStatus;
+        private String packageType;
+        private String volumeSize;
+        private String manufacturer;
+        private String payType;
         private int quote;
+        private String deliveryAddress;
+        private String tariffPayType;
+        private String billsUrl;
+        private String departureDate;
+        private String brand;
+        private String exemptionType;
+        private String export;
+        private long createDate;
+        private String companyCode;
+        private String sourceAddress;
+        private String deliveryType;
         private String postcode;
         private String priceValue;
-        private String transportationTime;
-        private String deliveryAddress;
-        private String forwardingUnit;
-        private String volumeSize;
-        private String packageType;
-        private String manufacturer;
-        private String contractNo;
-        private String licenseKey;
         private String approvalNumber;
-        private String exemptionType;
-        private String tariffPayType;
-        private String deliveryType;
-        private String emsNo;
-        private String postingCharges;
-        private String postingTime;
-        private String billsUrl;
-        private String createDate;
+        private String destinationCountry;
+        private String transDemand;
+        private String destinationCity;
+        private String licenseKey;
+        private int marketUserId;
         private String createBy;
-        private String updateDate;
-        private String lastUpdateBy;
+        private String forwardingUnit;
+        private String transportationTime;
+        private String transType;
         private String status;
-        private String orderStatus;
-        private String companyCode;
-        private String companyName;
-        private String channelName;
-        private String channelUserName;
-        private String quoteId;
-        private String quoteNum;
-        private String isFuelRate;
-        private String fuelRate;
-        private String isTax;
-        private String remark;
-        private String workday;
-        private String fuelOilQuote;
-        private String channelQuote;
-        private String quoteStatus;
-        private String channelQuoteId;
         private List<OrderDetailListBean> orderDetailList;
+        private String companyName;
 
-        public String getOrderId() {
-            return orderId;
+        public String getCompanyName() {
+            return companyName;
         }
 
-        public void setOrderId(String orderId) {
-            this.orderId = orderId;
-        }
-
-        public int getMarketUserId() {
-            return marketUserId;
-        }
-
-        public void setMarketUserId(int marketUserId) {
-            this.marketUserId = marketUserId;
-        }
-
-        public String getMarketUserName() {
-            return marketUserName;
-        }
-
-        public void setMarketUserName(String marketUserName) {
-            this.marketUserName = marketUserName;
-        }
-
-        public String getTransType() {
-            return transType;
-        }
-
-        public void setTransType(String transType) {
-            this.transType = transType;
-        }
-
-        public String getTransDemand() {
-            return transDemand;
-        }
-
-        public void setTransDemand(String transDemand) {
-            this.transDemand = transDemand;
-        }
-
-        public String getPayType() {
-            return payType;
-        }
-
-        public void setPayType(String payType) {
-            this.payType = payType;
-        }
-
-        public String getCleanCustomsType() {
-            return cleanCustomsType;
-        }
-
-        public void setCleanCustomsType(String cleanCustomsType) {
-            this.cleanCustomsType = cleanCustomsType;
-        }
-
-        public String getSourceAddress() {
-            return sourceAddress;
-        }
-
-        public void setSourceAddress(String sourceAddress) {
-            this.sourceAddress = sourceAddress;
+        public void setCompanyName(String companyName) {
+            this.companyName = companyName;
         }
 
         public int getTotalNumber() {
@@ -211,20 +114,100 @@ public class TborderInfoBean extends BaseBean{
             this.totalNumber = totalNumber;
         }
 
-        public String getExport() {
-            return export;
+        public String getCleanCustomsType() {
+            return cleanCustomsType;
         }
 
-        public void setExport(String export) {
-            this.export = export;
+        public void setCleanCustomsType(String cleanCustomsType) {
+            this.cleanCustomsType = cleanCustomsType;
         }
 
-        public String getDestinationCountry() {
-            return destinationCountry;
+        public String getOrderId() {
+            return orderId;
         }
 
-        public void setDestinationCountry(String destinationCountry) {
-            this.destinationCountry = destinationCountry;
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
+        }
+
+        public String getContractNo() {
+            return contractNo;
+        }
+
+        public void setContractNo(String contractNo) {
+            this.contractNo = contractNo;
+        }
+
+        public String getOrderStatus() {
+            return orderStatus;
+        }
+
+        public void setOrderStatus(String orderStatus) {
+            this.orderStatus = orderStatus;
+        }
+
+        public String getPackageType() {
+            return packageType;
+        }
+
+        public void setPackageType(String packageType) {
+            this.packageType = packageType;
+        }
+
+        public String getVolumeSize() {
+            return volumeSize;
+        }
+
+        public void setVolumeSize(String volumeSize) {
+            this.volumeSize = volumeSize;
+        }
+
+        public String getManufacturer() {
+            return manufacturer;
+        }
+
+        public void setManufacturer(String manufacturer) {
+            this.manufacturer = manufacturer;
+        }
+
+        public String getPayType() {
+            return payType;
+        }
+
+        public void setPayType(String payType) {
+            this.payType = payType;
+        }
+
+        public int getQuote() {
+            return quote;
+        }
+
+        public void setQuote(int quote) {
+            this.quote = quote;
+        }
+
+        public String getDeliveryAddress() {
+            return deliveryAddress;
+        }
+
+        public void setDeliveryAddress(String deliveryAddress) {
+            this.deliveryAddress = deliveryAddress;
+        }
+
+        public String getTariffPayType() {
+            return tariffPayType;
+        }
+
+        public void setTariffPayType(String tariffPayType) {
+            this.tariffPayType = tariffPayType;
+        }
+
+        public String getBillsUrl() {
+            return billsUrl;
+        }
+
+        public void setBillsUrl(String billsUrl) {
+            this.billsUrl = billsUrl;
         }
 
         public String getDepartureDate() {
@@ -235,22 +218,6 @@ public class TborderInfoBean extends BaseBean{
             this.departureDate = departureDate;
         }
 
-        public String getDepartureDateStr() {
-            return departureDateStr;
-        }
-
-        public void setDepartureDateStr(String departureDateStr) {
-            this.departureDateStr = departureDateStr;
-        }
-
-        public String getDestinationCity() {
-            return destinationCity;
-        }
-
-        public void setDestinationCity(String destinationCity) {
-            this.destinationCity = destinationCity;
-        }
-
         public String getBrand() {
             return brand;
         }
@@ -259,12 +226,52 @@ public class TborderInfoBean extends BaseBean{
             this.brand = brand;
         }
 
-        public int getQuote() {
-            return quote;
+        public String getExemptionType() {
+            return exemptionType;
         }
 
-        public void setQuote(int quote) {
-            this.quote = quote;
+        public void setExemptionType(String exemptionType) {
+            this.exemptionType = exemptionType;
+        }
+
+        public String getExport() {
+            return export;
+        }
+
+        public void setExport(String export) {
+            this.export = export;
+        }
+
+        public long getCreateDate() {
+            return createDate;
+        }
+
+        public void setCreateDate(long createDate) {
+            this.createDate = createDate;
+        }
+
+        public String getCompanyCode() {
+            return companyCode;
+        }
+
+        public void setCompanyCode(String companyCode) {
+            this.companyCode = companyCode;
+        }
+
+        public String getSourceAddress() {
+            return sourceAddress;
+        }
+
+        public void setSourceAddress(String sourceAddress) {
+            this.sourceAddress = sourceAddress;
+        }
+
+        public String getDeliveryType() {
+            return deliveryType;
+        }
+
+        public void setDeliveryType(String deliveryType) {
+            this.deliveryType = deliveryType;
         }
 
         public String getPostcode() {
@@ -283,60 +290,36 @@ public class TborderInfoBean extends BaseBean{
             this.priceValue = priceValue;
         }
 
-        public String getTransportationTime() {
-            return transportationTime;
+        public String getApprovalNumber() {
+            return approvalNumber;
         }
 
-        public void setTransportationTime(String transportationTime) {
-            this.transportationTime = transportationTime;
+        public void setApprovalNumber(String approvalNumber) {
+            this.approvalNumber = approvalNumber;
         }
 
-        public String getDeliveryAddress() {
-            return deliveryAddress;
+        public String getDestinationCountry() {
+            return destinationCountry;
         }
 
-        public void setDeliveryAddress(String deliveryAddress) {
-            this.deliveryAddress = deliveryAddress;
+        public void setDestinationCountry(String destinationCountry) {
+            this.destinationCountry = destinationCountry;
         }
 
-        public String getForwardingUnit() {
-            return forwardingUnit;
+        public String getTransDemand() {
+            return transDemand;
         }
 
-        public void setForwardingUnit(String forwardingUnit) {
-            this.forwardingUnit = forwardingUnit;
+        public void setTransDemand(String transDemand) {
+            this.transDemand = transDemand;
         }
 
-        public String getVolumeSize() {
-            return volumeSize;
+        public String getDestinationCity() {
+            return destinationCity;
         }
 
-        public void setVolumeSize(String volumeSize) {
-            this.volumeSize = volumeSize;
-        }
-
-        public String getPackageType() {
-            return packageType;
-        }
-
-        public void setPackageType(String packageType) {
-            this.packageType = packageType;
-        }
-
-        public String getManufacturer() {
-            return manufacturer;
-        }
-
-        public void setManufacturer(String manufacturer) {
-            this.manufacturer = manufacturer;
-        }
-
-        public String getContractNo() {
-            return contractNo;
-        }
-
-        public void setContractNo(String contractNo) {
-            this.contractNo = contractNo;
+        public void setDestinationCity(String destinationCity) {
+            this.destinationCity = destinationCity;
         }
 
         public String getLicenseKey() {
@@ -347,76 +330,12 @@ public class TborderInfoBean extends BaseBean{
             this.licenseKey = licenseKey;
         }
 
-        public String getApprovalNumber() {
-            return approvalNumber;
+        public int getMarketUserId() {
+            return marketUserId;
         }
 
-        public void setApprovalNumber(String approvalNumber) {
-            this.approvalNumber = approvalNumber;
-        }
-
-        public String getExemptionType() {
-            return exemptionType;
-        }
-
-        public void setExemptionType(String exemptionType) {
-            this.exemptionType = exemptionType;
-        }
-
-        public String getTariffPayType() {
-            return tariffPayType;
-        }
-
-        public void setTariffPayType(String tariffPayType) {
-            this.tariffPayType = tariffPayType;
-        }
-
-        public String getDeliveryType() {
-            return deliveryType;
-        }
-
-        public void setDeliveryType(String deliveryType) {
-            this.deliveryType = deliveryType;
-        }
-
-        public String getEmsNo() {
-            return emsNo;
-        }
-
-        public void setEmsNo(String emsNo) {
-            this.emsNo = emsNo;
-        }
-
-        public String getPostingCharges() {
-            return postingCharges;
-        }
-
-        public void setPostingCharges(String postingCharges) {
-            this.postingCharges = postingCharges;
-        }
-
-        public String getPostingTime() {
-            return postingTime;
-        }
-
-        public void setPostingTime(String postingTime) {
-            this.postingTime = postingTime;
-        }
-
-        public String getBillsUrl() {
-            return billsUrl;
-        }
-
-        public void setBillsUrl(String billsUrl) {
-            this.billsUrl = billsUrl;
-        }
-
-        public String getCreateDate() {
-            return createDate;
-        }
-
-        public void setCreateDate(String createDate) {
-            this.createDate = createDate;
+        public void setMarketUserId(int marketUserId) {
+            this.marketUserId = marketUserId;
         }
 
         public String getCreateBy() {
@@ -427,20 +346,28 @@ public class TborderInfoBean extends BaseBean{
             this.createBy = createBy;
         }
 
-        public String getUpdateDate() {
-            return updateDate;
+        public String getForwardingUnit() {
+            return forwardingUnit;
         }
 
-        public void setUpdateDate(String updateDate) {
-            this.updateDate = updateDate;
+        public void setForwardingUnit(String forwardingUnit) {
+            this.forwardingUnit = forwardingUnit;
         }
 
-        public String getLastUpdateBy() {
-            return lastUpdateBy;
+        public String getTransportationTime() {
+            return transportationTime;
         }
 
-        public void setLastUpdateBy(String lastUpdateBy) {
-            this.lastUpdateBy = lastUpdateBy;
+        public void setTransportationTime(String transportationTime) {
+            this.transportationTime = transportationTime;
+        }
+
+        public String getTransType() {
+            return transType;
+        }
+
+        public void setTransType(String transType) {
+            this.transType = transType;
         }
 
         public String getStatus() {
@@ -449,134 +376,6 @@ public class TborderInfoBean extends BaseBean{
 
         public void setStatus(String status) {
             this.status = status;
-        }
-
-        public String getOrderStatus() {
-            return orderStatus;
-        }
-
-        public void setOrderStatus(String orderStatus) {
-            this.orderStatus = orderStatus;
-        }
-
-        public String getCompanyCode() {
-            return companyCode;
-        }
-
-        public void setCompanyCode(String companyCode) {
-            this.companyCode = companyCode;
-        }
-
-        public String getCompanyName() {
-            return companyName;
-        }
-
-        public void setCompanyName(String companyName) {
-            this.companyName = companyName;
-        }
-
-        public String getChannelName() {
-            return channelName;
-        }
-
-        public void setChannelName(String channelName) {
-            this.channelName = channelName;
-        }
-
-        public String getChannelUserName() {
-            return channelUserName;
-        }
-
-        public void setChannelUserName(String channelUserName) {
-            this.channelUserName = channelUserName;
-        }
-
-        public String getQuoteId() {
-            return quoteId;
-        }
-
-        public void setQuoteId(String quoteId) {
-            this.quoteId = quoteId;
-        }
-
-        public String getQuoteNum() {
-            return quoteNum;
-        }
-
-        public void setQuoteNum(String quoteNum) {
-            this.quoteNum = quoteNum;
-        }
-
-        public String getIsFuelRate() {
-            return isFuelRate;
-        }
-
-        public void setIsFuelRate(String isFuelRate) {
-            this.isFuelRate = isFuelRate;
-        }
-
-        public String getFuelRate() {
-            return fuelRate;
-        }
-
-        public void setFuelRate(String fuelRate) {
-            this.fuelRate = fuelRate;
-        }
-
-        public String getIsTax() {
-            return isTax;
-        }
-
-        public void setIsTax(String isTax) {
-            this.isTax = isTax;
-        }
-
-        public String getRemark() {
-            return remark;
-        }
-
-        public void setRemark(String remark) {
-            this.remark = remark;
-        }
-
-        public String getWorkday() {
-            return workday;
-        }
-
-        public void setWorkday(String workday) {
-            this.workday = workday;
-        }
-
-        public String getFuelOilQuote() {
-            return fuelOilQuote;
-        }
-
-        public void setFuelOilQuote(String fuelOilQuote) {
-            this.fuelOilQuote = fuelOilQuote;
-        }
-
-        public String getChannelQuote() {
-            return channelQuote;
-        }
-
-        public void setChannelQuote(String channelQuote) {
-            this.channelQuote = channelQuote;
-        }
-
-        public String getQuoteStatus() {
-            return quoteStatus;
-        }
-
-        public void setQuoteStatus(String quoteStatus) {
-            this.quoteStatus = quoteStatus;
-        }
-
-        public String getChannelQuoteId() {
-            return channelQuoteId;
-        }
-
-        public void setChannelQuoteId(String channelQuoteId) {
-            this.channelQuoteId = channelQuoteId;
         }
 
         public List<OrderDetailListBean> getOrderDetailList() {
@@ -589,46 +388,26 @@ public class TborderInfoBean extends BaseBean{
 
         public static class OrderDetailListBean {
             /**
-             * id : 1
-             * orderId : 18050620383973661793
-             * number : 1
-             * weight : 455
-             * length : 4554
-             * width : 4545
-             * height : 4545
-             * createDate : 2018-05-14 23:35:32
-             * createBy : 展示
-             * updateBy : 展示
-             * lastUpdateDate : 2018-05-15 00:00:03
+             * number : 8
+             * createBy : 刘先生01
+             * orderId : 18060516293966031972
+             * length : 9
+             * width : 82
+             * weight : 8
+             * id : 37
+             * createDate : 1528187380000
+             * height : 2
              */
 
-            private int id;
-            private String orderId;
             private int number;
-            private int weight;
+            private String createBy;
+            private String orderId;
             private int length;
             private int width;
+            private int weight;
+            private int id;
+            private long createDate;
             private int height;
-            private String createDate;
-            private String createBy;
-            private String updateBy;
-            private String lastUpdateDate;
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public String getOrderId() {
-                return orderId;
-            }
-
-            public void setOrderId(String orderId) {
-                this.orderId = orderId;
-            }
 
             public int getNumber() {
                 return number;
@@ -638,12 +417,20 @@ public class TborderInfoBean extends BaseBean{
                 this.number = number;
             }
 
-            public int getWeight() {
-                return weight;
+            public String getCreateBy() {
+                return createBy;
             }
 
-            public void setWeight(int weight) {
-                this.weight = weight;
+            public void setCreateBy(String createBy) {
+                this.createBy = createBy;
+            }
+
+            public String getOrderId() {
+                return orderId;
+            }
+
+            public void setOrderId(String orderId) {
+                this.orderId = orderId;
             }
 
             public int getLength() {
@@ -662,44 +449,36 @@ public class TborderInfoBean extends BaseBean{
                 this.width = width;
             }
 
+            public int getWeight() {
+                return weight;
+            }
+
+            public void setWeight(int weight) {
+                this.weight = weight;
+            }
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public long getCreateDate() {
+                return createDate;
+            }
+
+            public void setCreateDate(long createDate) {
+                this.createDate = createDate;
+            }
+
             public int getHeight() {
                 return height;
             }
 
             public void setHeight(int height) {
                 this.height = height;
-            }
-
-            public String getCreateDate() {
-                return createDate;
-            }
-
-            public void setCreateDate(String createDate) {
-                this.createDate = createDate;
-            }
-
-            public String getCreateBy() {
-                return createBy;
-            }
-
-            public void setCreateBy(String createBy) {
-                this.createBy = createBy;
-            }
-
-            public String getUpdateBy() {
-                return updateBy;
-            }
-
-            public void setUpdateBy(String updateBy) {
-                this.updateBy = updateBy;
-            }
-
-            public String getLastUpdateDate() {
-                return lastUpdateDate;
-            }
-
-            public void setLastUpdateDate(String lastUpdateDate) {
-                this.lastUpdateDate = lastUpdateDate;
             }
         }
     }

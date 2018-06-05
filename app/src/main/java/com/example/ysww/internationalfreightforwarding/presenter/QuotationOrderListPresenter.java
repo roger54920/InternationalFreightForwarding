@@ -20,7 +20,7 @@ public class QuotationOrderListPresenter implements BasePresenter<QuotationOrder
 
     public void quotationOrderListResult(String str, final Activity activity, final LazyLoadProgressDialog lazyLoadProgressDialog) {
         String tokenId=activity.getSharedPreferences("login", Context.MODE_PRIVATE).getString("tokenId","null");
-        OkgoHttpResolve.postStringResult(Constants.LINK_HEAD + "mananger/tborder/list"+str ,tokenId,QuotationOrderListBean.class, new OkgoHttpResolve.HttpCallBack() {
+        OkgoHttpResolve.postStringResult(Constants.LINK_HEAD + "mananger/tborder/list?"+str ,tokenId,QuotationOrderListBean.class, new OkgoHttpResolve.HttpCallBack() {
             @Override
             public void finish(Object result) {
                 QuotationOrderListBean quotationListBean = (QuotationOrderListBean) result;

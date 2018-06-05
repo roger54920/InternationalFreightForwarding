@@ -9,7 +9,7 @@ import java.util.List;
 public class QuotationOrderListBean extends BaseBean{
 
     /**
-     * page : {"totalCount":6,"pageSize":10,"totalPage":1,"currPage":1,"list":[{"orderId":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]}
+     * page : {"totalCount":6,"pageSize":10,"totalPage":1,"currPage":1,"list":[{"orderNo":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]}
      */
 
     private PageBean page;
@@ -28,7 +28,7 @@ public class QuotationOrderListBean extends BaseBean{
          * pageSize : 10
          * totalPage : 1
          * currPage : 1
-         * list : [{"orderId":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]
+         * list : [{"orderNo":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]
          */
 
         private int totalCount;
@@ -79,7 +79,7 @@ public class QuotationOrderListBean extends BaseBean{
 
         public static class ListBean {
             /**
-             * orderId : 18050117484262484944
+             * orderNo : 18050117484262484944
              * marketUserId : 29
              * marketUserName : 小美
              * transType : 空运
@@ -143,7 +143,7 @@ public class QuotationOrderListBean extends BaseBean{
             private String export;
             private String destinationCountry;
             private String departureDate;
-            private Object departureDateStr;
+            private String departureDateStr;
             private String destinationCity;
             private String brand;
             private int quote;
@@ -152,19 +152,19 @@ public class QuotationOrderListBean extends BaseBean{
             private String transportationTime;
             private String deliveryAddress;
             private String forwardingUnit;
-            private Object volumeSize;
-            private Object packageType;
-            private Object manufacturer;
-            private Object contractNo;
-            private Object licenseKey;
-            private Object approvalNumber;
-            private Object exemptionType;
+            private String volumeSize;
+            private String packageType;
+            private String manufacturer;
+            private String contractNo;
+            private String licenseKey;
+            private String approvalNumber;
+            private String exemptionType;
             private String tariffPayType;
             private String deliveryType;
-            private Object emsNo;
-            private Object postingCharges;
-            private Object postingTime;
-            private Object billsUrl;
+            private String emsNo;
+            private String postingCharges;
+            private String postingTime;
+            private String billsUrl;
             private String createDate;
             private String createBy;
             private String updateDate;
@@ -173,16 +173,25 @@ public class QuotationOrderListBean extends BaseBean{
             private String orderStatus;
             private String companyCode;
             private String companyName;
-            private Object channelName;
-            private Object channelUserName;
-            private Object quoteId;
-            private Object channelQuoteId;
+            private String channelName;
+            private String channelUserName;
+            private String quoteId;
+            private String channelQuoteId;
+            private String orderStatusName;
 
-            public String getOrderId() {
+            public String getOrderStatusName() {
+                return orderStatusName;
+            }
+
+            public void setOrderStatusName(String orderStatusName) {
+                this.orderStatusName = orderStatusName;
+            }
+
+            public String getorderId() {
                 return orderId;
             }
 
-            public void setOrderId(String orderId) {
+            public void setorderId(String orderId) {
                 this.orderId = orderId;
             }
 
@@ -290,11 +299,11 @@ public class QuotationOrderListBean extends BaseBean{
                 this.departureDate = departureDate;
             }
 
-            public Object getDepartureDateStr() {
+            public String getDepartureDateStr() {
                 return departureDateStr;
             }
 
-            public void setDepartureDateStr(Object departureDateStr) {
+            public void setDepartureDateStr(String departureDateStr) {
                 this.departureDateStr = departureDateStr;
             }
 
@@ -362,59 +371,59 @@ public class QuotationOrderListBean extends BaseBean{
                 this.forwardingUnit = forwardingUnit;
             }
 
-            public Object getVolumeSize() {
+            public String getVolumeSize() {
                 return volumeSize;
             }
 
-            public void setVolumeSize(Object volumeSize) {
+            public void setVolumeSize(String volumeSize) {
                 this.volumeSize = volumeSize;
             }
 
-            public Object getPackageType() {
+            public String getPackageType() {
                 return packageType;
             }
 
-            public void setPackageType(Object packageType) {
+            public void setPackageType(String packageType) {
                 this.packageType = packageType;
             }
 
-            public Object getManufacturer() {
+            public String getManufacturer() {
                 return manufacturer;
             }
 
-            public void setManufacturer(Object manufacturer) {
+            public void setManufacturer(String manufacturer) {
                 this.manufacturer = manufacturer;
             }
 
-            public Object getContractNo() {
+            public String getContractNo() {
                 return contractNo;
             }
 
-            public void setContractNo(Object contractNo) {
+            public void setContractNo(String contractNo) {
                 this.contractNo = contractNo;
             }
 
-            public Object getLicenseKey() {
+            public String getLicenseKey() {
                 return licenseKey;
             }
 
-            public void setLicenseKey(Object licenseKey) {
+            public void setLicenseKey(String licenseKey) {
                 this.licenseKey = licenseKey;
             }
 
-            public Object getApprovalNumber() {
+            public String getApprovalNumber() {
                 return approvalNumber;
             }
 
-            public void setApprovalNumber(Object approvalNumber) {
+            public void setApprovalNumber(String approvalNumber) {
                 this.approvalNumber = approvalNumber;
             }
 
-            public Object getExemptionType() {
+            public String getExemptionType() {
                 return exemptionType;
             }
 
-            public void setExemptionType(Object exemptionType) {
+            public void setExemptionType(String exemptionType) {
                 this.exemptionType = exemptionType;
             }
 
@@ -434,35 +443,35 @@ public class QuotationOrderListBean extends BaseBean{
                 this.deliveryType = deliveryType;
             }
 
-            public Object getEmsNo() {
+            public String getEmsNo() {
                 return emsNo;
             }
 
-            public void setEmsNo(Object emsNo) {
+            public void setEmsNo(String emsNo) {
                 this.emsNo = emsNo;
             }
 
-            public Object getPostingCharges() {
+            public String getPostingCharges() {
                 return postingCharges;
             }
 
-            public void setPostingCharges(Object postingCharges) {
+            public void setPostingCharges(String postingCharges) {
                 this.postingCharges = postingCharges;
             }
 
-            public Object getPostingTime() {
+            public String getPostingTime() {
                 return postingTime;
             }
 
-            public void setPostingTime(Object postingTime) {
+            public void setPostingTime(String postingTime) {
                 this.postingTime = postingTime;
             }
 
-            public Object getBillsUrl() {
+            public String getBillsUrl() {
                 return billsUrl;
             }
 
-            public void setBillsUrl(Object billsUrl) {
+            public void setBillsUrl(String billsUrl) {
                 this.billsUrl = billsUrl;
             }
 
@@ -530,35 +539,35 @@ public class QuotationOrderListBean extends BaseBean{
                 this.companyName = companyName;
             }
 
-            public Object getChannelName() {
+            public String getChannelName() {
                 return channelName;
             }
 
-            public void setChannelName(Object channelName) {
+            public void setChannelName(String channelName) {
                 this.channelName = channelName;
             }
 
-            public Object getChannelUserName() {
+            public String getChannelUserName() {
                 return channelUserName;
             }
 
-            public void setChannelUserName(Object channelUserName) {
+            public void setChannelUserName(String channelUserName) {
                 this.channelUserName = channelUserName;
             }
 
-            public Object getQuoteId() {
+            public String getQuoteId() {
                 return quoteId;
             }
 
-            public void setQuoteId(Object quoteId) {
+            public void setQuoteId(String quoteId) {
                 this.quoteId = quoteId;
             }
 
-            public Object getChannelQuoteId() {
+            public String getChannelQuoteId() {
                 return channelQuoteId;
             }
 
-            public void setChannelQuoteId(Object channelQuoteId) {
+            public void setChannelQuoteId(String channelQuoteId) {
                 this.channelQuoteId = channelQuoteId;
             }
         }

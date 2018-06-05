@@ -128,7 +128,27 @@ public class SystemUtils {
         intent.putExtra("source_page", source_page);
         mContext.startActivity(intent);
     }
-
+    /**
+     * 来源订单状态和渠道商Id
+     *
+     * @param cls
+     */
+    public void orderStautsOrderNoIntent(Class cls, int orderStauts, String orderNo) {
+        Intent intent = new Intent(mContext, cls);
+        intent.putExtra("orderStauts", orderStauts);
+        intent.putExtra("orderNo", orderNo);
+        mContext.startActivity(intent);
+    }
+    /**
+     * 来源渠道商Id
+     *
+     * @param cls
+     */
+    public void orderNoIntent(Class cls, String orderNo) {
+        Intent intent = new Intent(mContext, cls);
+        intent.putExtra("orderNo", orderNo);
+        mContext.startActivity(intent);
+    }
     /**
      * 返回首页
      */

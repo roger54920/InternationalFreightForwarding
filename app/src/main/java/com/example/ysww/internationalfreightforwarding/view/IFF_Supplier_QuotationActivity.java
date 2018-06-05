@@ -54,7 +54,7 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
     TwinklingRefreshLayout refreshLayout;
     private CommonAdapter<SupplierQuotationListBean.PageBean.ListBean> supplierQuotationAdapter;
     private List<SupplierQuotationListBean.PageBean.ListBean> supplierQuotationList;
-    private String orderId, affirmChannelId;
+    private String orderNo, affirmChannelId;
     private int page = 1;
     private int limit = 10;
     private int radioCheckPosition = 1;
@@ -75,7 +75,7 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
     }
 
     private void initViews() {
-        orderId = getIntent().getStringExtra("orderId");
+        orderNo = getIntent().getStringExtra("orderNo");
         iffTitleTv.setText(R.string.supplier_quotation);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
 
@@ -107,11 +107,11 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
             protected void convert(ViewHolder holder, SupplierQuotationListBean.PageBean.ListBean listBean, final int position) {
                 if(position==0){
                     holder.setVisible(R.id.order_number_tv,false);
-                    holder.setText(R.id.order_number_tv,"订单号" + orderId + "渠道商竞标信息");
+                    holder.setText(R.id.order_number_tv,"订单号" + orderNo + "渠道商竞标信息");
                 }else{
                     holder.setVisible(R.id.order_number_tv,true);
                 }
-                holder.setText(R.id.supplier_quotation_tv, "渠道商" + listBean.getOrderId() + "     " + listBean.getSumChannelQuote());
+                holder.setText(R.id.supplier_quotation_tv, "渠道商" + listBean.getorderNo() + "     " + listBean.getSumChannelQuote());
                 holder.setText(R.id.note_information, listBean.getCompanyName() + "     " + listBean.getMarketUserName());
                 final RadioButton supplier_quotation = holder.getView(R.id.supplier_quotation_rb);
                 if (supplierQuotationList.size() == position + 1) {
@@ -168,7 +168,7 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
     private void supplierQuotationListMethod() {
         new OkgoHttpResolve(this);
         supplierQuotationListPresenter.attach(this);
-        supplierQuotationListPresenter.supplierQuotationListResult("orderId=" + orderId + "&page=" + page + "&limit=" + limit, this, lazyLoadProgressDialog);
+        supplierQuotationListPresenter.supplierQuotationListResult("orderNo=" + orderNo + "&page=" + page + "&limit=" + limit, this, lazyLoadProgressDialog);
     }
 
     /**

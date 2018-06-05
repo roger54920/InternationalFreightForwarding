@@ -26,10 +26,7 @@ import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.lcodecore.tkrefreshlayout.header.SinaRefreshView;
 import com.lzy.okgo.OkGo;
 import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +100,6 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
      * 报价订单 + 信息补录 + 历史订单 订单列表
      */
     private void statisticalOrderListMethod() {
-//        String userId=getSharedPreferences("login", Context.MODE_PRIVATE).getString("userId","null");
         //分别处理
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
         if (Constants.SOURCE_PAGE.equals("copy")) {
@@ -121,36 +117,23 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         quotationOrderRv.setLayoutManager(linearLayoutManager);
         quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.PageBean.ListBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
             @Override
-            protected void convert(ViewHolder holder, QuotationOrderListBean.PageBean.ListBean dataBean, int position) {
-                holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "(" + dataBean.getBrand() + ")");
-                holder.setText(R.id.order_state, dataBean.getOrderStatus());
+            protected void convert(ViewHolder holder, final QuotationOrderListBean.PageBean.ListBean dataBean, final int position) {
+                holder.setText(R.id.supplier_tv, dataBean.getorderId() + "(" + dataBean.getBrand() + ")");
+                final int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
+                holder.setText(R.id.order_state, dataBean.getOrderStatusName());
                 if (quotationOrderList.size() == position + 1) {
                     holder.setVisible(R.id.view, false);
                 }
+                holder.setOnClickListener(R.id.supplier_cl, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsOrderNoIntent(IFF_Order_DetailsActivity.class, orderStatus,dataBean.getorderId());
+                    }
+                });
             }
         };
         quotationOrderRv.setAdapter(quotationOrderAdapter);
-        quotationOrderAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                if (Constants.SOURCE_PAGE.equals("copy")) {
-                    //三种状态 未报价 已报价 已确认
-                    EventBus.getDefault().postSticky(quotationOrderList.get(position));
-                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageIntent(IFF_Order_DetailsActivity.class, Constants.SOURCE_PAGE);
 
-                } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).noReferenceIntent(IFF_Collect_Send_InformationActivity.class);
-
-                } else if (Constants.SOURCE_PAGE.equals("historical_order")) {
-                    SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageIntent(IFF_Order_DetailsActivity.class, Constants.SOURCE_PAGE);
-                }
-            }
-
-            @Override
-            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-                return false;
-            }
-        });
 
         refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
             @Override
@@ -167,6 +150,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         });
 
     }
+
     /**
      * 刷新和加载数据请求
      */
@@ -174,6 +158,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         statisticalOrderListMethod();
         SystemUtils.getInstance(this).rvRefreshTimeout(refreshLayout);
     }
+
     @OnClick(R.id.title_return_img)
     public void onViewClicked() {
         SystemUtils.getInstance(this).returnHomeFinishAll();

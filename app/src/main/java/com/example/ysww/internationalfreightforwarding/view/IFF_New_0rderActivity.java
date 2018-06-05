@@ -37,7 +37,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * 新订单 和修改订单 订单信息
+ * 新订单
  */
 public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSetListener {
 
@@ -269,6 +269,14 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
                 addOrderBean.setExport(portOfExport);
                 addOrderBean.setDepartureDate(exportDate);
                 addOrderBean.setBrand(productName);
+                if(otherRb.isChecked()==true){
+                    String other = otherEt.getText().toString();
+                    if(TextUtils.isEmpty(other)){
+                        addOrderBean.setTransType("其他");
+                    }else{
+                        addOrderBean.setTransType(other);
+                    }
+                }
                 EventBus.getDefault().postSticky(addOrderBean);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_New_0rder_CopyActivity.class);
                 break;

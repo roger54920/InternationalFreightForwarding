@@ -3,6 +3,7 @@ package com.example.ysww.internationalfreightforwarding.view;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.EditText;
@@ -107,7 +108,10 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
                 addOrderBean.setApprovalNumber(approvalNumberEt.getText().toString());
                 addOrderBean.setExemptionType(exemptedNatureEt.getText().toString());
                 addOrderBean.setPriceValue(valueOfGoodsEt.getText().toString());
-                addOrderBean.setQuote(offerEt.getText().toString());
+                String quote = offerEt.getText().toString();
+                if(!TextUtils.isEmpty(quote)){
+                    addOrderBean.setQuote(quote);
+                }
                 addOrderBean.setTransportationTime(transportationTimeEt.getText().toString());
                 addOrderBean.setVolumeSize(volumeSizeEt.getText().toString());
                 addOrderBean.setSelectionReceivingAddress(selectionReceivingAddressEt.getText().toString());

@@ -89,7 +89,6 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
         initViews();
 
     }
-
     private void initViews() {
         iffTitleTv.setText(R.string.quotation_information);
         iffFunctionTv.setVisibility(View.VISIBLE);
@@ -121,7 +120,7 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
     private void queryMarketlMsgMethod() {
         new OkgoHttpResolve(this);
         queryMarketlMsgPresenter.attach(this);
-        queryMarketlMsgPresenter.queryMarketlMsgResult("{\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}", this, lazyLoadProgressDialog);
+        queryMarketlMsgPresenter.queryMarketlMsgResult("{\"msgType\":\"0\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}", this, lazyLoadProgressDialog);
     }
 
     /**
@@ -130,7 +129,7 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
     private void tbordermsgSaveMethod() {
         new OkgoHttpResolve(this);
         tbordermsgSavePresenter.attach(this);
-        tbordermsgSavePresenter.tbordermsgSaveResult("{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\",\"msgType\":\"1\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}", this, lazyLoadProgressDialog);
+        tbordermsgSavePresenter.tbordermsgSaveResult("{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\",\"msgType\":\"0\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}", this, lazyLoadProgressDialog);
     }
 
     private void initAdapter() {

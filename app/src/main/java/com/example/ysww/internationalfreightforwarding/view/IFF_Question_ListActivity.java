@@ -120,7 +120,7 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
         questionListAdapter = new CommonAdapter<GetOrderMsgCountBean.DataBean>(this, R.layout.item_order_number_supplier, questionList) {
             @Override
             protected void convert(ViewHolder holder, GetOrderMsgCountBean.DataBean dataBean, final int position) {
-                holder.setText(R.id.supplier_tv, "订单号" + dataBean.getOrderId() + "("+dataBean.getBrand()+")");
+                holder.setText(R.id.supplier_tv, dataBean.getorderId() + "("+dataBean.getBrand()+")");
                 if (questionList.size() == position + 1) {
                     holder.setVisible(R.id.view, false);
                 }
@@ -129,10 +129,10 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
                     public void onClick(View view) {
                         if(questionIndex==0){
                             SystemUtils.getInstance(IFF_Question_ListActivity.this).referenceSourcePageOrderNoChanneldealerIntent
-                                    (IFF_Close_The_OrderActivity.class, "putQuestionsTo", questionList.get(position).getOrderId(),questionList.get(position).getChanelUserId());
+                                    (IFF_Close_The_OrderActivity.class, "putQuestionsTo", questionList.get(position).getorderId(),questionList.get(position).getChanelUserId());
                         }else if(questionIndex==1){
                             SystemUtils.getInstance(IFF_Question_ListActivity.this).referenceSourcePageOrderNoChanneldealerIntent
-                                    (IFF_Close_The_OrderActivity.class, "communication", questionList.get(position).getOrderId(),questionList.get(position).getChanelUserId());
+                                    (IFF_Close_The_OrderActivity.class, "communication", questionList.get(position).getorderId(),questionList.get(position).getChanelUserId());
                         }
                     }
                 });

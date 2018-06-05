@@ -85,6 +85,8 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     TextView totalWeightKgTv;
     @InjectView(R.id.my_scroll_view)
     MyScrollview myScrollView;
+    @InjectView(R.id.title_close_order)
+    ImageView titleCloseOrder;
 
     private TborderInfoPresenter tborderInfoPresenter = new TborderInfoPresenter();
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
@@ -105,15 +107,15 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     private void initViews() {
         myScrollView.smoothScrollTo(0, 0);
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
+        titleCloseOrder.setVisibility(View.VISIBLE);
+        SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
+        tborderInfoResultMethod();
         if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
             closeTheOrderReplyProblemBtn.setText(R.string.supplier_questions);
-            SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
-            tborderInfoResultMethod();
         } else if (Constants.SOURCE_PAGE.equals("communication")) {
             closeTheOrderReplyProblemBtn.setText(R.string.communication);
-            SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
-            tborderInfoResultMethod();
-        }else {
+        } else {
+            titleCloseOrder.setVisibility(View.GONE);
             closeTheOrderReplyProblemBtn.setText(getString(R.string.close_the_order));
         }
         iffTitleTv.setText(R.string.order_details);
@@ -130,7 +132,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
         tborderInfoPresenter.tborderInfoResult(getIntent().getStringExtra("orderNo"), this, lazyLoadProgressDialog);
     }
 
-    @OnClick({R.id.title_return_img, R.id.close_the_order_reply_problem_btn})
+    @OnClick({R.id.title_close_order,R.id.title_return_img, R.id.close_the_order_reply_problem_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.title_return_img:
@@ -140,13 +142,17 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
                 Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
                 if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
                     SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent
-                            (IFF_Reply_ProblemActivity.class, "putQuestionsTo", getIntent().getStringExtra("orderNo"),getIntent().getStringExtra("channelUserId"));
+                            (IFF_Reply_ProblemActivity.class, "putQuestionsTo", getIntent().getStringExtra("orderNo"), getIntent().getStringExtra("channelUserId"));
                 } else if (Constants.SOURCE_PAGE.equals("communication")) {
                     SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent
-                            (IFF_Reply_ProblemActivity.class, "communication", getIntent().getStringExtra("orderNo"),getIntent().getStringExtra("channelUserId"));
+                            (IFF_Reply_ProblemActivity.class, "communication", getIntent().getStringExtra("orderNo"), getIntent().getStringExtra("channelUserId"));
                 } else {
                     onClickCloseTheOrDer();
                 }
+                break;
+            case R.id.title_close_order:
+                finish();
+                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",getIntent().getStringExtra("orderNo"),"");
                 break;
         }
     }
@@ -170,7 +176,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     public void onTborderInfoFinish(Object o) {
         TborderInfoBean tborderInfoBean = (TborderInfoBean) o;
         TborderInfoBean.TbOrderBean dataBean = tborderInfoBean.getTbOrder();
-        if(dataBean!=null) {
+        if (dataBean != null) {
             orderNumberTv.setText(dataBean.getOrderId());
             operatingCompanyTv.setText(dataBean.getCompanyName());
             forwardingUnitTv.setText(dataBean.getForwardingUnit());

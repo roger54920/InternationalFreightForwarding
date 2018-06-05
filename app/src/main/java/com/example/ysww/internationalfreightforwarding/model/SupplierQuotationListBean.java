@@ -11,7 +11,7 @@ public class SupplierQuotationListBean {
     /**
      * msg : success
      * code : 0
-     * page : {"totalCount":3,"pageSize":10,"totalPage":1,"currPage":1,"list":[{"id":"c83770f862eb46c0ae7b793ad785ebc9","orderId":"18050117484262484944","channelId":null,"channelUserId":28,"channelQuote":12,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-02 01:14:46","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"0","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"空投渠道公司","channelUserName":"陈渠道","sumChannelQuote":54540,"forwardingUnit":"45"},{"id":null,"orderId":"18050117484262484944","channelId":null,"channelUserId":30,"channelQuote":null,"fuelOilQuote":null,"additionalQuote":null,"createDate":null,"createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":null,"status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"万渠道","sumChannelQuote":null,"forwardingUnit":"45"},{"id":"bb2491b1880b4514b01b3cd9e5e89f42","orderId":"18050117484262484944","channelId":null,"channelUserId":41,"channelQuote":45,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-03 15:08:01","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"10","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"钱渠道","sumChannelQuote":204525,"forwardingUnit":"45"}]}
+     * page : {"totalCount":3,"pageSize":10,"totalPage":1,"currPage":1,"list":[{"id":"c83770f862eb46c0ae7b793ad785ebc9","orderNo":"18050117484262484944","channelId":null,"channelUserId":28,"channelQuote":12,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-02 01:14:46","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"0","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"空投渠道公司","channelUserName":"陈渠道","sumChannelQuote":54540,"forwardingUnit":"45"},{"id":null,"orderNo":"18050117484262484944","channelId":null,"channelUserId":30,"channelQuote":null,"fuelOilQuote":null,"additionalQuote":null,"createDate":null,"createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":null,"status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"万渠道","sumChannelQuote":null,"forwardingUnit":"45"},{"id":"bb2491b1880b4514b01b3cd9e5e89f42","orderNo":"18050117484262484944","channelId":null,"channelUserId":41,"channelQuote":45,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-03 15:08:01","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"10","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"钱渠道","sumChannelQuote":204525,"forwardingUnit":"45"}]}
      */
 
     private String msg;
@@ -48,7 +48,7 @@ public class SupplierQuotationListBean {
          * pageSize : 10
          * totalPage : 1
          * currPage : 1
-         * list : [{"id":"c83770f862eb46c0ae7b793ad785ebc9","orderId":"18050117484262484944","channelId":null,"channelUserId":28,"channelQuote":12,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-02 01:14:46","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"0","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"空投渠道公司","channelUserName":"陈渠道","sumChannelQuote":54540,"forwardingUnit":"45"},{"id":null,"orderId":"18050117484262484944","channelId":null,"channelUserId":30,"channelQuote":null,"fuelOilQuote":null,"additionalQuote":null,"createDate":null,"createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":null,"status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"万渠道","sumChannelQuote":null,"forwardingUnit":"45"},{"id":"bb2491b1880b4514b01b3cd9e5e89f42","orderId":"18050117484262484944","channelId":null,"channelUserId":41,"channelQuote":45,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-03 15:08:01","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"10","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"钱渠道","sumChannelQuote":204525,"forwardingUnit":"45"}]
+         * list : [{"id":"c83770f862eb46c0ae7b793ad785ebc9","orderNo":"18050117484262484944","channelId":null,"channelUserId":28,"channelQuote":12,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-02 01:14:46","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"0","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"空投渠道公司","channelUserName":"陈渠道","sumChannelQuote":54540,"forwardingUnit":"45"},{"id":null,"orderNo":"18050117484262484944","channelId":null,"channelUserId":30,"channelQuote":null,"fuelOilQuote":null,"additionalQuote":null,"createDate":null,"createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":null,"status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"万渠道","sumChannelQuote":null,"forwardingUnit":"45"},{"id":"bb2491b1880b4514b01b3cd9e5e89f42","orderNo":"18050117484262484944","channelId":null,"channelUserId":41,"channelQuote":45,"fuelOilQuote":null,"additionalQuote":null,"createDate":"2018-05-03 15:08:01","createBy":null,"lastUpdateBy":null,"updateDate":null,"quoteStatus":"10","status":null,"companyCode":null,"companyName":"印度分公司","marketUserName":"小美","channelName":"航空渠道","channelUserName":"钱渠道","sumChannelQuote":204525,"forwardingUnit":"45"}]
          */
 
         private int totalCount;
@@ -100,7 +100,7 @@ public class SupplierQuotationListBean {
         public static class ListBean {
             /**
              * id : c83770f862eb46c0ae7b793ad785ebc9
-             * orderId : 18050117484262484944
+             * orderNo : 18050117484262484944
              * channelId : null
              * channelUserId : 28
              * channelQuote : 12
@@ -122,7 +122,7 @@ public class SupplierQuotationListBean {
              */
 
             private String id;
-            private String orderId;
+            private String orderNo;
             private Object channelId;
             private int channelUserId;
             private int channelQuote;
@@ -159,12 +159,12 @@ public class SupplierQuotationListBean {
                 this.id = id;
             }
 
-            public String getOrderId() {
-                return orderId;
+            public String getorderNo() {
+                return orderNo;
             }
 
-            public void setOrderId(String orderId) {
-                this.orderId = orderId;
+            public void setorderNo(String orderNo) {
+                this.orderNo = orderNo;
             }
 
             public Object getChannelId() {
