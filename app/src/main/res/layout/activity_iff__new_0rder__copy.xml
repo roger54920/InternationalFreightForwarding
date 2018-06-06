@@ -43,6 +43,7 @@
                 android:inputType="number|phone"
                 android:id="@+id/zip_code_et"
                 style="@style/mv_r75dp_l15dp_et"
+                android:maxLength="6"
                 android:hint="请输入运抵国邮编" />
 
             <Button

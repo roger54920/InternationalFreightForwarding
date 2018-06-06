@@ -187,8 +187,9 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-
                 //设置你的操作事项
+                SystemUtils.getInstance(IFF_Quotation_InformationActivity.this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Collect_Send_InformationActivity.class,"quotation_information",getIntent().getStringExtra("orderNo"),"");
+
             }
         });
 

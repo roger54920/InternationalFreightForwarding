@@ -18,11 +18,12 @@ import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDi
 import com.example.ysww.internationalfreightforwarding.custom.MyScrollview;
 import com.example.ysww.internationalfreightforwarding.model.TborderInfoBean;
 import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
+import com.example.ysww.internationalfreightforwarding.net.view.OrderCloseView;
 import com.example.ysww.internationalfreightforwarding.net.view.TborderInfoView;
+import com.example.ysww.internationalfreightforwarding.presenter.OrderClosePresenter;
 import com.example.ysww.internationalfreightforwarding.presenter.TborderInfoPresenter;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
-import com.example.ysww.internationalfreightforwarding.utils.ToastStopUtils;
 import com.lzy.okgo.OkGo;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -36,7 +37,7 @@ import butterknife.OnClick;
 /**
  * 关闭订单和回复提问
  */
-public class IFF_Close_The_OrderActivity extends Activity implements TborderInfoView {
+public class IFF_Close_The_OrderActivity extends Activity implements TborderInfoView,OrderCloseView {
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
     @InjectView(R.id.title_return_img)
@@ -89,6 +90,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     ImageView titleCloseOrder;
 
     private TborderInfoPresenter tborderInfoPresenter = new TborderInfoPresenter();
+    private OrderClosePresenter orderClosePresenter = new OrderClosePresenter();
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
 
     private CommonAdapter<TborderInfoBean.TbOrderBean.OrderDetailListBean> orderDetailAdapter;
@@ -131,7 +133,14 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
         tborderInfoPresenter.attach(this);
         tborderInfoPresenter.tborderInfoResult(getIntent().getStringExtra("orderNo"), this, lazyLoadProgressDialog);
     }
-
+    /**
+     * 关闭订单接口
+     */
+    private void orderCloseResultMethod() {
+        new OkgoHttpResolve(this);
+        orderClosePresenter.attach(this);
+        orderClosePresenter.orderCloseResult(getIntent().getStringExtra("orderNo"), this, lazyLoadProgressDialog);
+    }
     @OnClick({R.id.title_close_order,R.id.title_return_img, R.id.close_the_order_reply_problem_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -151,7 +160,6 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
                 }
                 break;
             case R.id.title_close_order:
-                finish();
                 SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",getIntent().getStringExtra("orderNo"),"");
                 break;
         }
@@ -163,9 +171,10 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
         builder.setClickCloseTheOrder(new CloseTheOrderDialog.Builder.ClickCloseTheOrder() {
             @Override
             public void OnClickCloseTheOrder(DialogInterface dialog, int i, String msg) {
-                dialog.dismiss();
-                ToastStopUtils.toastShow(IFF_Close_The_OrderActivity.this, msg);
                 //设置你的操作事项
+                dialog.dismiss();
+                SystemUtils.getInstance(IFF_Close_The_OrderActivity.this).showLazyLad0neMinute(lazyLoadProgressDialog);
+                orderCloseResultMethod();
             }
         });
         builder.create().setCanceledOnTouchOutside(true);  //用户选择取消或者是点击屏幕空白部分时让dialog消失。
@@ -223,12 +232,18 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
         };
         numberWeightSizeRv.setAdapter(orderDetailAdapter);
     }
-
+    @Override
+    public void onOrderCloseFinish(Object o) {
+        SystemUtils.getInstance(this).returnHomeFinishAll();
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
         //根据 Tag 取消请求
         OkGo.getInstance().cancelTag(this);
         tborderInfoPresenter.dettach();
+        orderClosePresenter.dettach();
     }
+
+
 }

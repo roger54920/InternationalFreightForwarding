@@ -161,11 +161,11 @@ public class SystemUtils {
      *
      * @param cls
      */
-    public void referenceSourcePageOrderNoChanneldealerIntent(Class cls, String source_page, String orderNo,String channelDealerId) {
+    public void referenceSourcePageOrderNoChanneldealerIntent(Class cls, String source_page, String orderNo,String channelUserId) {
         Intent intent = new Intent(mContext, cls);
         intent.putExtra("source_page", source_page);
         intent.putExtra("orderNo", orderNo);
-        intent.putExtra("channelUserId",channelDealerId);
+        intent.putExtra("channelUserId",channelUserId);
         mContext.startActivity(intent);
     }
     /**

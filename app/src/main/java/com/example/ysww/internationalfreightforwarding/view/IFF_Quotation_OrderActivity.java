@@ -127,7 +127,11 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                 holder.setOnClickListener(R.id.supplier_cl, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsOrderNoIntent(IFF_Order_DetailsActivity.class, orderStatus,dataBean.getorderId());
+                        if (Constants.SOURCE_PAGE.equals("information_supplement")){
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Collect_Send_InformationActivity.class,"information_supplement_list",dataBean.getorderId(),"");
+                        }else{
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsOrderNoIntent(IFF_Order_DetailsActivity.class, orderStatus,dataBean.getorderId());
+                        }
                     }
                 });
             }

@@ -20,7 +20,7 @@ public class GetOrderMsgCountBean extends BaseBean {
 
     public static class DataBean {
         /**
-         * chanelUserId : 30
+         * channelUserId : 30
          * msgNum : 1
          * orderDetailList : []
          * msgType : 0
@@ -28,19 +28,19 @@ public class GetOrderMsgCountBean extends BaseBean {
          * brand : 1111
          */
 
-        private String chanelUserId;
+        private String channelUserId;
         private String msgNum;
         private String msgType;
         private String orderId;
         private String brand;
         private List<?> orderDetailList;
 
-        public String getChanelUserId() {
-            return chanelUserId;
+        public String getChannelUserId() {
+            return channelUserId;
         }
 
-        public void setChanelUserId(String chanelUserId) {
-            this.chanelUserId = chanelUserId;
+        public void setChannelUserId(String channelUserId) {
+            this.channelUserId = channelUserId;
         }
 
         public String getMsgNum() {

@@ -129,10 +129,10 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
                     public void onClick(View view) {
                         if(questionIndex==0){
                             SystemUtils.getInstance(IFF_Question_ListActivity.this).referenceSourcePageOrderNoChanneldealerIntent
-                                    (IFF_Close_The_OrderActivity.class, "putQuestionsTo", questionList.get(position).getorderId(),questionList.get(position).getChanelUserId());
+                                    (IFF_Close_The_OrderActivity.class, "putQuestionsTo", questionList.get(position).getorderId(),questionList.get(position).getChannelUserId());
                         }else if(questionIndex==1){
                             SystemUtils.getInstance(IFF_Question_ListActivity.this).referenceSourcePageOrderNoChanneldealerIntent
-                                    (IFF_Close_The_OrderActivity.class, "communication", questionList.get(position).getorderId(),questionList.get(position).getChanelUserId());
+                                    (IFF_Close_The_OrderActivity.class, "communication", questionList.get(position).getorderId(),questionList.get(position).getChannelUserId());
                         }
                     }
                 });
