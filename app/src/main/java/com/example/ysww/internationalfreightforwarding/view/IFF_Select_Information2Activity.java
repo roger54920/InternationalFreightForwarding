@@ -110,7 +110,7 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
                 addOrderBean.setPriceValue(valueOfGoodsEt.getText().toString());
                 String quote = offerEt.getText().toString();
                 if(!TextUtils.isEmpty(quote)){
-                    addOrderBean.setQuote(quote);
+                    addOrderBean.setQuote(Double.parseDouble(quote));
                 }
                 addOrderBean.setTransportationTime(transportationTimeEt.getText().toString());
                 addOrderBean.setVolumeSize(volumeSizeEt.getText().toString());

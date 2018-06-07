@@ -51,7 +51,7 @@ public class AddOrderBean {
     private String size2;
     private String size3;
     private String brand;
-    private String quote;
+    private double quote;
     private String volumeSize;
     private String destinationCity;
     private String sourceAddress;
@@ -256,11 +256,11 @@ public class AddOrderBean {
         this.brand = brand;
     }
 
-    public String getQuote() {
+    public double getQuote() {
         return quote;
     }
 
-    public void setQuote(String quote) {
+    public void setQuote(double quote) {
         this.quote = quote;
     }
 

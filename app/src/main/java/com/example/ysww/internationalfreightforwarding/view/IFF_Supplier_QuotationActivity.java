@@ -57,7 +57,7 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
     private String orderNo, affirmChannelId;
     private int page = 1;
     private int limit = 10;
-    private int radioCheckPosition = 1;
+    private int radioCheckPosition = 0;
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
     private SupplierQuotationListPresenter supplierQuotationListPresenter = new SupplierQuotationListPresenter();
     private AffirmChannelPresenter affirmChannelPresenter = new AffirmChannelPresenter();
@@ -105,18 +105,20 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
         supplierQuotationAdapter = new CommonAdapter<SupplierQuotationListBean.PageBean.ListBean>(this, R.layout.item_supplier_quotation, supplierQuotationList) {
             @Override
             protected void convert(ViewHolder holder, SupplierQuotationListBean.PageBean.ListBean listBean, final int position) {
-                if(position==0){
-                    holder.setVisible(R.id.order_number_tv,false);
-                    holder.setText(R.id.order_number_tv,"订单号" + orderNo + "渠道商竞标信息");
-                }else{
-                    holder.setVisible(R.id.order_number_tv,true);
-                }
-                holder.setText(R.id.supplier_quotation_tv, "渠道商" + listBean.getorderNo() + "     " + listBean.getSumChannelQuote());
-                holder.setText(R.id.note_information, listBean.getCompanyName() + "     " + listBean.getMarketUserName());
-                final RadioButton supplier_quotation = holder.getView(R.id.supplier_quotation_rb);
-                if (supplierQuotationList.size() == position + 1) {
+                orderNo = getIntent().getStringExtra("orderNo");
+                String brand = getIntent().getStringExtra("brand");
+                if (position+1==supplierQuotationList.size()) {
                     holder.setVisible(R.id.view, false);
                 }
+                if(position==0){
+                    holder.setVisible(R.id.order_number_tv,true);
+                    holder.setText(R.id.order_number_tv,orderNo+"("+brand+")" + "渠道商竞标信息");
+                }else{
+                    holder.setVisible(R.id.order_number_tv,false);
+                }
+                holder.setText(R.id.supplier_quotation_tv, listBean.getChannelName()+" "+listBean.getChannelUserName()+ "     " + listBean.getSumChannelQuote()+"万");
+                holder.setText(R.id.note_information, listBean.getCompanyName() + "     " + listBean.getMarketUserName());
+                final RadioButton supplier_quotation = holder.getView(R.id.supplier_quotation_rb);
                 int isChecked = supplierQuotationList.get(position).getIsChecked();
                 if (isChecked == 0) {
                     supplier_quotation.setChecked(true);
@@ -191,7 +193,8 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
                 affirmChannelMethod();
                 break;
             case R.id.put_questions_to_btn:
-                SystemUtils.getInstance(this).noReferenceIntent(IFF_Quotation_InformationActivity.class);
+                orderNo = getIntent().getStringExtra("orderNo");
+                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Quotation_InformationActivity.class,"supplier_quotation" ,orderNo,"");
                 break;
         }
     }
@@ -207,7 +210,6 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
         if (supplierQuotationListBean.getPage().getCurrPage() == 1) {
             if (supplierQuotationListBean.getPage().getTotalCount() > 0 && list != null) {
                 refreshLayout.setVisibility(View.VISIBLE);
-                //noContent.setVisibility(View.GONE);
                 supplierQuotationList.clear();
                 supplierQuotationList = list;
                 initAdapter();

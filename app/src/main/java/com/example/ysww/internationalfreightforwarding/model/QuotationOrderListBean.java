@@ -178,6 +178,23 @@ public class QuotationOrderListBean extends BaseBean{
             private String quoteId;
             private String channelQuoteId;
             private String orderStatusName;
+            private String channelUserId;
+
+            public String getOrderId() {
+                return orderId;
+            }
+
+            public void setOrderId(String orderId) {
+                this.orderId = orderId;
+            }
+
+            public String getChannelUserId() {
+                return channelUserId;
+            }
+
+            public void setChannelUserId(String channelUserId) {
+                this.channelUserId = channelUserId;
+            }
 
             public String getOrderStatusName() {
                 return orderStatusName;

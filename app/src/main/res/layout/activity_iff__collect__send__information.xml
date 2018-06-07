@@ -48,6 +48,10 @@
                 android:id="@+id/receiving_sending_time_et"
                 style="@style/collect_send_information_et"
                 android:hint="@string/input_receiving_sending_time" />
+            <TextView
+                android:layout_marginLeft="-15dp"
+                style="@style/w60dp_w_666_15sp"
+                android:text="天" />
         </LinearLayout>
 
         <include layout="@layout/iff_line_view_layout" />
@@ -65,8 +69,13 @@
 
             <EditText
                 android:id="@+id/freight_et"
+                android:inputType="phone|number"
                 style="@style/collect_send_information_et"
                 android:hint="@string/input_freight" />
+            <TextView
+                android:layout_marginLeft="-15dp"
+                style="@style/w60dp_w_666_15sp"
+                android:text="元" />
         </LinearLayout>
 
         <include layout="@layout/iff_line_view_layout" />

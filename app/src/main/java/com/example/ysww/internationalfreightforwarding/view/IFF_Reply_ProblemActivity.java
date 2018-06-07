@@ -125,7 +125,7 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
         queryMarketlMsgPresenter.attach(this);
         queryMarketlMsgPresenter.queryMarketlMsgResult
                 ("{\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"," +
-                                "\"msgType\":\"1\",\"channelUserId\":\"" + getIntent().getStringExtra("channelUserId") + "\"}"
+                                "\"msgType\":\"1\",\"channelUserId\":\"" + getIntent().getStringExtra("channelUserId")+ "\"}"
                         , this, lazyLoadProgressDialog);
     }
 

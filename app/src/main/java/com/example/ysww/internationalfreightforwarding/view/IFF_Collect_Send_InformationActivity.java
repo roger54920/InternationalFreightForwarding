@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +16,13 @@ import android.widget.TextView;
 
 import com.example.ysww.internationalfreightforwarding.Constants;
 import com.example.ysww.internationalfreightforwarding.R;
+import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
+import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
+import com.example.ysww.internationalfreightforwarding.net.view.DeliverOrderView;
+import com.example.ysww.internationalfreightforwarding.presenter.DeliverOrderPresenter;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
+import com.lzy.okgo.OkGo;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -25,7 +31,7 @@ import butterknife.OnClick;
 /**
  * 信息补录
  */
-public class IFF_Collect_Send_InformationActivity extends Activity {
+public class IFF_Collect_Send_InformationActivity extends Activity implements DeliverOrderView {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -45,6 +51,9 @@ public class IFF_Collect_Send_InformationActivity extends Activity {
     ImageView titleCloseOrder;
     @InjectView(R.id.complete_btn)
     Button completeBtn;
+
+    private DeliverOrderPresenter deliverOrderPresenter = new DeliverOrderPresenter();
+    private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
     private String freightSingleNumber, receivingSendingTime, freight, receivingAddress;
 
     @Override
@@ -53,12 +62,15 @@ public class IFF_Collect_Send_InformationActivity extends Activity {
         setContentView(R.layout.activity_iff__collect__send__information);
         ButterKnife.inject(this);
         SystemUtils.getInstance(this).mustCallActivity(this);
+        lazyLoadProgressDialog = lazyLoadProgressDialog.createDialog(this);
         initViews();
     }
 
     private void initViews() {
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
         titleCloseOrder.setVisibility(View.VISIBLE);
+        receivingSendingTimeEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
+        SystemUtils.getInstance(this).setPricePoint(freightEt);
         if (Constants.SOURCE_PAGE.equals("quotation_information")) {
             titleReturnImg.setVisibility(View.GONE);
         }
@@ -131,6 +143,21 @@ public class IFF_Collect_Send_InformationActivity extends Activity {
         });
     }
 
+    /**
+     * 订单发货确认接口 信息补录
+     */
+    private void deliverOrderMethod() {
+        new OkgoHttpResolve(this);
+        deliverOrderPresenter.attach(this);
+        deliverOrderPresenter.deliverOrderResult
+                ("{\"orderId\":\"" + getIntent().getStringExtra("orderNo") + "\"," +
+                                "\"freight\":\"" + freightSingleNumberEt.getText().toString() + "\"," +
+                                "\"deliveryAddress\":\"" + receivingAddressEt.getText().toString() + "\"," +
+                                "\"carriage\":" + Double.parseDouble(freightEt.getText().toString()) + "," +
+                                "\"postingTime\":" + Integer.parseInt(receivingSendingTimeEt.getText().toString()) + "}"
+                        , this, lazyLoadProgressDialog);
+    }
+
     @OnClick({R.id.title_close_order, R.id.title_return_img, R.id.complete_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -138,8 +165,8 @@ public class IFF_Collect_Send_InformationActivity extends Activity {
                 finish();
                 break;
             case R.id.complete_btn:
-                //提交请求
-                SystemUtils.getInstance(this).returnHomeFinishAll();
+                SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
+                deliverOrderMethod();
                 break;
             case R.id.title_close_order:
                 SystemUtils.getInstance(this).returnHomeFinishAll();
@@ -163,10 +190,22 @@ public class IFF_Collect_Send_InformationActivity extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (Constants.SOURCE_PAGE.equals("quotation_information")) {
             SystemUtils.getInstance(this).returnHomeFinishAll();
-        }else{
+        } else {
             finish();
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onDeliverOrderFinish(Object o) {
+        SystemUtils.getInstance(this).returnHomeFinishAll();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        OkGo.getInstance().cancelTag(this);
+        deliverOrderPresenter.dettach();
     }
 }
 

@@ -119,18 +119,18 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
             @Override
             protected void convert(ViewHolder holder, final QuotationOrderListBean.PageBean.ListBean dataBean, final int position) {
                 holder.setText(R.id.supplier_tv, dataBean.getorderId() + "(" + dataBean.getBrand() + ")");
-                final int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
                 holder.setText(R.id.order_state, dataBean.getOrderStatusName());
-                if (quotationOrderList.size() == position + 1) {
+                if (position+1==quotationOrderList.size()) {
                     holder.setVisible(R.id.view, false);
                 }
                 holder.setOnClickListener(R.id.supplier_cl, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (Constants.SOURCE_PAGE.equals("information_supplement")){
-                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Collect_Send_InformationActivity.class,"information_supplement_list",dataBean.getorderId(),"");
-                        }else{
-                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsOrderNoIntent(IFF_Order_DetailsActivity.class, orderStatus,dataBean.getorderId());
+                        int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
+                        if (Constants.SOURCE_PAGE.equals("information_supplement")) {
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "information_supplement_list", dataBean.getorderId(), "");
+                        }else {
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsOrderNoChannelUserIdIntent(IFF_Order_DetailsActivity.class, orderStatus, dataBean.getorderId(),dataBean.getChannelUserId());
                         }
                     }
                 });
@@ -190,7 +190,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                 quotationOrderList.clear();
                 quotationOrderList = list;
                 initAdapter();
-                if (quotationListBean.getPage().getTotalCount() > 10) {
+                if (quotationListBean.getPage().getTotalCount() > 14) {
                     refreshLayout.setEnableLoadmore(true);
                     refreshLayout.setAutoLoadMore(true);
                 } else {
@@ -208,7 +208,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                     quotationOrderList.add(list.get(i));
                 }
                 initAdapter();
-                if (list.size() == 10) {
+                if (list.size() == 14) {
                     refreshLayout.setEnableLoadmore(true);
                     refreshLayout.setAutoLoadMore(true);
                 } else {

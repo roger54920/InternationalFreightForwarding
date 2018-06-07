@@ -129,18 +129,30 @@ public class SystemUtils {
         mContext.startActivity(intent);
     }
     /**
-     * 来源订单状态和渠道商Id
+     * 来源订单状态和订单号id渠道商Id
      *
      * @param cls
      */
-    public void orderStautsOrderNoIntent(Class cls, int orderStauts, String orderNo) {
+    public void orderStautsOrderNoChannelUserIdIntent(Class cls, int orderStatus, String orderNo,String channelUserId) {
         Intent intent = new Intent(mContext, cls);
-        intent.putExtra("orderStauts", orderStauts);
+        intent.putExtra("orderStauts", orderStatus);
         intent.putExtra("orderNo", orderNo);
+        intent.putExtra("channelUserId",channelUserId);
         mContext.startActivity(intent);
     }
     /**
-     * 来源渠道商Id
+     * 来源订单号Id和货物名称
+     *
+     * @param cls
+     */
+    public void orderNoBrandIntent(Class cls, String orderNo,String brand) {
+        Intent intent = new Intent(mContext, cls);
+        intent.putExtra("orderNo", orderNo);
+        intent.putExtra("brand", brand);
+        mContext.startActivity(intent);
+    }
+    /**
+     * 来源订单号Id
      *
      * @param cls
      */
@@ -161,7 +173,7 @@ public class SystemUtils {
      *
      * @param cls
      */
-    public void referenceSourcePageOrderNoChanneldealerIntent(Class cls, String source_page, String orderNo,String channelUserId) {
+    public void referenceSourcePageOrderNoChanneIdealerIntent(Class cls, String source_page, String orderNo, String channelUserId) {
         Intent intent = new Intent(mContext, cls);
         intent.putExtra("source_page", source_page);
         intent.putExtra("orderNo", orderNo);

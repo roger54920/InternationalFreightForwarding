@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ysww.internationalfreightforwarding.Constants;
 import com.example.ysww.internationalfreightforwarding.R;
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.custom.SystemPromptDialog;
@@ -91,7 +92,10 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
     }
     private void initViews() {
         iffTitleTv.setText(R.string.quotation_information);
-        iffFunctionTv.setVisibility(View.VISIBLE);
+        Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
+        if(Constants.SOURCE_PAGE.equals("order_details")){
+            iffFunctionTv.setVisibility(View.VISIBLE);
+        }
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
         questionInformationEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -188,7 +192,7 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
                 //设置你的操作事项
-                SystemUtils.getInstance(IFF_Quotation_InformationActivity.this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Collect_Send_InformationActivity.class,"quotation_information",getIntent().getStringExtra("orderNo"),"");
+                SystemUtils.getInstance(IFF_Quotation_InformationActivity.this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class,"quotation_information",getIntent().getStringExtra("orderNo"),"");
 
             }
         });

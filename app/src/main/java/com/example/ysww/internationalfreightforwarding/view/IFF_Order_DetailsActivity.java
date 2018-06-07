@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -111,7 +112,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
 
     private void initViews() {
         myScrollView.smoothScrollTo(0, 0);
-        orderStatus = getIntent().getIntExtra("orderStatus", 0);
+        orderStatus = getIntent().getIntExtra("orderStauts", 0);
         switch (orderStatus) {
             case 1: //未报价
                 break;
@@ -130,6 +131,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
                 informationSupplementReplyProblemBtn.setText(R.string.information_supplement);
                 break;
             case 5://已关闭
+                titleCloseOrder.setVisibility(View.GONE);
                 break;
             default:
                 break;
@@ -152,26 +154,29 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
 
     @OnClick({R.id.information_supplement_reply_problem_btn, R.id.title_close_order, R.id.title_return_img, R.id.supplier_quotation_btn, R.id.fill_in_the_clearing_information_btn})
     public void onViewClicked(View view) {
+        String orderNo = getIntent().getStringExtra("orderNo");
+        String channelUserId = getIntent().getStringExtra("channelUserId");
         switch (view.getId()) {
             case R.id.title_return_img:
                 finish();
                 break;
             case R.id.supplier_quotation_btn:
-                SystemUtils.getInstance(this).noReferenceIntent(IFF_Supplier_QuotationActivity.class);
+                SystemUtils.getInstance(this).orderNoBrandIntent(IFF_Supplier_QuotationActivity.class, orderNo,productNameTv.getText().toString());
                 break;
             case R.id.fill_in_the_clearing_information_btn:
-                SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Reply_ProblemActivity.class, "channel_quiz");
+                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent
+                        (IFF_Reply_ProblemActivity.class, "putQuestionsTo", orderNo,channelUserId);
                 break;
             case R.id.information_supplement_reply_problem_btn:
-                orderStatus = getIntent().getIntExtra("orderStatus", 0);
+                orderStatus = getIntent().getIntExtra("orderStauts", 0);
                 if (orderStatus == 4) {
                     SystemUtils.getInstance(this).noReferenceIntent(IFF_Collect_Send_InformationActivity.class);
                 } else if (orderStatus == 3) {
-                    SystemUtils.getInstance(this).orderNoIntent(IFF_Quotation_InformationActivity.class, getIntent().getStringExtra("orderNo"));
+                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Quotation_InformationActivity.class,"order_details" ,orderNo,"");
                 }
                 break;
             case R.id.title_close_order:
-                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",getIntent().getStringExtra("orderNo"),"");
+                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",orderNo,"");
                 break;
         }
     }

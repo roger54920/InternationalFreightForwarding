@@ -150,17 +150,17 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
             case R.id.close_the_order_reply_problem_btn:
                 Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
                 if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
-                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent
+                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent
                             (IFF_Reply_ProblemActivity.class, "putQuestionsTo", getIntent().getStringExtra("orderNo"), getIntent().getStringExtra("channelUserId"));
                 } else if (Constants.SOURCE_PAGE.equals("communication")) {
-                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent
+                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent
                             (IFF_Reply_ProblemActivity.class, "communication", getIntent().getStringExtra("orderNo"), getIntent().getStringExtra("channelUserId"));
                 } else {
                     onClickCloseTheOrDer();
                 }
                 break;
             case R.id.title_close_order:
-                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneldealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",getIntent().getStringExtra("orderNo"),"");
+                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",getIntent().getStringExtra("orderNo"),"");
                 break;
         }
     }
