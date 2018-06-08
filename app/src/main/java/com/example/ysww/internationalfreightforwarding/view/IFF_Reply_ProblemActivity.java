@@ -124,11 +124,24 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
         new OkgoHttpResolve(this);
         queryMarketlMsgPresenter.attach(this);
         queryMarketlMsgPresenter.queryMarketlMsgResult
-                ("{\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"," +
+                ("{\"orderId\":\"" + getIntent().getStringExtra("orderId") + "\"," +
                                 "\"msgType\":\"1\",\"channelUserId\":\"" + getIntent().getStringExtra("channelUserId")+ "\"}"
                         , this, lazyLoadProgressDialog);
     }
 
+
+    /**
+     * 发送订单提问消息接口
+     */
+    private void tbordermsgPutQuestionsToSaveMethod() {
+        new OkgoHttpResolve(this);
+        tbordermsgSavePresenter.attach(this);
+        tbordermsgSavePresenter.tbordermsgSaveResult(
+                "{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\"," +
+                        "\"msgType\":\"1\",\"orderId\":\"" + getIntent().getStringExtra("orderId") + "\"," +
+                        "\"channelUserId\":\"" + getIntent().getStringExtra("channelUserId") + "\"}"
+                , this, lazyLoadProgressDialog);
+    }
     /**
      * 获取订单交流消息明细接口
      */
@@ -136,32 +149,19 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
         new OkgoHttpResolve(this);
         queryMarketlMsgPresenter.attach(this);
         queryMarketlMsgPresenter.queryMarketlMsgResult
-                ("{\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\",\"msgType\":\"0\"}"
+                ("{\"orderId\":\"" + getIntent().getStringExtra("orderId") + "\",\"msgType\":\"0\"}"
                         , this, lazyLoadProgressDialog);
     }
 
     /**
      * 发送订单交流消息接口
      */
-    private void tbordermsgPutQuestionsToSaveMethod() {
-        new OkgoHttpResolve(this);
-        tbordermsgSavePresenter.attach(this);
-        tbordermsgSavePresenter.tbordermsgSaveResult(
-                "{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\"," +
-                        "\"msgType\":\"0\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"," +
-                        "\"channelUserId\":\"" + getIntent().getStringExtra("channelUserId") + "\"}"
-                , this, lazyLoadProgressDialog);
-    }
-
-    /**
-     * 发送订单提问消息接口
-     */
     private void tbordermsgCommunicationSaveMethod() {
         new OkgoHttpResolve(this);
         tbordermsgSavePresenter.attach(this);
         tbordermsgSavePresenter.tbordermsgSaveResult(
                 "{\"content\":\"" + questionInformationEt.getText().toString().trim() + "\"," +
-                        "\"msgType\":\"1\",\"orderNo\":\"" + getIntent().getStringExtra("orderNo") + "\"}"
+                        "\"msgType\":\"0\",\"orderId\":\"" + getIntent().getStringExtra("orderId") + "\"}"
                 , this, lazyLoadProgressDialog);
     }
 
@@ -172,7 +172,7 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
             @Override
             protected void convert(ViewHolder holder, QueryMarketlMsgBean.DataBean dataBean, int position) {
                 String addrss = dataBean.getAddrss();
-                holder.setText(R.id.chat_time_tv, dataBean.getCreateDate() + "");
+                holder.setText(R.id.chat_time_tv, dataBean.getCreateDateStr() + "");
                 if (addrss.equals("left")) {
                     holder.setText(R.id.chat_left_tv, dataBean.getContent());
                     holder.setText(R.id.chat_left_name, dataBean.getUserName());

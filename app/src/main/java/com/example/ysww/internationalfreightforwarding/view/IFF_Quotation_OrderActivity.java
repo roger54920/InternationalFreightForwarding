@@ -57,7 +57,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
     private QuotationOrderListPresenter statisticalOrderListPresenter = new QuotationOrderListPresenter();
 
     private int page = 1;
-    private int limit = 10;
+    private int limit = 14;
 
     private LinearLayoutManager linearLayoutManager;
 
@@ -102,13 +102,15 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
     private void statisticalOrderListMethod() {
         //分别处理
         Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
-        if (Constants.SOURCE_PAGE.equals("copy")) {
-        } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-        } else if (Constants.SOURCE_PAGE.equals("historical_order")) {
-        }
         new OkgoHttpResolve(this);
         statisticalOrderListPresenter.attach(this);
-        statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit, this, lazyLoadProgressDialog);
+        if (Constants.SOURCE_PAGE.equals("copy")) {
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit, this, lazyLoadProgressDialog);
+        } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=4", this, lazyLoadProgressDialog);
+        } else if (Constants.SOURCE_PAGE.equals("historical_order")) {
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=6", this, lazyLoadProgressDialog);
+        }
     }
 
     private void initAdapter() {
@@ -120,7 +122,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
             protected void convert(ViewHolder holder, final QuotationOrderListBean.PageBean.ListBean dataBean, final int position) {
                 holder.setText(R.id.supplier_tv, dataBean.getorderId() + "(" + dataBean.getBrand() + ")");
                 holder.setText(R.id.order_state, dataBean.getOrderStatusName());
-                if (position+1==quotationOrderList.size()) {
+                if (position + 1 == quotationOrderList.size()) {
                     holder.setVisible(R.id.view, false);
                 }
                 holder.setOnClickListener(R.id.supplier_cl, new View.OnClickListener() {
@@ -128,9 +130,9 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                     public void onClick(View view) {
                         int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
                         if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "information_supplement_list", dataBean.getorderId(), "");
-                        }else {
-                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsOrderNoChannelUserIdIntent(IFF_Order_DetailsActivity.class, orderStatus, dataBean.getorderId(),dataBean.getChannelUserId());
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "information_supplement_list", dataBean.getorderId(), "");
+                        } else {
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Order_DetailsActivity.class, orderStatus, dataBean.getorderId(), dataBean.getChannelUserId());
                         }
                     }
                 });

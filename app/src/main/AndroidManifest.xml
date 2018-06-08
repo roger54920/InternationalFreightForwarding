@@ -7,14 +7,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        tools:replace="android:allowBackup"
         android:name=".app.IFF_App"
         android:allowBackup="false"
         android:icon="@mipmap/logo_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:allowBackup">
         <activity
             android:name=".view.IFF_SplashActivity"
             android:screenOrientation="portrait"
@@ -75,7 +75,10 @@
         <activity
             android:name=".view.IFF_Amend_The_OrderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.IFF_Quotation_InformationActivity" />
+        <activity
+            android:name=".view.IFF_Quotation_InformationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".view.IFF_Amend_The_Order_Select_Information2Activity"
             android:screenOrientation="portrait"

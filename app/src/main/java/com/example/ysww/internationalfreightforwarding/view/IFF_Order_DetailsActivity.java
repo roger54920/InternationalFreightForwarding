@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -99,6 +98,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
 
     private CommonAdapter<TborderInfoBean.TbOrderBean.OrderDetailListBean> orderDetailAdapter;
     private List<TborderInfoBean.TbOrderBean.OrderDetailListBean> orderDetailList;
+    private String channelUserIdOrderDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,34 +149,34 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
     private void tborderInfoResultMethod() {
         new OkgoHttpResolve(this);
         tborderInfoPresenter.attach(this);
-        tborderInfoPresenter.tborderInfoResult(getIntent().getStringExtra("orderNo"), this, lazyLoadProgressDialog);
+        tborderInfoPresenter.tborderInfoResult(getIntent().getStringExtra("orderId"), this, lazyLoadProgressDialog);
     }
 
     @OnClick({R.id.information_supplement_reply_problem_btn, R.id.title_close_order, R.id.title_return_img, R.id.supplier_quotation_btn, R.id.fill_in_the_clearing_information_btn})
     public void onViewClicked(View view) {
-        String orderNo = getIntent().getStringExtra("orderNo");
+        String orderId = getIntent().getStringExtra("orderId");
         String channelUserId = getIntent().getStringExtra("channelUserId");
         switch (view.getId()) {
             case R.id.title_return_img:
                 finish();
                 break;
             case R.id.supplier_quotation_btn:
-                SystemUtils.getInstance(this).orderNoBrandIntent(IFF_Supplier_QuotationActivity.class, orderNo,productNameTv.getText().toString());
+                SystemUtils.getInstance(this).orderIdBrandIntent(IFF_Supplier_QuotationActivity.class, orderId,productNameTv.getText().toString());
                 break;
             case R.id.fill_in_the_clearing_information_btn:
-                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent
-                        (IFF_Reply_ProblemActivity.class, "putQuestionsTo", orderNo,channelUserId);
+                SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent
+                        (IFF_Reply_ProblemActivity.class, "putQuestionsTo", orderId,channelUserId);
                 break;
             case R.id.information_supplement_reply_problem_btn:
                 orderStatus = getIntent().getIntExtra("orderStauts", 0);
                 if (orderStatus == 4) {
                     SystemUtils.getInstance(this).noReferenceIntent(IFF_Collect_Send_InformationActivity.class);
                 } else if (orderStatus == 3) {
-                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Quotation_InformationActivity.class,"order_details" ,orderNo,"");
+                    SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Quotation_InformationActivity.class,"order_details" ,orderId,channelUserIdOrderDetails);
                 }
                 break;
             case R.id.title_close_order:
-                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",orderNo,"");
+                SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",orderId,"");
                 break;
         }
     }
@@ -186,6 +186,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
         TborderInfoBean tborderInfoBean = (TborderInfoBean) o;
         TborderInfoBean.TbOrderBean dataBean = tborderInfoBean.getTbOrder();
         if (dataBean != null) {
+            channelUserIdOrderDetails = dataBean.getChannelUserId();
             orderNumberTv.setText(dataBean.getOrderId());
             operatingCompanyTv.setText(dataBean.getCompanyName());
             forwardingUnitTv.setText(dataBean.getForwardingUnit());

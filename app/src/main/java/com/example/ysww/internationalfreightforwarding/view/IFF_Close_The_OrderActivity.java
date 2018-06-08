@@ -37,7 +37,7 @@ import butterknife.OnClick;
 /**
  * 关闭订单和回复提问
  */
-public class IFF_Close_The_OrderActivity extends Activity implements TborderInfoView,OrderCloseView {
+public class IFF_Close_The_OrderActivity extends Activity implements TborderInfoView, OrderCloseView {
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
     @InjectView(R.id.title_return_img)
@@ -131,17 +131,19 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     private void tborderInfoResultMethod() {
         new OkgoHttpResolve(this);
         tborderInfoPresenter.attach(this);
-        tborderInfoPresenter.tborderInfoResult(getIntent().getStringExtra("orderNo"), this, lazyLoadProgressDialog);
+        tborderInfoPresenter.tborderInfoResult(getIntent().getStringExtra("orderId"), this, lazyLoadProgressDialog);
     }
+
     /**
      * 关闭订单接口
      */
-    private void orderCloseResultMethod() {
+    private void orderCloseResultMethod(String remark) {
         new OkgoHttpResolve(this);
         orderClosePresenter.attach(this);
-        orderClosePresenter.orderCloseResult(getIntent().getStringExtra("orderNo"), this, lazyLoadProgressDialog);
+        orderClosePresenter.orderCloseResult("{\"orderId\":\"" + getIntent().getStringExtra("orderId") + "\",\"remark\":\"" + remark + "\"}", this, lazyLoadProgressDialog);
     }
-    @OnClick({R.id.title_close_order,R.id.title_return_img, R.id.close_the_order_reply_problem_btn})
+
+    @OnClick({R.id.title_close_order, R.id.title_return_img, R.id.close_the_order_reply_problem_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.title_return_img:
@@ -150,17 +152,17 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
             case R.id.close_the_order_reply_problem_btn:
                 Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
                 if (Constants.SOURCE_PAGE.equals("putQuestionsTo")) {
-                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent
-                            (IFF_Reply_ProblemActivity.class, "putQuestionsTo", getIntent().getStringExtra("orderNo"), getIntent().getStringExtra("channelUserId"));
+                    SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent
+                            (IFF_Reply_ProblemActivity.class, "putQuestionsTo", getIntent().getStringExtra("orderId"), getIntent().getStringExtra("channelUserId"));
                 } else if (Constants.SOURCE_PAGE.equals("communication")) {
-                    SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent
-                            (IFF_Reply_ProblemActivity.class, "communication", getIntent().getStringExtra("orderNo"), getIntent().getStringExtra("channelUserId"));
+                    SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent
+                            (IFF_Reply_ProblemActivity.class, "communication", getIntent().getStringExtra("orderId"), getIntent().getStringExtra("channelUserId"));
                 } else {
                     onClickCloseTheOrDer();
                 }
                 break;
             case R.id.title_close_order:
-                SystemUtils.getInstance(this).referenceSourcePageOrderNoChanneIdealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details",getIntent().getStringExtra("orderNo"),"");
+                SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details", getIntent().getStringExtra("orderId"), "");
                 break;
         }
     }
@@ -174,7 +176,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
                 //设置你的操作事项
                 dialog.dismiss();
                 SystemUtils.getInstance(IFF_Close_The_OrderActivity.this).showLazyLad0neMinute(lazyLoadProgressDialog);
-                orderCloseResultMethod();
+                orderCloseResultMethod(msg);
             }
         });
         builder.create().setCanceledOnTouchOutside(true);  //用户选择取消或者是点击屏幕空白部分时让dialog消失。
@@ -232,10 +234,12 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
         };
         numberWeightSizeRv.setAdapter(orderDetailAdapter);
     }
+
     @Override
     public void onOrderCloseFinish(Object o) {
         SystemUtils.getInstance(this).returnHomeFinishAll();
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

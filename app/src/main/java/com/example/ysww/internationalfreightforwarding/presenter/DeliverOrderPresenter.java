@@ -5,25 +5,25 @@ import android.content.Context;
 
 import com.example.ysww.internationalfreightforwarding.Constants;
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
-import com.example.ysww.internationalfreightforwarding.model.AffirmChannelBean;
+import com.example.ysww.internationalfreightforwarding.model.BaseBean;
 import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
 import com.example.ysww.internationalfreightforwarding.net.view.DeliverOrderView;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
 import com.example.ysww.internationalfreightforwarding.utils.ToastStopUtils;
 
 /**
- * 订单发货确认接口 信息补录
+ * 发货接口
  */
 
 public class DeliverOrderPresenter implements BasePresenter<DeliverOrderView> {
     private DeliverOrderView view;
 
-    public void deliverOrderResult(String str,final Activity activity, final LazyLoadProgressDialog lazyLoadProgressDialog) {
-        String tokenId=activity.getSharedPreferences("login", Context.MODE_PRIVATE).getString("tokenId","null");
-        OkgoHttpResolve.postJsonResult(Constants.LINK_HEAD + "mananger/tborder/deliverOrder" ,tokenId,str,AffirmChannelBean.class, new OkgoHttpResolve.HttpCallBack() {
+    public void deliverOrderResult(String str, final Activity activity, final LazyLoadProgressDialog lazyLoadProgressDialog) {
+        String tokenId = activity.getSharedPreferences("login", Context.MODE_PRIVATE).getString("tokenId", "null");
+        OkgoHttpResolve.getResult(Constants.LINK_HEAD + "mananger/tborder/deliverOrder/" + str, tokenId, BaseBean.class, new OkgoHttpResolve.HttpCallBack() {
             @Override
             public void finish(Object result) {
-                AffirmChannelBean deliverOrder = (AffirmChannelBean) result;
+                BaseBean deliverOrder = (BaseBean) result;
                 if (deliverOrder != null) {
                     SystemUtils.getInstance(activity).setLazyLadResult(lazyLoadProgressDialog);
                     if (deliverOrder.getCode() == 0) {

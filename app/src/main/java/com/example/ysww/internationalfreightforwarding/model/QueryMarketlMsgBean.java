@@ -21,58 +21,33 @@ public class QueryMarketlMsgBean extends BaseBean{
 
     public static class DataBean {
         /**
-         * id : null
-         * chanelQuoteId : null
-         * orderNo : 18051111284422439838
-         * msgType : 1
-         * content : 455
-
-         * userId : 30
-         * userName : 万渠道
-         * createBy : null
-         * readeStatus : null
-         * createDate : 2018-05-16 16:08:05
-         * status : null
-         * companyCode : null
+         * companyCode : 3
+         * msgType : 0
+         * orderId : 2018060714292768149011
          * addrss : right
+         * createDateStr : 2018-06-08 11:02:38
+         * userName : 刘先生01
+         * userId : 36
+         * content : 土灰
+         * createDate : 1528426958000
          */
 
-        private String id;
-        private String chanelQuoteId;
-        private String orderNo;
-        private String msgType;
-        private String content;
-        private int userId;
-        private String userName;
-        private String createBy;
-        private String readeStatus;
-        private String createDate;
-        private String status;
         private String companyCode;
+        private String msgType;
+        private String orderId;
         private String addrss;
+        private String createDateStr;
+        private String userName;
+        private int userId;
+        private String content;
+        private long createDate;
 
-        public String getId() {
-            return id;
+        public String getCompanyCode() {
+            return companyCode;
         }
 
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getChanelQuoteId() {
-            return chanelQuoteId;
-        }
-
-        public void setChanelQuoteId(String chanelQuoteId) {
-            this.chanelQuoteId = chanelQuoteId;
-        }
-
-        public String getOrderNo() {
-            return orderNo;
-        }
-
-        public void setOrderNo(String orderNo) {
-            this.orderNo = orderNo;
+        public void setCompanyCode(String companyCode) {
+            this.companyCode = companyCode;
         }
 
         public String getMsgType() {
@@ -83,20 +58,28 @@ public class QueryMarketlMsgBean extends BaseBean{
             this.msgType = msgType;
         }
 
-        public String getContent() {
-            return content;
+        public String getOrderId() {
+            return orderId;
         }
 
-        public void setContent(String content) {
-            this.content = content;
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
         }
 
-        public int getUserId() {
-            return userId;
+        public String getAddrss() {
+            return addrss;
         }
 
-        public void setUserId(int userId) {
-            this.userId = userId;
+        public void setAddrss(String addrss) {
+            this.addrss = addrss;
+        }
+
+        public String getCreateDateStr() {
+            return createDateStr;
+        }
+
+        public void setCreateDateStr(String createDateStr) {
+            this.createDateStr = createDateStr;
         }
 
         public String getUserName() {
@@ -107,52 +90,28 @@ public class QueryMarketlMsgBean extends BaseBean{
             this.userName = userName;
         }
 
-        public String getCreateBy() {
-            return createBy;
+        public int getUserId() {
+            return userId;
         }
 
-        public void setCreateBy(String createBy) {
-            this.createBy = createBy;
+        public void setUserId(int userId) {
+            this.userId = userId;
         }
 
-        public String getReadeStatus() {
-            return readeStatus;
+        public String getContent() {
+            return content;
         }
 
-        public void setReadeStatus(String readeStatus) {
-            this.readeStatus = readeStatus;
+        public void setContent(String content) {
+            this.content = content;
         }
 
-        public String getCreateDate() {
+        public long getCreateDate() {
             return createDate;
         }
 
-        public void setCreateDate(String createDate) {
+        public void setCreateDate(long createDate) {
             this.createDate = createDate;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public String getCompanyCode() {
-            return companyCode;
-        }
-
-        public void setCompanyCode(String companyCode) {
-            this.companyCode = companyCode;
-        }
-
-        public String getAddrss() {
-            return addrss;
-        }
-
-        public void setAddrss(String addrss) {
-            this.addrss = addrss;
         }
     }
 }

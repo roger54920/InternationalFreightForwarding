@@ -59,12 +59,12 @@ public class GetOrderMsgCountBean extends BaseBean {
             this.msgType = msgType;
         }
 
-        public String getorderId() {
+        public String getOrderId() {
             return orderId;
         }
 
-        public void setorderId(String orderNo) {
-            this.orderId = orderNo;
+        public void setOrderId(String orderId) {
+            this.orderId = orderId;
         }
 
         public String getBrand() {

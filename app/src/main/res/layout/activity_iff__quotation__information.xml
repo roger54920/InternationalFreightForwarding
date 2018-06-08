@@ -9,73 +9,90 @@
     <RelativeLayout
         style="@style/padding_left_right_13dp"
         android:layout_width="match_parent"
-        android:layout_height="92.6dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:layout_marginTop="6dp"
         android:background="@color/iff_FFFFFF">
 
         <TextView
-            android:id="@+id/freight_left_tv"
+            android:id="@+id/settlement_unit_price_left_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="渠道报价运费："
+            android:text="结算单价："
             android:textColor="@color/iff_999999"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/freight_money_tv"
+            android:id="@+id/settlement_unit_price_right_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/freight_left_tv"
-            android:text="200万"
+            android:layout_toRightOf="@+id/settlement_unit_price_left_tv"
             android:textColor="@color/iff_2A2A2A"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/incidental_left_tv"
+            android:id="@+id/time_limit_left_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/freight_left_tv"
+            android:layout_below="@+id/settlement_unit_price_left_tv"
             android:layout_marginTop="6dp"
-            android:text="渠道报价杂费："
+            android:text="时限："
             android:textColor="@color/iff_999999"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/incidental_money_tv"
+            android:id="@+id/time_limit_right_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/freight_money_tv"
+            android:layout_below="@+id/settlement_unit_price_right_tv"
             android:layout_marginTop="6dp"
-            android:layout_toRightOf="@+id/incidental_left_tv"
-            android:text="12万"
+            android:layout_toRightOf="@+id/time_limit_left_tv"
             android:textColor="@color/iff_2A2A2A"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/premium_left_tv"
+            android:id="@+id/fuel_rate_left_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/incidental_left_tv"
+            android:layout_below="@+id/time_limit_left_tv"
             android:layout_marginTop="6dp"
-            android:text="渠道报价保费："
+            android:text="燃油率："
             android:textColor="@color/iff_999999"
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/premium_money_tv"
+            android:id="@+id/fuel_rate_right_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/incidental_money_tv"
+            android:layout_below="@+id/time_limit_right_tv"
             android:layout_marginTop="6dp"
-            android:layout_toRightOf="@+id/premium_left_tv"
-            android:text="300万"
+            android:layout_toRightOf="@+id/fuel_rate_left_tv"
+            android:textColor="@color/iff_2A2A2A"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tax_containing_taxes_left_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fuel_rate_left_tv"
+            android:layout_marginTop="6dp"
+            android:text="含税："
+            android:textColor="@color/iff_999999"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tax_containing_taxes_right_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fuel_rate_right_tv"
+            android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/tax_containing_taxes_left_tv"
             android:textColor="@color/iff_2A2A2A"
             android:textSize="14sp" />
     </RelativeLayout>
     <TextView
+        android:id="@+id/brief_introduction_tv"
         android:text="@string/company_introduction"
         android:background="@color/iff_FFFFFF"
         android:textSize="14sp"
@@ -122,6 +139,7 @@
                 android:textSize="14sp" />
 
             <Button
+                android:enabled="false"
                 android:layout_marginLeft="10dp"
                 android:id="@+id/submission_reply_btn"
                 android:layout_width="80dp"

@@ -133,10 +133,10 @@ public class SystemUtils {
      *
      * @param cls
      */
-    public void orderStautsOrderNoChannelUserIdIntent(Class cls, int orderStatus, String orderNo,String channelUserId) {
+    public void orderStautsorderIdChannelUserIdIntent(Class cls, int orderStatus, String orderId,String channelUserId) {
         Intent intent = new Intent(mContext, cls);
         intent.putExtra("orderStauts", orderStatus);
-        intent.putExtra("orderNo", orderNo);
+        intent.putExtra("orderId", orderId);
         intent.putExtra("channelUserId",channelUserId);
         mContext.startActivity(intent);
     }
@@ -145,9 +145,9 @@ public class SystemUtils {
      *
      * @param cls
      */
-    public void orderNoBrandIntent(Class cls, String orderNo,String brand) {
+    public void orderIdBrandIntent(Class cls, String orderId,String brand) {
         Intent intent = new Intent(mContext, cls);
-        intent.putExtra("orderNo", orderNo);
+        intent.putExtra("orderId", orderId);
         intent.putExtra("brand", brand);
         mContext.startActivity(intent);
     }
@@ -156,9 +156,9 @@ public class SystemUtils {
      *
      * @param cls
      */
-    public void orderNoIntent(Class cls, String orderNo) {
+    public void orderIdIntent(Class cls, String orderId) {
         Intent intent = new Intent(mContext, cls);
-        intent.putExtra("orderNo", orderNo);
+        intent.putExtra("orderId", orderId);
         mContext.startActivity(intent);
     }
     /**
@@ -173,10 +173,10 @@ public class SystemUtils {
      *
      * @param cls
      */
-    public void referenceSourcePageOrderNoChanneIdealerIntent(Class cls, String source_page, String orderNo, String channelUserId) {
+    public void referenceSourcePageorderIdChanneIdealerIntent(Class cls, String source_page, String orderId, String channelUserId) {
         Intent intent = new Intent(mContext, cls);
         intent.putExtra("source_page", source_page);
-        intent.putExtra("orderNo", orderNo);
+        intent.putExtra("orderId", orderId);
         intent.putExtra("channelUserId",channelUserId);
         mContext.startActivity(intent);
     }

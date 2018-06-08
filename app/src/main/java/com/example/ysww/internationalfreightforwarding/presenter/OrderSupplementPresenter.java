@@ -7,32 +7,32 @@ import com.example.ysww.internationalfreightforwarding.Constants;
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.model.AffirmChannelBean;
 import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
-import com.example.ysww.internationalfreightforwarding.net.view.OrderCloseView;
+import com.example.ysww.internationalfreightforwarding.net.view.OrderSupplementView;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
 import com.example.ysww.internationalfreightforwarding.utils.ToastStopUtils;
 
 /**
- * 关闭订单接口
+ * 补录信息接口
  */
 
-public class OrderClosePresenter implements BasePresenter<OrderCloseView> {
-    private OrderCloseView view;
+public class OrderSupplementPresenter implements BasePresenter<OrderSupplementView> {
+    private OrderSupplementView view;
 
-    public void orderCloseResult(String str,final Activity activity, final LazyLoadProgressDialog lazyLoadProgressDialog) {
+    public void orderSupplementResult(String str, final Activity activity, final LazyLoadProgressDialog lazyLoadProgressDialog) {
         String tokenId=activity.getSharedPreferences("login", Context.MODE_PRIVATE).getString("tokenId","null");
-        OkgoHttpResolve.postJsonResult(Constants.LINK_HEAD + "mananger/tborder/orderClose/",tokenId,str,AffirmChannelBean.class, new OkgoHttpResolve.HttpCallBack() {
+        OkgoHttpResolve.postJsonResult(Constants.LINK_HEAD + "mananger/tborder/orderSupplement" ,tokenId,str,AffirmChannelBean.class, new OkgoHttpResolve.HttpCallBack() {
             @Override
             public void finish(Object result) {
-                AffirmChannelBean orderClose = (AffirmChannelBean) result;
-                if (orderClose != null) {
+                AffirmChannelBean orderSupplement = (AffirmChannelBean) result;
+                if (orderSupplement != null) {
                     SystemUtils.getInstance(activity).setLazyLadResult(lazyLoadProgressDialog);
-                    if (orderClose.getCode() == 0) {
+                    if (orderSupplement.getCode() == 0) {
                         if (view != null) {
-                            view.onOrderCloseFinish(orderClose);
+                            view.onDeliverOrderFinish(orderSupplement);
                         }
                     } else {
-                        SystemUtils.getInstance(activity).tokenInvalid(orderClose.getCode());
-                        ToastStopUtils.toastShow(activity, orderClose.getMsg());
+                        SystemUtils.getInstance(activity).tokenInvalid(orderSupplement.getCode());
+                        ToastStopUtils.toastShow(activity, orderSupplement.getMsg());
                     }
                 }
             }
@@ -40,7 +40,7 @@ public class OrderClosePresenter implements BasePresenter<OrderCloseView> {
     }
 
     @Override
-    public void attach(OrderCloseView view) {
+    public void attach(OrderSupplementView view) {
         this.view = view;
     }
 

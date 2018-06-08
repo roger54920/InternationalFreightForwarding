@@ -29,7 +29,7 @@
     <style name="collect_send_information_et">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">30dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:background">@color/transparence</item>
         <item name="android:maxLength">32</item>
         <item name="android:singleLine">true</item>

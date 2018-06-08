@@ -9,7 +9,7 @@ import java.util.List;
 public class QuotationOrderListBean extends BaseBean{
 
     /**
-     * page : {"totalCount":6,"pageSize":10,"totalPage":1,"currPage":1,"list":[{"orderNo":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]}
+     * page : {"totalCount":6,"pageSize":10,"totalPage":1,"currPage":1,"list":[{"orderId":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]}
      */
 
     private PageBean page;
@@ -28,7 +28,7 @@ public class QuotationOrderListBean extends BaseBean{
          * pageSize : 10
          * totalPage : 1
          * currPage : 1
-         * list : [{"orderNo":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]
+         * list : [{"orderId":"18050117484262484944","marketUserId":29,"marketUserName":"小美","transType":"空运","transDemand":"门到门","payType":"到付","cleanCustomsType":"正式报关","sourceAddress":"4545","number":4545,"weight":45,"size":"45×45×45","export":"45","destinationCountry":"中国","departureDate":"2018-05-01 00:00:00.0","departureDateStr":null,"destinationCity":"4554","brand":"45","quote":45,"postcode":"4554","priceValue":"5445","transportationTime":"45","deliveryAddress":"45","forwardingUnit":"45","volumeSize":null,"packageType":null,"manufacturer":null,"contractNo":null,"licenseKey":null,"approvalNumber":null,"exemptionType":null,"tariffPayType":"","deliveryType":"","emsNo":null,"postingCharges":null,"postingTime":null,"billsUrl":null,"createDate":"2018-05-01 17:48:42","createBy":"展示","updateDate":"2018-05-02 00:41:05","lastUpdateBy":"展示","status":"1","orderStatus":"20","companyCode":"3","companyName":"印度分公司","channelName":null,"channelUserName":null,"quoteId":null,"channelQuoteId":null}]
          */
 
         private int totalCount;
@@ -79,7 +79,7 @@ public class QuotationOrderListBean extends BaseBean{
 
         public static class ListBean {
             /**
-             * orderNo : 18050117484262484944
+             * orderId : 18050117484262484944
              * marketUserId : 29
              * marketUserName : 小美
              * transType : 空运

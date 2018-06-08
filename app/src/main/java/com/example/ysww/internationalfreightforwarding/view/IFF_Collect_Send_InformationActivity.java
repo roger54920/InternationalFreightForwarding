@@ -18,8 +18,8 @@ import com.example.ysww.internationalfreightforwarding.Constants;
 import com.example.ysww.internationalfreightforwarding.R;
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
-import com.example.ysww.internationalfreightforwarding.net.view.DeliverOrderView;
-import com.example.ysww.internationalfreightforwarding.presenter.DeliverOrderPresenter;
+import com.example.ysww.internationalfreightforwarding.net.view.OrderSupplementView;
+import com.example.ysww.internationalfreightforwarding.presenter.OrderSupplementPresenter;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
 import com.lzy.okgo.OkGo;
@@ -31,7 +31,7 @@ import butterknife.OnClick;
 /**
  * 信息补录
  */
-public class IFF_Collect_Send_InformationActivity extends Activity implements DeliverOrderView {
+public class IFF_Collect_Send_InformationActivity extends Activity implements OrderSupplementView {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -52,7 +52,7 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements De
     @InjectView(R.id.complete_btn)
     Button completeBtn;
 
-    private DeliverOrderPresenter deliverOrderPresenter = new DeliverOrderPresenter();
+    private OrderSupplementPresenter orderSupplementPresenter = new OrderSupplementPresenter();
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
     private String freightSingleNumber, receivingSendingTime, freight, receivingAddress;
 
@@ -144,13 +144,13 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements De
     }
 
     /**
-     * 订单发货确认接口 信息补录
+     * 补录信息接口
      */
-    private void deliverOrderMethod() {
+    private void orderSupplementMethod() {
         new OkgoHttpResolve(this);
-        deliverOrderPresenter.attach(this);
-        deliverOrderPresenter.deliverOrderResult
-                ("{\"orderId\":\"" + getIntent().getStringExtra("orderNo") + "\"," +
+        orderSupplementPresenter.attach(this);
+        orderSupplementPresenter.orderSupplementResult
+                ("{\"orderId\":\"" + getIntent().getStringExtra("orderId") + "\"," +
                                 "\"freight\":\"" + freightSingleNumberEt.getText().toString() + "\"," +
                                 "\"deliveryAddress\":\"" + receivingAddressEt.getText().toString() + "\"," +
                                 "\"carriage\":" + Double.parseDouble(freightEt.getText().toString()) + "," +
@@ -166,7 +166,7 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements De
                 break;
             case R.id.complete_btn:
                 SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
-                deliverOrderMethod();
+                orderSupplementMethod();
                 break;
             case R.id.title_close_order:
                 SystemUtils.getInstance(this).returnHomeFinishAll();
@@ -198,14 +198,14 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements De
 
     @Override
     public void onDeliverOrderFinish(Object o) {
-        SystemUtils.getInstance(this).returnHomeFinishAll();
+        SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "historical_order");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         OkGo.getInstance().cancelTag(this);
-        deliverOrderPresenter.dettach();
+        orderSupplementPresenter.dettach();
     }
 }
 

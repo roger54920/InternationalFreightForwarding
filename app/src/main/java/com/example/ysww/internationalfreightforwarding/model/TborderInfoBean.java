@@ -97,6 +97,15 @@ public class TborderInfoBean extends BaseBean{
         private String status;
         private List<OrderDetailListBean> orderDetailList;
         private String companyName;
+        private String channelUserId;
+
+        public String getChannelUserId() {
+            return channelUserId;
+        }
+
+        public void setChannelUserId(String channelUserId) {
+            this.channelUserId = channelUserId;
+        }
 
         public String getCompanyName() {
             return companyName;

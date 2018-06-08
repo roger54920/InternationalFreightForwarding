@@ -21,6 +21,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
         android:layout_marginTop="6dp">
 
         <RadioButton
@@ -50,7 +51,6 @@
             android:layout_height="16.5dp"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/supplier_quotation_tv"
-            android:layout_marginBottom="10dp"
             android:layout_toRightOf="@+id/supplier_quotation_rb"
             android:text="备注信息"
             android:textColor="@color/iff_999999"
