@@ -6,7 +6,7 @@
     <string name="order_details">订单详情</string>
     <string name="determine_the_quotation">确定报价</string>
     <string name="put_questions_to">提问</string>
-    <string name="medium_speed_single_number">中速单号</string>
+    <string name="medium_speed_single_number">货运单号</string>
     <string name="input_freight_single_number">请输入货运单号</string>
     <string name="receiving_sending_time">收寄时间</string>
     <string name="input_receiving_sending_time">请输入货物收寄时间</string>
