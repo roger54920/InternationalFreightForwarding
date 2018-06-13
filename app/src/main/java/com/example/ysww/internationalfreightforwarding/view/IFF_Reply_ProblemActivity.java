@@ -240,11 +240,17 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
     }
 
     @Override
+    protected void onPause() {
+        handler.removeCallbacks(runnable);
+        super.onPause();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         OkGo.getInstance().cancelTag(this);
         tbordermsgSavePresenter.dettach();
         queryMarketlMsgPresenter.dettach();
-        handler.removeCallbacks(runnable);
+
     }
 }

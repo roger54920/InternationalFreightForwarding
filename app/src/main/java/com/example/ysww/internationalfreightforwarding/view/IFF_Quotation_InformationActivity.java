@@ -273,18 +273,24 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
         if (dataBean != null) {
             settlementUnitPriceRightTv.setText(dataBean.getChannelQuote()+"元");
             timeLimitRightTv.setText(dataBean.getWorkday()+"天");
-            if(dataBean.getIsFuelRate().equals("0")){
-                fuelRateRightTv.setText("0");
-            }else{
-                fuelRateRightTv.setText(dataBean.getFuelRate()+"");
-            }
-            if(dataBean.getIsTax().equals("0")){
-                taxContainingTaxesRightTv.setText("否");
-            }else{
-                taxContainingTaxesRightTv.setText("是");
-            }
+//            if(dataBean.getIsFuelRate().equals("0")){
+//                fuelRateRightTv.setText("0");
+//            }else{
+//                fuelRateRightTv.setText(dataBean.getFuelRate()+"");
+//            }
+//            if(dataBean.getIsTax().equals("0")){
+//                taxContainingTaxesRightTv.setText("否");
+//            }else{
+//                taxContainingTaxesRightTv.setText("是");
+//            }
             briefIntroductionTv.setText(dataBean.getRemark());
         }
+    }
+
+    @Override
+    protected void onPause() {
+        handler.removeCallbacks(runnable);
+        super.onPause();
     }
 
     @Override
@@ -295,7 +301,7 @@ public class IFF_Quotation_InformationActivity extends Activity implements Tbord
         queryMarketlMsgPresenter.dettach();
         deliverOrderPresenter.dettach();
         getChannelUerIdQuoteInfoPresenter.dettach();
-        handler.removeCallbacks(runnable);
+
     }
 
 

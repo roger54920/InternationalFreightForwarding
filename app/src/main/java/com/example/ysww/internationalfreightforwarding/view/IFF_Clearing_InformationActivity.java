@@ -115,6 +115,7 @@ public class IFF_Clearing_InformationActivity extends Activity {
         inchWidthEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         inchHeightEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         SystemUtils.getInstance(this).setPricePoint(weightEt);
+        SystemUtils.getInstance(this).setPricePointText(totalWeight);
         paymentMethodRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

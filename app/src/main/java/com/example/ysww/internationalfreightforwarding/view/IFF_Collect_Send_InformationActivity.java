@@ -67,10 +67,10 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements Or
     }
 
     private void initViews() {
-        Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
         titleCloseOrder.setVisibility(View.VISIBLE);
         receivingSendingTimeEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         SystemUtils.getInstance(this).setPricePoint(freightEt);
+        Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
         if (Constants.SOURCE_PAGE.equals("quotation_information")) {
             titleReturnImg.setVisibility(View.GONE);
         }

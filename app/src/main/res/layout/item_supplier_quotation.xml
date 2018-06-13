@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/iff_FFFFFF"
-        android:text="订单号XXXX1渠道商竞标信息"
         android:lines="1"
         android:ellipsize="end"
         android:textColor="@color/iff_666666"
@@ -35,13 +34,15 @@
             android:clickable="false" />
 
         <TextView
+            android:text="123123213123123123123123123"
+            android:lines="1"
+            android:ellipsize="end"
             android:id="@+id/supplier_quotation_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_toRightOf="@+id/supplier_quotation_rb"
             android:gravity="center_vertical"
-            android:text="渠道商1          125万"
             android:textColor="@color/iff_333333"
             android:textSize="15sp" />
 
@@ -52,7 +53,6 @@
             android:layout_marginTop="5dp"
             android:layout_below="@+id/supplier_quotation_tv"
             android:layout_toRightOf="@+id/supplier_quotation_rb"
-            android:text="备注信息"
             android:textColor="@color/iff_999999"
             android:textSize="12sp" />
     </RelativeLayout>

@@ -114,7 +114,6 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
     }
 
     private void initAdapter() {
-        Constants.SOURCE_PAGE = getIntent().getStringExtra("source_page");
         linearLayoutManager = new LinearLayoutManager(this);
         quotationOrderRv.setLayoutManager(linearLayoutManager);
         quotationOrderAdapter = new CommonAdapter<QuotationOrderListBean.PageBean.ListBean>(this, R.layout.item_order_number_supplier, quotationOrderList) {
@@ -129,8 +128,8 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                     @Override
                     public void onClick(View view) {
                         int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
-                        if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "information_supplement_list", dataBean.getorderId(), "");
+                        if (orderStatus==4) {
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "quotation_information", dataBean.getorderId(), "");
                         } else {
                             SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Order_DetailsActivity.class, orderStatus, dataBean.getorderId(), dataBean.getChannelUserId());
                         }

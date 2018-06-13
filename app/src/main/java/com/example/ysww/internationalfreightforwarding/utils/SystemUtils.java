@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.custom.NoDataDialog;
@@ -300,7 +301,60 @@ public class SystemUtils {
         });
 
     }
+    /**
+     * EditText监听小数点让用户只能输入小数点后两位
+     *
+     * @param textView
+     */
+    public void setPricePointText(final TextView textView) {
+        textView.addTextChangedListener(new TextWatcher() {
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+                //这部分是处理如果输入框内小数点后有俩位，那么舍弃最后一位赋值，光标移动到最后
+                String str = s.toString();
+                if (countStr(s.toString(), ".") > 1) {
+                    str = str.substring(0, str.indexOf(".") + 1);
+                    textView.setText(str);
+                }
+                if (s.toString().contains(".")) {
+                    if (s.length() - 1 - s.toString().indexOf(".") > 2) {
+                        s = s.toString().subSequence(0,
+                                s.toString().indexOf(".") + 3);
+                        textView.setText(s);
+                    }
+                }
+                //这部分是处理如果用户输入以.开头，在前面加上0
+                if (s.toString().trim().substring(0).equals(".")) {
+                    s = "0" + s;
+                    textView.setText(s);
+                }
+                //这里处理用户 多次输入.的处理 比如输入 1..6的形式，是不可以的
+                if (s.toString().startsWith("0")
+                        && s.toString().trim().length() > 1) {
+                    if (!s.toString().substring(1, 2).equals(".")) {
+                        textView.setText(s.subSequence(0, 1));
+                        return;
+                    }
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+
+        });
+
+    }
     /**
      * 获取指定字符串出现的次数
      *

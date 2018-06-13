@@ -16,6 +16,7 @@ import com.example.ysww.internationalfreightforwarding.R;
 import com.example.ysww.internationalfreightforwarding.custom.CloseTheOrderDialog;
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.custom.MyScrollview;
+import com.example.ysww.internationalfreightforwarding.custom.SystemPromptDialog;
 import com.example.ysww.internationalfreightforwarding.model.TborderInfoBean;
 import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
 import com.example.ysww.internationalfreightforwarding.net.view.OrderCloseView;
@@ -162,11 +163,30 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
                 }
                 break;
             case R.id.title_close_order:
-                SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Close_The_OrderActivity.class, "close_order_details", getIntent().getStringExtra("orderId"), "");
+                onClickIsDeliverGoods();
                 break;
         }
     }
+    //点击是否关闭订单
+    private void onClickIsDeliverGoods() {
+        SystemPromptDialog.Builder builder = new SystemPromptDialog.Builder(this, "您确定要关闭订单吗？");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                onClickCloseTheOrDer();
+                //设置你的操作事项
+            }
+        });
 
+        builder.setNegativeButton("取消",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        builder.create().setCanceledOnTouchOutside(true);  //用户选择取消或者是点击屏幕空白部分时让dialog消失。
+        builder.create().show();
+    }
     //点击关闭订单原因
     private void onClickCloseTheOrDer() {
         CloseTheOrderDialog.Builder builder = new CloseTheOrderDialog.Builder(this);
