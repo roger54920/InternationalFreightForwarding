@@ -17,43 +17,43 @@
         android:paddingBottom="10dp"
         android:paddingTop="8dp">
 
-        <LinearLayout style="@style/layout_width_height_mw">
+        <!--<LinearLayout style="@style/layout_width_height_mw">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/order_number"
-                android:textColor="@color/iff_666666"
-                android:textSize="14sp" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/order_number"-->
+                <!--android:textColor="@color/iff_666666"-->
+                <!--android:textSize="14sp" />-->
 
-            <TextView
-                android:id="@+id/order_number_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="201803041251"
-                android:textColor="@color/iff_151515"
-                android:textSize="14sp" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/order_number_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:text="201803041251"-->
+                <!--android:textColor="@color/iff_151515"-->
+                <!--android:textSize="14sp" />-->
+        <!--</LinearLayout>-->
 
-        <LinearLayout style="@style/ll_mv_4dp">
+        <!--<LinearLayout style="@style/ll_mv_4dp">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/business_unit"
-                android:textColor="@color/iff_666666"
-                android:textSize="14sp" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/business_unit"-->
+                <!--android:textColor="@color/iff_666666"-->
+                <!--android:textSize="14sp" />-->
 
-            <TextView
-                android:id="@+id/business_unit_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="******分公司"
-                android:textColor="@color/iff_151515"
-                android:textSize="14sp" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/business_unit_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:text="******分公司"-->
+                <!--android:textColor="@color/iff_151515"-->
+                <!--android:textSize="14sp" />-->
+        <!--</LinearLayout>-->
 
         <LinearLayout style="@style/ll_mv_4dp">
 
@@ -324,11 +324,13 @@
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
                     android:id="@+id/insurance_rb1"
+                    android:tag="1"
                     style="@style/btn_text_rb"
                     android:text="是" />
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
                     style="@style/btn_text_rb"
+                    android:tag="0"
                     android:text="否" />
 
             </RadioGroup>

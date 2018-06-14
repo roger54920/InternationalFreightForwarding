@@ -70,6 +70,15 @@ public class AddOrderBean {
     private String exemptionType;
     private String totalNumber;
     private String selectionReceivingAddress;
+    private String islnsurance;
+
+    public String getIslnsurance() {
+        return islnsurance;
+    }
+
+    public void setIslnsurance(String islnsurance) {
+        this.islnsurance = islnsurance;
+    }
 
     public String getSelectionReceivingAddress() {
         return selectionReceivingAddress;

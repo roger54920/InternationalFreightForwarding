@@ -105,7 +105,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         new OkgoHttpResolve(this);
         statisticalOrderListPresenter.attach(this);
         if (Constants.SOURCE_PAGE.equals("copy")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit, this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=1,2,3,5", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
             statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=4", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("historical_order")) {

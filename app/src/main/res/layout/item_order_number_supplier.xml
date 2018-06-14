@@ -16,11 +16,24 @@
         android:paddingRight="10dp"
         android:lines="1"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/order_state"
+        android:layout_toLeftOf="@+id/unread_information_tv"
         android:layout_centerVertical="true"
         android:textColor="@color/iff_666666"
         android:textSize="15sp" />
-
+    <TextView
+        android:visibility="gone"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="-10dp"
+        android:layout_toLeftOf="@+id/order_state"
+        android:layout_centerVertical="true"
+        android:id="@+id/unread_information_tv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:textColor="@color/iff_FFFFFF"
+        android:textSize="15sp"
+        android:background="@drawable/small_blue_circle_style"
+        android:text="2"/>
     <View
         android:layout_alignParentBottom="true"
         android:id="@+id/view"

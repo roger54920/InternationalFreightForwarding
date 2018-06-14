@@ -3,35 +3,66 @@
     style="@style/layout_ll_head_mm_bg">
 
     <include layout="@layout/iff_title_layout" />
-    <RadioGroup
-        android:id="@+id/question_list_rg"
+
+    <RelativeLayout
         android:layout_marginTop="6dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="40dp">
-        <RadioButton
-            android:id="@+id/channel_quiz_rb"
+        <RadioGroup
+            android:id="@+id/question_list_rg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/channel_quiz_rb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_question_bg_style"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/supplier_questions"
+                android:textColor="@color/radiobtn_text_color_style"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/communication_rb"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/radiobtn_question_bg_style"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/communication"
+                android:textColor="@color/radiobtn_text_color_style"
+                android:textSize="16sp" />
+        </RadioGroup>
+        <TextView
+            android:id="@+id/channel_quiz_tv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:gravity="center"
-            android:text="@string/supplier_questions"
-            android:textSize="16sp"
-            android:textColor="@color/radiobtn_text_color_style"
-            android:button="@null"
-            android:background="@drawable/radiobtn_question_bg_style"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-        <RadioButton
-            android:id="@+id/communication_rb"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="15sp"
+            android:background="@drawable/small_blue_circle_style"
+            android:layout_marginLeft="129dp"
+            android:text="2"
+            android:visibility="gone"/>
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/communication_tv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:gravity="center"
-            android:text="@string/communication"
-            android:textSize="16sp"
-            android:textColor="@color/radiobtn_text_color_style"
-            android:button="@null"
-            android:background="@drawable/radiobtn_question_bg_style"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-    </RadioGroup>
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="15sp"
+            android:layout_marginRight="55dp"
+            android:background="@drawable/small_blue_circle_style"
+            android:text="2"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/question_list_rv"
         android:layout_width="match_parent"
