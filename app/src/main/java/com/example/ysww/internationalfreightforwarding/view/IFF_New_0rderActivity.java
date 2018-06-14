@@ -111,6 +111,7 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
         serviceModeRb1.setChecked(true);
         addOrderBean.setTransDemand(serviceModeRb1.getText().toString());
         insuranceRb1.setChecked(true);
+        addOrderBean.setIslnsurance("1");
 
         forwardingUnitEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -231,7 +232,7 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
         insuranceRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rbId = (RadioButton) findViewById(serviceModeRg.getCheckedRadioButtonId());
+                RadioButton rbId = (RadioButton) findViewById(insuranceRg.getCheckedRadioButtonId());
                 String insurance = rbId.getText().toString();
                 if(insurance.equals("是")){
                     addOrderBean.setIslnsurance("1");
