@@ -217,6 +217,7 @@
                 android:hint="请输入您的发货单位" />
 
             <Button
+                android:visibility="invisible"
                 android:id="@+id/forwarding_unit_btn"
                 style="@style/btn_blue__70dp_65_30dp"
                 android:text="@string/choice" />
@@ -324,13 +325,11 @@
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
                     android:id="@+id/insurance_rb1"
-                    android:tag="1"
                     style="@style/btn_text_rb"
                     android:text="是" />
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
                     style="@style/btn_text_rb"
-                    android:tag="0"
                     android:text="否" />
 
             </RadioGroup>

@@ -45,8 +45,6 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
     TextView iffTitleTv;
     @InjectView(R.id.iff_title_cl)
     ConstraintLayout iffTitleCl;
-    @InjectView(R.id.order_number_tv)
-    TextView orderNumberTv;
     @InjectView(R.id.type_of_shipping_rg)
     RadioGroup typeOfShippingRg;
     @InjectView(R.id.customs_clearance_method_rg)
@@ -234,7 +232,12 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rbId = (RadioButton) findViewById(serviceModeRg.getCheckedRadioButtonId());
-                addOrderBean.setIslnsurance(rbId.getTag().toString());
+                String insurance = rbId.getText().toString();
+                if(insurance.equals("是")){
+                    addOrderBean.setIslnsurance("1");
+                }else{
+                    addOrderBean.setIslnsurance("0");
+                }
             }
         });
     }

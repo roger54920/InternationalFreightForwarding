@@ -140,6 +140,9 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
             case 5://已关闭
                 titleCloseOrder.setVisibility(View.GONE);
                 break;
+            case 6://已完結
+                titleCloseOrder.setVisibility(View.GONE);
+                break;
             default:
                 break;
         }

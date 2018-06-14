@@ -47,6 +47,7 @@
                 android:hint="请输入运抵国邮编" />
 
             <Button
+                android:visibility="invisible"
                 android:id="@+id/FBA_warehouse_btn"
                 style="@style/btn_blue__70dp_65_30dp"
                 android:text="FBA仓" />
