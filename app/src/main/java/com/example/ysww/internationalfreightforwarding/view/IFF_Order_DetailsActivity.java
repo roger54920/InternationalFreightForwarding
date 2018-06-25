@@ -92,8 +92,6 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
     MyScrollview myScrollView;
     @InjectView(R.id.supplier_quotation_btn)
     Button supplierQuotationBtn;
-    @InjectView(R.id.fill_in_the_clearing_information_btn)
-    Button fillInTheClearingInformationBtn;
     @InjectView(R.id.information_supplement_reply_problem_btn)
     Button informationSupplementReplyProblemBtn;
     private int orderStatus;
@@ -126,7 +124,6 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
             case 2://已报价
                 bottomLl.setVisibility(View.VISIBLE);
                 supplierQuotationBtn.setVisibility(View.VISIBLE);
-//                fillInTheClearingInformationBtn.setVisibility(View.VISIBLE);
                 break;
             case 3://已确认
                 bottomLl.setVisibility(View.VISIBLE);
@@ -169,7 +166,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
         orderClosePresenter.orderCloseResult("{\"orderId\":\"" + getIntent().getStringExtra("orderId") + "\",\"remark\":\"" + remark + "\"}", this, lazyLoadProgressDialog);
     }
 
-    @OnClick({R.id.information_supplement_reply_problem_btn, R.id.title_close_order, R.id.title_return_img, R.id.supplier_quotation_btn, R.id.fill_in_the_clearing_information_btn})
+    @OnClick({R.id.information_supplement_reply_problem_btn, R.id.title_close_order, R.id.title_return_img, R.id.supplier_quotation_btn})
     public void onViewClicked(View view) {
         String orderId = getIntent().getStringExtra("orderId");
         String channelUserId = getIntent().getStringExtra("channelUserId");
@@ -179,10 +176,6 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
                 break;
             case R.id.supplier_quotation_btn:
                 SystemUtils.getInstance(this).orderIdBrandIntent(IFF_Supplier_QuotationActivity.class, orderId,productNameTv.getText().toString());
-                break;
-            case R.id.fill_in_the_clearing_information_btn:
-                SystemUtils.getInstance(this).referenceSourcePageorderIdChanneIdealerIntent
-                        (IFF_Reply_ProblemActivity.class, "putQuestionsTo", orderId,channelUserId);
                 break;
             case R.id.information_supplement_reply_problem_btn:
                 orderStatus = getIntent().getIntExtra("orderStauts", 0);
