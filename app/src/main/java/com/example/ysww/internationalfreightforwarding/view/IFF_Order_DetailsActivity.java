@@ -126,7 +126,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
             case 2://已报价
                 bottomLl.setVisibility(View.VISIBLE);
                 supplierQuotationBtn.setVisibility(View.VISIBLE);
-                fillInTheClearingInformationBtn.setVisibility(View.VISIBLE);
+//                fillInTheClearingInformationBtn.setVisibility(View.VISIBLE);
                 break;
             case 3://已确认
                 bottomLl.setVisibility(View.VISIBLE);

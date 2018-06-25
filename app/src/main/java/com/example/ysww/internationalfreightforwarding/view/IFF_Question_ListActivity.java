@@ -121,7 +121,7 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
             @Override
             protected void convert(ViewHolder holder, GetOrderMsgCountBean.DataBean dataBean, final int position) {
                 holder.setText(R.id.supplier_tv, dataBean.getOrderId() + "("+dataBean.getBrand()+")");
-                holder.setVisible(R.id.unread_information_tv,true);
+                holder.setVisible(R.id.unread_information_tv,false);
                 if (questionList.size() == position + 1) {
                     holder.setVisible(R.id.view, false);
                 }
