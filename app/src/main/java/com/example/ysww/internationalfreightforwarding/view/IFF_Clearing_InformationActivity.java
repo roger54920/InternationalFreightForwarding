@@ -193,14 +193,12 @@ public class IFF_Clearing_InformationActivity extends Activity {
      * 订单图片
      */
     private void initOrderPictureAdapter() {
-        5
         gridLayoutManager = new GridLayoutManager(this, 4);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         orderPictureRv.setLayoutManager(gridLayoutManager);
         orderPictureAdapter = new CommonAdapter<String>(this, R.layout.item_order_picture, orderPictureList) {
             @Override
             protected void convert(ViewHolder holder, String s, int position) {
-
                 if (s.equals("img_add")) {
                     Log.e("=====", "convert: "+s );
                     holder.setImageResource(R.id.order_picture_img, R.mipmap.photo_order_picture);
@@ -213,12 +211,17 @@ public class IFF_Clearing_InformationActivity extends Activity {
                 }else{
                     Bitmap bitMap = BitmapFactory.decodeFile(s);
                     holder.setImageBitmap(R.id.order_picture_img, bitMap);
+                    holder.setOnClickListener(R.id.order_picture_img, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ToastStopUtils.toastShow(IFF_Clearing_InformationActivity.this,"放大");
+                        }
+                    });
                 }
-                if(orderPictureList.size()>=9){
+                if(orderPictureList.size()>=10){
                     if(position==orderPictureList.size()-1){
                         holder.setVisible(R.id.order_picture_img,false);
                     }
-
                 }else{
                     holder.setVisible(R.id.order_picture_img,true);
                 }
@@ -600,7 +603,7 @@ public class IFF_Clearing_InformationActivity extends Activity {
         }
         orderPictureList.add(getRealFilePathFromUri(this, uri));
         orderPictureList.add("img_add");
-        orderPictureAdapter.notifyDataSetChanged();
+        initOrderPictureAdapter();
 
     }
 
