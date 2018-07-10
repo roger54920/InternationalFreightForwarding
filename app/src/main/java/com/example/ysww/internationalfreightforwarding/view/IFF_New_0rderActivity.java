@@ -83,6 +83,10 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
     EditText otherEt;
     @InjectView(R.id.other_rl)
     RelativeLayout otherRl;
+    @InjectView(R.id.import_export_power_rb1)
+    ImageRadioButton importExportPowerRb1;
+    @InjectView(R.id.import_export_power_rg)
+    RadioGroup importExportPowerRg;
 
     private String forwardingUnit, deliveryAddress, portOfExport, exportDate, productName;
     private AddOrderBean addOrderBean;
@@ -112,6 +116,8 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
         addOrderBean.setTransDemand(serviceModeRb1.getText().toString());
         insuranceRb1.setChecked(true);
         addOrderBean.setIslnsurance("1");
+        importExportPowerRb1.setChecked(true);
+        addOrderBean.setImportExportPower("1");
 
         forwardingUnitEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -234,10 +240,22 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton rbId = (RadioButton) findViewById(insuranceRg.getCheckedRadioButtonId());
                 String insurance = rbId.getText().toString();
-                if(insurance.equals("是")){
+                if (insurance.equals("是")) {
                     addOrderBean.setIslnsurance("1");
-                }else{
+                } else {
                     addOrderBean.setIslnsurance("0");
+                }
+            }
+        });
+        importExportPowerRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbId = (RadioButton) findViewById(importExportPowerRg.getCheckedRadioButtonId());
+                String importExportPower = rbId.getText().toString();
+                if (importExportPower.equals("是")) {
+                    addOrderBean.setImportExportPower("1");
+                } else {
+                    addOrderBean.setImportExportPower("0");
                 }
             }
         });
@@ -278,11 +296,11 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
                 addOrderBean.setExport(portOfExport);
                 addOrderBean.setDepartureDate(exportDate);
                 addOrderBean.setBrand(productName);
-                if(otherRb.isChecked()==true){
+                if (otherRb.isChecked() == true) {
                     String other = otherEt.getText().toString();
-                    if(TextUtils.isEmpty(other)){
+                    if (TextUtils.isEmpty(other)) {
                         addOrderBean.setTransType("其他");
-                    }else{
+                    } else {
                         addOrderBean.setTransType(other);
                     }
                 }

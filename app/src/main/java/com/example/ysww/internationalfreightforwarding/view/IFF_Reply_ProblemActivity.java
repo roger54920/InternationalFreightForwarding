@@ -143,7 +143,7 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
                 , this, lazyLoadProgressDialog);
     }
     /**
-     * 获取订单交流消息明细接口
+     * 获取订单群聊消息明细接口
      */
     private void communicationMethod() {
         new OkgoHttpResolve(this);
@@ -154,7 +154,7 @@ public class IFF_Reply_ProblemActivity extends Activity implements TbordermsgSav
     }
 
     /**
-     * 发送订单交流消息接口
+     * 发送订单群聊消息接口
      */
     private void tbordermsgCommunicationSaveMethod() {
         new OkgoHttpResolve(this);

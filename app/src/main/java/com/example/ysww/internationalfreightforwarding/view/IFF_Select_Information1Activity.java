@@ -50,8 +50,6 @@ public class IFF_Select_Information1Activity extends Activity {
     TextView iffTitleTv;
     @InjectView(R.id.iff_title_cl)
     ConstraintLayout iffTitleCl;
-    @InjectView(R.id.packaging_types_et)
-    EditText packagingTypesEt;
     @InjectView(R.id.contract_agreement_number_et)
     EditText contractAgreementNumberEt;
     @InjectView(R.id.add_attachments_btn)
@@ -134,7 +132,6 @@ public class IFF_Select_Information1Activity extends Activity {
                 startActivityForResult(intent, 1);
                 break;
             case R.id.next_step_btn:
-                addOrderBean.setPackageType(packagingTypesEt.getText().toString());
                 addOrderBean.setContractNo(contractAgreementNumberEt.getText().toString());
                 EventBus.getDefault().postSticky(addOrderBean);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_Select_Information2Activity.class);

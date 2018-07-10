@@ -19,12 +19,12 @@
 
             <TextView
                 style="@style/w60dp_w_666_15sp"
-                android:text="收货地址" />
+                android:text="提货地址" />
 
             <EditText
                 android:id="@+id/selection_receiving_address_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的收货地址" />
+                android:hint="请输入提货地址" />
 
             <Button
                 android:visibility="invisible"
@@ -42,7 +42,7 @@
                 android:inputType="phone|number"
                 android:id="@+id/value_of_goods_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的货物价值" />
+                android:hint="请输入货品价值" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -60,32 +60,11 @@
                 android:inputType="phone|number"
                 android:id="@+id/offer_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的期望报价" />
+                android:hint="请输入期望报价" />
             <TextView
                 android:layout_marginLeft="-15dp"
                 style="@style/w60dp_w_666_15sp"
                 android:text="元" />
-            <Button
-                android:visibility="invisible"
-                style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice" />
-        </LinearLayout>
-        <include layout="@layout/iff_line_view_layout" />
-        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
-
-            <TextView
-                style="@style/w60dp_w_666_15sp"
-                android:text="运输时限" />
-
-            <EditText
-                android:inputType="number|phone"
-                android:id="@+id/transportation_time_et"
-                style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的运输时限" />
-            <TextView
-                android:layout_marginLeft="-15dp"
-                style="@style/w60dp_w_666_15sp"
-                android:text="天" />
             <Button
                 android:visibility="invisible"
                 style="@style/btn_blue__70dp_65_30dp"
@@ -102,7 +81,7 @@
                 android:inputType="number|phone"
                 android:id="@+id/volume_size_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的体积大小" />
+                android:hint="请输入体积大小" />
 
             <Button
                 android:visibility="invisible"

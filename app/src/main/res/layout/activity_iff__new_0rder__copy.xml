@@ -60,6 +60,25 @@
 
             <TextView
                 style="@style/w89dp_w_666_15sp"
+                android:text="包&#8201;&#8201;&#8201;装&#8201;&#8201;&#8201;种&#8201;&#8201;&#8201;类" />
+
+            <EditText
+                android:id="@+id/packaging_types_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入货物包装种类" />
+
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w89dp_w_666_15sp"
                 android:text="目&#8201;的&#8201;地&#8201;城&#8201;市" />
 
             <EditText
@@ -84,8 +103,31 @@
             <EditText
                 android:id="@+id/receiving_address_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的收货地址" />
+                android:hint="请输入收货地址" />
 
+            <Button
+                android:visibility="invisible"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w89dp_w_666_15sp"
+                android:text="运&#8201;&#8201;&#8201;输&#8201;&#8201;&#8201;时&#8201;&#8201;&#8201;限" />
+
+            <EditText
+                android:inputType="number|phone"
+                android:id="@+id/transportation_time_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入运输时长" />
+            <TextView
+                android:layout_marginLeft="-20dp"
+                style="@style/w60dp_w_666_15sp"
+                android:text="天" />
             <Button
                 android:visibility="invisible"
                 style="@style/btn_blue__70dp_65_30dp"

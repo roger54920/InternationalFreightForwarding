@@ -13,8 +13,8 @@
     <string name="input_freight">请输入货物运费</string>
     <string name="complete">完成</string>
     <string name="collect_send_information">收寄信息</string>
-    <string name="input_phone_number">请输入您的手机号码</string>
-    <string name="input_password">请输入您的密码</string>
+    <string name="input_phone_number">请输入手机号码</string>
+    <string name="input_password">请输入密码</string>
     <string name="login">登陆</string>
     <string name="close_the_order">关闭订单</string>
     <string name="question_list">提问列表</string>
@@ -37,7 +37,11 @@
     <string name="company_introduction">本公司可为货品提供更多优质服务，运输险，货品盗抢险，自燃险本公司都可直接自行购买，免去了顾客一切后顾之忧。</string>
     <string name="determine">确定</string>
     <string name="reply_problem">回复问题</string>
-    <string name="historical_order">历史订单</string>
     <string name="information_supplement">信息补录</string>
-    <string name="communication">交流</string>
+    <string name="communication">群聊</string>
+    <string name="history_order">历史订单</string>
+
+    <string name="take_picture">拍照</string>
+    <string name="album_selection">从相册选择</string>
+    <string name="cancel">取消</string>
 </resources>

@@ -71,6 +71,24 @@ public class AddOrderBean {
     private String totalNumber;
     private String selectionReceivingAddress;
     private String islnsurance;
+    private String importExportPower;//进出口权
+    private String orderPictureUrl;//订单图片路径
+
+    public String getOrderPictureUrl() {
+        return orderPictureUrl;
+    }
+
+    public void setOrderPictureUrl(String orderPictureUrl) {
+        this.orderPictureUrl = orderPictureUrl;
+    }
+
+    public String getImportExportPower() {
+        return importExportPower;
+    }
+
+    public void setImportExportPower(String importExportPower) {
+        this.importExportPower = importExportPower;
+    }
 
     public String getIslnsurance() {
         return islnsurance;

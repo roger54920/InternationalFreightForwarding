@@ -25,7 +25,7 @@ import butterknife.OnClick;
 /**
  * 首页
  */
-public class IFF_HomeActivity extends Activity {
+public class IFF_HomeActivity extends Activity{
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -41,8 +41,8 @@ public class IFF_HomeActivity extends Activity {
     RelativeLayout commentsRl;
     @InjectView(R.id.information_supplement_rl)
     RelativeLayout information_supplementRl;
-    @InjectView(R.id.historical_order_rl)
-    RelativeLayout historical_orderRl;
+    @InjectView(R.id.history_order_rl)
+    RelativeLayout history_orderRl;
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
 //    private StatisticalOrderNumPresenter statisticalOrderPresenter = new StatisticalOrderNumPresenter();
 
@@ -74,7 +74,7 @@ public class IFF_HomeActivity extends Activity {
 //        statisticalOrderPresenter.statisticalOrderNumResult("{\"quoteStatus\":\"10\"}", this, lazyLoadProgressDialog);
     }
 
-    @OnClick({R.id.copy_rl, R.id.comments_rl, R.id.information_supplement_rl, R.id.historical_order_rl, R.id.add_new_order_btn})
+    @OnClick({R.id.copy_rl, R.id.comments_rl, R.id.information_supplement_rl, R.id.history_order_rl, R.id.add_new_order_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.copy_rl:
@@ -86,8 +86,8 @@ public class IFF_HomeActivity extends Activity {
             case R.id.information_supplement_rl:
                 SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "information_supplement");
                 break;
-            case R.id.historical_order_rl:
-                SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "historical_order");
+            case R.id.history_order_rl:
+                SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "history_order");
                 break;
             case R.id.add_new_order_btn:
                 SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_New_0rderActivity.class, "add_new_order");

@@ -59,7 +59,7 @@
 
             <TextView
                 style="@style/w60dp_w_666_15sp"
-                android:text="运输方式" />
+                android:text="贸易方式" />
 
             <RadioGroup
                 android:id="@+id/type_of_shipping_rg"
@@ -214,7 +214,7 @@
             <EditText
                 android:id="@+id/forwarding_unit_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的发货单位" />
+                android:hint="请输入发货单位" />
 
             <Button
                 android:visibility="invisible"
@@ -234,7 +234,7 @@
             <EditText
                 android:id="@+id/delivery_address_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的提货地址" />
+                android:hint="请输入提货地址" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -254,7 +254,7 @@
             <EditText
                 android:id="@+id/port_of_export_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的出口口岸" />
+                android:hint="请输入出口口岸" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -274,7 +274,7 @@
                 android:id="@+id/export_date_et"
                 style="@style/mv_r75dp_l15dp_et"
                 android:enabled="false"
-                android:hint="请选择您的出口日期"
+                android:hint="请选择出口日期"
                 android:inputType="phone|number" />
 
             <Button
@@ -294,7 +294,7 @@
             <EditText
                 android:id="@+id/product_name_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入您的货物名称" />
+                android:hint="请输入货物名称（中文+英文）" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -334,7 +334,38 @@
 
             </RadioGroup>
         </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:layout_gravity="center_vertical"
+                android:text="进出口权" />
+
+            <RadioGroup
+                android:id="@+id/import_export_power_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/import_export_power_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="是" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="否" />
+
+            </RadioGroup>
+        </LinearLayout>
     </LinearLayout>
 
     <Button

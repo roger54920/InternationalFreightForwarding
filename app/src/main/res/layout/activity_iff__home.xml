@@ -92,7 +92,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/historical_order_rl"
+            android:id="@+id/history_order_rl"
             android:layout_width="170dp"
             android:layout_height="170dp"
             android:layout_alignParentRight="true"
@@ -100,15 +100,15 @@
             android:clickable="true">
 
             <ImageView
-                android:id="@+id/historical_order_img"
+                android:id="@+id/history_order_img"
                 style="@style/home_icon"
                 android:src="@drawable/historical_order" />
 
             <TextView
-                android:id="@+id/historical_order_tv"
+                android:id="@+id/history_order_tv"
                 style="@style/home_icon_text"
-                android:layout_below="@+id/historical_order_img"
-                android:text="@string/historical_order" />
+                android:layout_below="@+id/history_order_img"
+                android:text="@string/history_order" />
 
         </RelativeLayout>
 

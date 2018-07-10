@@ -107,7 +107,7 @@ public class IFF_Question_ListActivity extends Activity implements GetOrderMsgCo
         getOrderMsgCountPresenter.getOrderMsgCountResult("{\"msgType\":\"1\"}", this, lazyLoadProgressDialog);
     }
     /**
-     * 获取营销员订单交流信息列表接口
+     * 获取营销员订单群聊信息列表接口
      */
     private void communicationMethod() {
         new OkgoHttpResolve(this);

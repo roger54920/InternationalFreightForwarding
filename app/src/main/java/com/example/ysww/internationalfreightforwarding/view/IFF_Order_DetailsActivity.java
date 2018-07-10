@@ -88,7 +88,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
     ImageView titleCloseOrder;
     @InjectView(R.id.bottom_ll)
     LinearLayout bottomLl;
-    @InjectView(R.id.my_scroll_view)
+    @InjectView(R.id.history_scroll_view)
     MyScrollview myScrollView;
     @InjectView(R.id.supplier_quotation_btn)
     Button supplierQuotationBtn;

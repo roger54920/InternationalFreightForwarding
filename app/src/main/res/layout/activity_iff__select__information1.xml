@@ -18,25 +18,6 @@
 
             <TextView
                 style="@style/w78dp_w_666_15sp"
-                android:text="包&#8201;装&#8201;种&#8201;类" />
-
-            <EditText
-                android:id="@+id/packaging_types_et"
-                style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入货物包装种类" />
-
-            <Button
-                style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice"
-                android:visibility="invisible" />
-        </LinearLayout>
-
-        <include layout="@layout/iff_line_view_layout" />
-
-        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
-
-            <TextView
-                style="@style/w78dp_w_666_15sp"
                 android:text="合同协议号" />
 
             <EditText

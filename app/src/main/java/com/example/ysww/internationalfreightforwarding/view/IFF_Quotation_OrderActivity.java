@@ -77,8 +77,8 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
             iffTitleTv.setText(R.string.order_list);
         } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
             iffTitleTv.setText(R.string.information_supplement);
-        } else if (Constants.SOURCE_PAGE.equals("historical_order")) {
-            iffTitleTv.setText(R.string.historical_order);
+        } else if (Constants.SOURCE_PAGE.equals("history_order")) {
+            iffTitleTv.setText(R.string.history_order);
         }
 
         //添加头部
@@ -97,7 +97,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
     }
 
     /**
-     * 报价订单 + 信息补录 + 历史订单 订单列表
+     * 报价订单 + 信息补录 + 我的订单 订单列表
      */
     private void statisticalOrderListMethod() {
         //分别处理
@@ -108,7 +108,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
             statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=1,2,3,5", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
             statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=4", this, lazyLoadProgressDialog);
-        } else if (Constants.SOURCE_PAGE.equals("historical_order")) {
+        } else if (Constants.SOURCE_PAGE.equals("history_order")) {
             statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=6", this, lazyLoadProgressDialog);
         }
     }

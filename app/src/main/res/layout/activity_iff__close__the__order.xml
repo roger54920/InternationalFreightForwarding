@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.example.ysww.internationalfreightforwarding.custom.MyScrollview
-            android:id="@+id/my_scroll_view"
+            android:id="@+id/history_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/close_the_order_reply_problem_btn"

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,8 +49,6 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
     EditText valueOfGoodsEt;
     @InjectView(R.id.offer_et)
     EditText offerEt;
-    @InjectView(R.id.transportation_time_et)
-    EditText transportationTimeEt;
     @InjectView(R.id.volume_size_et)
     EditText volumeSizeEt;
     @InjectView(R.id.selection_receiving_address_et)
@@ -92,7 +89,6 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
         SystemUtils.getInstance(this).setPricePoint(valueOfGoodsEt);
         SystemUtils.getInstance(this).setPricePoint(offerEt);
-        transportationTimeEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         SystemUtils.getInstance(this).setPricePoint(volumeSizeEt);
     }
 
@@ -112,7 +108,6 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
                 if(!TextUtils.isEmpty(quote)){
                     addOrderBean.setQuote(Double.parseDouble(quote));
                 }
-                addOrderBean.setTransportationTime(transportationTimeEt.getText().toString());
                 addOrderBean.setVolumeSize(volumeSizeEt.getText().toString());
                 addOrderBean.setSelectionReceivingAddress(selectionReceivingAddressEt.getText().toString());
                 SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);

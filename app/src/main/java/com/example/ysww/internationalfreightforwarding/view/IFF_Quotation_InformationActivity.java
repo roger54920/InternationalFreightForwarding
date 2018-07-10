@@ -44,7 +44,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * 报价信息 交流
+ * 报价信息 群聊
  */
 public class IFF_Quotation_InformationActivity extends Activity implements TbordermsgSaveView, QueryMarketlMsgView, DeliverOrderView, GetChannelUerIdQuoteInfoView {
 

@@ -85,7 +85,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     TextView totalNumberTv;
     @InjectView(R.id.total_weight_kg_tv)
     TextView totalWeightKgTv;
-    @InjectView(R.id.my_scroll_view)
+    @InjectView(R.id.history_scroll_view)
     MyScrollview myScrollView;
     @InjectView(R.id.title_close_order)
     ImageView titleCloseOrder;

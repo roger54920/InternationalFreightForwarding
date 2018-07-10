@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +54,11 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
     EditText receivingAddressEt;
     @InjectView(R.id.next_step_btn)
     Button nextStepBtn;
-    private String transportToCountryRegion, zipCode, destinationCity, receivingAddress;
+    @InjectView(R.id.packaging_types_et)
+    EditText packagingTypesEt;
+    @InjectView(R.id.transportation_time_et)
+    EditText transportationTimeEt;
+    private String transportToCountryRegion, zipCode, destinationCity, receivingAddress,packagingTypes,transportationTime;
     private AddOrderBean addOrderBean;
     private GetAllCountryPresenter getAllCountryPresenter = new GetAllCountryPresenter();//获取国家
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
@@ -93,6 +98,39 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
         EventBus.getDefault().toString();
         iffTitleTv.setText(R.string.order_information);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
+        transportationTimeEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
+        transportationTimeEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                isEditText();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        packagingTypesEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                isEditText();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         transportToCountryRegionEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -184,6 +222,8 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
                 addOrderBean.setDestinationCity(destinationCity);
                 addOrderBean.setDeliveryAddress(receivingAddress);
                 EventBus.getDefault().postSticky(addOrderBean);
+                addOrderBean.setPackageType(packagingTypes);
+                addOrderBean.setTransportationTime(transportationTime);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_Clearing_InformationActivity.class);
                 break;
         }
@@ -194,7 +234,9 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
         zipCode = zipCodeEt.getText().toString();
         destinationCity = destinationCityEt.getText().toString();
         receivingAddress = receivingAddressEt.getText().toString();
-        if (!TextUtils.isEmpty(transportToCountryRegion) && !TextUtils.isEmpty(zipCode) && !TextUtils.isEmpty(destinationCity) && !TextUtils.isEmpty(receivingAddress)) {
+        packagingTypes = packagingTypesEt.getText().toString();
+        transportationTime = transportationTimeEt.getText().toString();
+        if (!TextUtils.isEmpty(transportationTime) && !TextUtils.isEmpty(packagingTypes) && !TextUtils.isEmpty(transportToCountryRegion) && !TextUtils.isEmpty(zipCode) && !TextUtils.isEmpty(destinationCity) && !TextUtils.isEmpty(receivingAddress)) {
             nextStepBtn.setEnabled(true);
         } else {
             nextStepBtn.setEnabled(false);

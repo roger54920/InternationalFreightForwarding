@@ -198,7 +198,7 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements Or
 
     @Override
     public void onDeliverOrderFinish(Object o) {
-        SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "historical_order");
+        SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "history_order");
     }
 
     @Override

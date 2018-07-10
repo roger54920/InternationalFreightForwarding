@@ -32,7 +32,7 @@ import butterknife.OnClick;
 /**
  * 登陆
  */
-public class IFF_LoginActivity extends Activity implements LoginView {
+public class IFF_LoginActivity extends Activity implements LoginView{
 
     @InjectView(R.id.phone_number_et)
     EditText phoneNumberEt;
@@ -156,7 +156,6 @@ public class IFF_LoginActivity extends Activity implements LoginView {
         SystemUtils.getInstance(this).noReferenceIntent(IFF_HomeActivity.class);
         finish();
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
