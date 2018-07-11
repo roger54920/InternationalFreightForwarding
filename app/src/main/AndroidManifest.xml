@@ -24,11 +24,10 @@
             android:name=".view.IFF_SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Appwelcome">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".view.IFF_LoginActivity"
@@ -68,13 +67,7 @@
         <activity
             android:name=".view.IFF_Clearing_InformationActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".view.IFF_Select_Information1Activity"
             android:screenOrientation="portrait"
@@ -98,15 +91,14 @@
             android:name=".view.IFF_Reply_ProblemActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.ysww.internationalfreightforwarding.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
+        <activity
+            android:name=".view.IFF_Upload_PictureActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".app.photo.ImagePagerActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+
     </application>
 
 </manifest>

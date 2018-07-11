@@ -46,4 +46,14 @@ dependencies {
     implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
     //时间选择器
     implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+
+
+    //图片选择器
+    compile 'com.jph.takephoto:takephoto_library:4.0.3'
+    //仿iOS的AlertViewController
+    implementation 'com.bigkoo:alertview:1.0.3'
+    //最新版本Glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //photoView 图片放大控件
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }
