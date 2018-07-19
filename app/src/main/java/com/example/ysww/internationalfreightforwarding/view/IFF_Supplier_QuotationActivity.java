@@ -111,6 +111,8 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
                 String brand = getIntent().getStringExtra("brand");
                 if (position+1==supplierQuotationList.size()) {
                     holder.setVisible(R.id.view, false);
+                }else{
+                    holder.setVisible(R.id.view, true);
                 }
                 if(position==0){
                     holder.setVisible(R.id.order_number_tv,true);

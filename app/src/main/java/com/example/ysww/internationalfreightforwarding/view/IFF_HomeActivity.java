@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ import butterknife.OnClick;
 /**
  * 首页
  */
-public class IFF_HomeActivity extends Activity{
+public class IFF_HomeActivity extends Activity {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -43,6 +44,8 @@ public class IFF_HomeActivity extends Activity{
     RelativeLayout information_supplementRl;
     @InjectView(R.id.history_order_rl)
     RelativeLayout history_orderRl;
+    @InjectView(R.id.add_new_order_btn)
+    ImageButton addNewOrderBtn;
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
 //    private StatisticalOrderNumPresenter statisticalOrderPresenter = new StatisticalOrderNumPresenter();
 
@@ -74,6 +77,12 @@ public class IFF_HomeActivity extends Activity{
 //        statisticalOrderPresenter.statisticalOrderNumResult("{\"quoteStatus\":\"10\"}", this, lazyLoadProgressDialog);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        addNewOrderBtn.setEnabled(true);
+    }
+
     @OnClick({R.id.copy_rl, R.id.comments_rl, R.id.information_supplement_rl, R.id.history_order_rl, R.id.add_new_order_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -91,6 +100,7 @@ public class IFF_HomeActivity extends Activity{
                 break;
             case R.id.add_new_order_btn:
                 SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_New_0rderActivity.class, "add_new_order");
+                addNewOrderBtn.setEnabled(false);
                 break;
         }
     }

@@ -105,11 +105,11 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         new OkgoHttpResolve(this);
         statisticalOrderListPresenter.attach(this);
         if (Constants.SOURCE_PAGE.equals("copy")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=1,2,3,5", this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=1,2,3", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=4", this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=4", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("history_order")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit+"&orderStatus=6", this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=5,6", this, lazyLoadProgressDialog);
         }
     }
 
@@ -123,13 +123,17 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                 holder.setText(R.id.order_state, dataBean.getOrderStatusName());
                 if (position + 1 == quotationOrderList.size()) {
                     holder.setVisible(R.id.view, false);
+                }else{
+                    holder.setVisible(R.id.view, true);
                 }
                 holder.setOnClickListener(R.id.supplier_cl, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
-                        if (orderStatus==4) {
+                        if (orderStatus == 4) {
                             SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "quotation_information", dataBean.getorderId(), "");
+                        } else if (orderStatus == 5) {
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Details_Order_TransportationActivity.class, orderStatus, dataBean.getorderId(), "");
                         } else {
                             SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Order_DetailsActivity.class, orderStatus, dataBean.getorderId(), dataBean.getChannelUserId());
                         }

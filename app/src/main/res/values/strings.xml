@@ -47,4 +47,5 @@
     <string name="upload_picture">上传图片</string>
 
     <string name="viewpager_indicator">指示器</string>
+    <string name="details_order_transportation">订单运输详情</string>
 </resources>

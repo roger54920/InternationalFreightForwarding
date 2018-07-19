@@ -68,7 +68,6 @@ public class IFF_Select_Information1Activity extends Activity {
         ButterKnife.inject(this);
         SystemUtils.getInstance(this).mustCallActivity(this);
         EventBus.getDefault().register(this);
-        initData();
         initViews();
     }
 
@@ -80,7 +79,7 @@ public class IFF_Select_Information1Activity extends Activity {
     private void initViews() {
         iffTitleTv.setText(R.string.select_information1);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
-
+        addAttachmentsList = new ArrayList<>();
         addAttachmentsRv.setLayoutManager(new LinearLayoutManager(this));
         if (addAttachmentsList != null) {
             addAttachmentsAdapter = new CommonAdapter<String>(this, R.layout.item_add_attachments, addAttachmentsList) {
@@ -108,17 +107,6 @@ public class IFF_Select_Information1Activity extends Activity {
         }
 
     }
-
-    private void initData() {
-        if (addAttachmentsList == null) {
-            addAttachmentsList = new ArrayList<>();
-//            for (int i = 0; i < 3; i++) {
-//                addAttachmentsList.add("xxxx");
-//            }
-        }
-
-    }
-
     @OnClick({R.id.title_return_img, R.id.next_step_btn, R.id.add_attachments_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {

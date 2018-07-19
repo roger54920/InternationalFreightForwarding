@@ -24,10 +24,11 @@
             android:name=".view.IFF_SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Appwelcome">
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.IFF_LoginActivity"
@@ -93,12 +94,13 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".view.IFF_Upload_PictureActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".app.photo.ImagePagerActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-
-
+        <activity
+            android:name=".view.IFF_Details_Order_TransportationActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

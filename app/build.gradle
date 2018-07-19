@@ -47,7 +47,6 @@ dependencies {
     //时间选择器
     implementation 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
 
-
     //图片选择器
     compile 'com.jph.takephoto:takephoto_library:4.0.3'
     //仿iOS的AlertViewController

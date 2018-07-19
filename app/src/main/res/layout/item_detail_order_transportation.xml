@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp">
+    <TextView
+        android:id="@+id/dot_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2018-04-26  20:25:35"
+        android:textColor="@color/iff_999999"
+        android:textSize="12sp" />
+    <TextView
+        android:layout_marginBottom="9dp"
+        android:layout_below="@+id/dot_datetime"
+        android:id="@+id/dot_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="内容"
+        android:textColor="@color/iff_999999"
+        android:textSize="12sp" />
+    <View
+        android:id="@+id/view"
+        android:layout_below="@+id/dot_context"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/iff_C3C3C3"/>
+    <!--<TextView-->
+        <!--android:layout_toRightOf="@+id/dot_processing_site"-->
+        <!--android:layout_below="@+id/dot_datetime"-->
+        <!--android:id="@+id/dot_processing_site_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="【中国邮政速递物流股份有限公司北京市邮件处理中心】"-->
+        <!--android:textColor="@color/iff_2A2A2A"-->
+        <!--android:textSize="12sp" />-->
+
+    <!--<TextView-->
+        <!--android:layout_below="@+id/dot_processing_site"-->
+        <!--android:id="@+id/dot_handling_action"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="处理动作"-->
+        <!--android:textColor="@color/iff_999999"-->
+        <!--android:textSize="12sp" />-->
+    <!--<TextView-->
+        <!--android:layout_toRightOf="@+id/dot_processing_site"-->
+        <!--android:layout_below="@+id/dot_processing_site_tv"-->
+        <!--android:id="@+id/dot_handling_action_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="【国际进口邮件封发】"-->
+        <!--android:textColor="@color/iff_2A2A2A"-->
+        <!--android:textSize="12sp" />-->
+    <!--<TextView-->
+        <!--android:layout_toRightOf="@+id/dot_handling_action_tv"-->
+        <!--android:layout_below="@+id/dot_processing_site"-->
+        <!--android:id="@+id/dot_processing_instructions"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="处理说明"-->
+        <!--android:textColor="@color/iff_999999"-->
+        <!--android:textSize="12sp" />-->
+    <!--<TextView-->
+        <!--android:layout_toRightOf="@+id/dot_processing_instructions"-->
+        <!--android:layout_below="@+id/dot_processing_site_tv"-->
+        <!--android:id="@+id/dot_processing_instructions_tv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="【发往留存（待检），总包号0360】"-->
+        <!--android:textColor="@color/iff_2A2A2A"-->
+        <!--android:textSize="12sp" />-->
+</RelativeLayout>

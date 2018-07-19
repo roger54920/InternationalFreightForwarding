@@ -138,6 +138,7 @@ public class OkgoHttpResolve {
                 .params("file", new File(srcPath))   // 可以添加文件上传
                 .cacheKey("file_img" + category)
                 .headers("token", tokenId)
+                .upString(category, HttpParams.MEDIA_TYPE_JSON)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(com.lzy.okgo.model.Response<String> response) {

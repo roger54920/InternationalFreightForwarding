@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,9 @@ import com.example.ysww.internationalfreightforwarding.R;
 import com.example.ysww.internationalfreightforwarding.app.photo.ImagePagerActivity;
 import com.example.ysww.internationalfreightforwarding.app.photo.PhotoAdapter;
 import com.example.ysww.internationalfreightforwarding.model.AddOrderBean;
+import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
+import com.example.ysww.internationalfreightforwarding.net.view.FlieUploadView;
+import com.example.ysww.internationalfreightforwarding.presenter.FlieUploadPresenter;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
 import com.google.gson.Gson;
@@ -32,6 +36,7 @@ import com.jph.takephoto.model.TakePhotoOptions;
 import com.jph.takephoto.permission.InvokeListener;
 import com.jph.takephoto.permission.PermissionManager;
 import com.jph.takephoto.permission.TakePhotoInvocationHandler;
+import com.lzy.okgo.OkGo;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -48,7 +53,7 @@ import butterknife.OnClick;
 /**
  * 上传图片
  */
-public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.TakeResultListener, InvokeListener {
+public class IFF_Upload_PictureActivity extends Activity implements FlieUploadView,TakePhoto.TakeResultListener, InvokeListener {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -58,13 +63,16 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
     RecyclerView recShow;
     @InjectView(R.id.next_step_btn)
     Button nextStepBtn;
-    private List<String> photoNameList;//保存相片名称
+    //保存相片名称和路径
+    private List<String> flieUploadName;
+    private List<String> flieUploadUrl;
     private AddOrderBean addOrderBean = new AddOrderBean();
 
     private PhotoAdapter photoAdapter;
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
-    private int stateEt = 2;
+
+    private FlieUploadPresenter flieUploadPresenter = new FlieUploadPresenter();
 
 
     @Override
@@ -86,7 +94,8 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
     private void initViews() {
         iffTitleTv.setText(R.string.upload_picture);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
-        photoNameList = new ArrayList<>();
+        flieUploadName = new ArrayList<>();
+        flieUploadUrl = new ArrayList<>();
 
     }
 
@@ -276,7 +285,8 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
             if (images.get(i).getCompressPath() != null) {
                 selectMedia.add(images.get(i));
                 updateMedia.add(images.get(i));
-                photoNameList.add(getPicNameFromPath(images.get(i).getOriginalPath()));
+                flieUploadName.add(getPicNameFromPath(images.get(i).getOriginalPath()));
+                flieUploadUrl.add(images.get(i).getOriginalPath());
             }
         }
         if (selectMedia != null) {
@@ -312,10 +322,34 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
                 finish();
                 break;
             case R.id.next_step_btn:
-                addOrderBean.setOrderPictureUrl(new Gson().toJson(photoNameList));
-                EventBus.getDefault().postSticky(addOrderBean);
-                SystemUtils.getInstance(this).noReferenceIntent(IFF_Select_Information1Activity.class);
+                Log.e("====", "flieUploadName: " +new Gson().toJson(flieUploadName));
+                Log.e("====", "flieUploadUrl: " +new Gson().toJson(flieUploadUrl));
+                flieUploadMethod();
+//                addOrderBean.setOrderPictureName(new Gson().toJson(flieUploadName));
+//                addOrderBean.setOrderPictureUrl(new Gson().toJson(flieUploadUrl));
+//                EventBus.getDefault().postSticky(addOrderBean);
+//                SystemUtils.getInstance(this).noReferenceIntent(IFF_Select_Information1Activity.class);
                 break;
         }
+    }
+    /**
+     * 上传图片
+     */
+    private void flieUploadMethod() {
+        new OkgoHttpResolve(this);
+        flieUploadPresenter.attach(this);
+        flieUploadPresenter.flieUploadResult(new Gson().toJson(flieUploadName),new Gson().toJson(flieUploadUrl),this,null);
+    }
+    @Override
+    public void onFlieUploadFinish(Object o) {
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //根据 Tag 取消请求
+        OkGo.getInstance().cancelTag(this);
+        flieUploadPresenter.dettach();
+
     }
 }
