@@ -19,8 +19,8 @@ public class FlieUploadPresenter implements BasePresenter<FlieUploadView> {
     private FlieUploadView view;
 
     public void flieUploadResult(String category, String srcPath, final Activity activity, final LazyLoadProgressDialog lazyLoadProgressDialog) {
-        String tokenId=activity.getSharedPreferences("login", Context.MODE_PRIVATE).getString("tokenId","null");
-        OkgoHttpResolve.postJsonUpLoadResult(Constants.LINK_HEAD + "mananger/flie/upload" ,category,srcPath,tokenId,FlieUploadBean.class, new OkgoHttpResolve.HttpCallBack() {
+        String tokenId = activity.getSharedPreferences("login", Context.MODE_PRIVATE).getString("tokenId", "null");
+        OkgoHttpResolve.postJsonUpLoadResult(Constants.LINK_HEAD + "mananger/flie/upload", category, srcPath, tokenId, FlieUploadBean.class, new OkgoHttpResolve.HttpCallBack() {
             @Override
             public void finish(Object result) {
                 FlieUploadBean flieUploadBean = (FlieUploadBean) result;

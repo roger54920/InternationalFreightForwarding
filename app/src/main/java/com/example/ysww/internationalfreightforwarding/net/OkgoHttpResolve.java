@@ -88,6 +88,7 @@ public class OkgoHttpResolve {
                 });
         return null;
     }
+
     /**
      * post 字符串提交
      *
@@ -120,6 +121,7 @@ public class OkgoHttpResolve {
                 });
         return null;
     }
+
     /**
      * 上传文件
      *
@@ -131,7 +133,8 @@ public class OkgoHttpResolve {
      * @param <T>
      * @return
      */
-    public static <T> T postJsonUpLoadResult(String url, String tokenId, String category, String srcPath, final Class<T> clazz, final HttpCallBack callBack) {
+    public static <T> T postJsonUpLoadResult(String url, String category, String srcPath, String tokenId, final Class<T> clazz, final HttpCallBack callBack) {
+        Log.e(TAG, "postJsonUpLoadResult: "+srcPath);
         OkGo.<String>post(url)     // 请求方式和请求url
                 .tag(context)                       // 请求的 tag, 主要用于取消对应的请求
                 .params("category", category)        // 这里可以上传参数

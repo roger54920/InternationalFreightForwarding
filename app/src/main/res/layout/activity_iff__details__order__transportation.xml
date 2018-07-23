@@ -10,7 +10,6 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/details_order_img"
             android:id="@+id/details_order_tv"
-            android:text="努力前进中~~~"
             android:textSize="18sp"
             android:textColor="@color/iff_F08430"
             android:layout_width="wrap_content"

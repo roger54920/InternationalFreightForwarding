@@ -132,7 +132,7 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                         int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
                         if (orderStatus == 4) {
                             SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "quotation_information", dataBean.getorderId(), "");
-                        } else if (orderStatus == 5) {
+                        } else if (orderStatus == 5 || orderStatus == 6) {
                             SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Details_Order_TransportationActivity.class, orderStatus, dataBean.getorderId(), "");
                         } else {
                             SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Order_DetailsActivity.class, orderStatus, dataBean.getorderId(), dataBean.getChannelUserId());

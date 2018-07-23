@@ -57,6 +57,14 @@ public class IFF_Details_Order_TransportationActivity extends Activity implement
     }
 
     private void initViews() {
+        int orderStauts = getIntent().getIntExtra("orderStauts", 0);
+        if(orderStauts==5){
+            detailsOrderTv.setText("努力前进中~~~");
+            detailsOrderImg.setImageResource(R.drawable.truck_icon);
+        }else if(orderStauts==6){
+            detailsOrderTv.setText("运输完成");
+            detailsOrderImg.setImageResource(R.drawable.sign_in_icon);
+        }
         SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
         iffTitleTv.setText(R.string.details_order_transportation);
         detailsOrderList = new ArrayList<>();
@@ -82,11 +90,10 @@ public class IFF_Details_Order_TransportationActivity extends Activity implement
                     holder.setVisible(R.id.view, true);
                 }
                 TextView dotContext=holder.getView(R.id.dot_context);
-                String str="【中国邮政速递物流股份有限公司北京市邮件处理中心】";
-                dotContext.setText(Html.fromHtml("<font color=#999999>处理站着</font>"+"<font color=#2A2A2A>\""+str+"\"</font>" +
-                        "<font color=#999999>处理动作</font>"+"<font color=#2A2A2A>【国际进口邮件封发】</font>" +
-                        "<font color=#999999>处理说明</font>"+"<font color=#2A2A2A>【发往留存（待检），总包号0360】</font>" +
-                        "<font color=#999999>备注</font>"+"<font color=#2A2A2A>【操作员：京速-W董建明】</font>"));
+                dotContext.setText(Html.fromHtml("<font color=#999999>处理站着</font>"+"<font color=#2A2A2A>【"+dataBean.getFlowStation()+"】</font>" +
+                        "<font color=#999999>处理动作</font>"+"<font color=#2A2A2A>【" + dataBean.getFlowPlay() + "】</font>" +
+                        "<font color=#999999>处理说明</font>"+"<font color=#2A2A2A>【" + dataBean.getFlowExplain() + "】</font>" +
+                        "<font color=#999999>备注</font>"+"<font color=#2A2A2A>【" + dataBean.getFlowRemark() + "】</font>"));
             }
         };
         detailsOrderRv.setAdapter(detailsOrderAdapter);

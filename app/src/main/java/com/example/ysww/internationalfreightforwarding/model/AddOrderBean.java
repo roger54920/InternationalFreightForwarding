@@ -72,23 +72,47 @@ public class AddOrderBean {
     private String selectionReceivingAddress;
     private String islnsurance;
     private String importExportPower;//进出口权
-    private String orderPictureUrl;//订单图片路径
-    private String orderPictureName;//订单图片名称
+    private List<TbOrderFileEntity> fileList;//上传附件
 
-    public String getOrderPictureName() {
-        return orderPictureName;
+    public static class TbOrderFileEntity{
+        //图片上传名称
+        private String name;
+        //图片url
+        private String url;
+        //附件
+        private String billsUrl;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public String getBillsUrl() {
+            return billsUrl;
+        }
+
+        public void setBillsUrl(String billsUrl) {
+            this.billsUrl = billsUrl;
+        }
     }
 
-    public void setOrderPictureName(String orderPictureName) {
-        this.orderPictureName = orderPictureName;
+    public List<TbOrderFileEntity> getFileList() {
+        return fileList;
     }
 
-    public String getOrderPictureUrl() {
-        return orderPictureUrl;
-    }
-
-    public void setOrderPictureUrl(String orderPictureUrl) {
-        this.orderPictureUrl = orderPictureUrl;
+    public void setFileList(List<TbOrderFileEntity> fileList) {
+        this.fileList = fileList;
     }
 
     public String getImportExportPower() {
