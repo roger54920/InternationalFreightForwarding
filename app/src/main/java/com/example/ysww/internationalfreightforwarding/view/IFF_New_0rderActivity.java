@@ -117,7 +117,7 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
         insuranceRb1.setChecked(true);
         addOrderBean.setIslnsurance("1");
         importExportPowerRb1.setChecked(true);
-        addOrderBean.setImportExportPower("1");
+        addOrderBean.setExportPower("1");
 
         forwardingUnitEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -253,9 +253,9 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
                 RadioButton rbId = (RadioButton) findViewById(importExportPowerRg.getCheckedRadioButtonId());
                 String importExportPower = rbId.getText().toString();
                 if (importExportPower.equals("是")) {
-                    addOrderBean.setImportExportPower("1");
+                    addOrderBean.setExportPower("1");
                 } else {
-                    addOrderBean.setImportExportPower("0");
+                    addOrderBean.setExportPower("0");
                 }
             }
         });

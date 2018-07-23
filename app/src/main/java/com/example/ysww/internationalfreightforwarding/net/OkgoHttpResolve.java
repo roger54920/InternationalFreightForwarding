@@ -5,8 +5,10 @@ import android.util.Log;
 
 import com.example.ysww.internationalfreightforwarding.utils.GsonUtils;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.HttpParams;
+import com.lzy.okgo.model.Response;
 
 import java.io.File;
 
@@ -160,7 +162,38 @@ public class OkgoHttpResolve {
                 });
         return null;
     }
-
+    /**
+     * 上传文件
+     *
+     * @param url
+     * @param category
+     * @param srcPath
+     * @param clazz
+     * @param callBack
+     * @param <T>
+     * @return
+     */
+    public static <T> T postFileUpLoadResult(String url, String category, String srcPath, String tokenId, final Class<T> clazz, final HttpCallBack callBack) {
+        Log.e(TAG, "postJsonUpLoadResult: "+srcPath);
+        OkGo.<File>post(url)     // 请求方式和请求url
+                .tag(context)                       // 请求的 tag, 主要用于取消对应的请求
+                .params("category", category)        // 这里可以上传参数
+                .params("file", new File(srcPath))   // 可以添加文件上传
+                .cacheKey("file_img" + category)
+                .headers("token", tokenId)
+                .upString(category, HttpParams.MEDIA_TYPE_JSON)
+                .execute(new FileCallback() {
+                    @Override
+                    public void onSuccess(Response<File> response) {
+                        //结果
+                        T t = GsonUtils.getGson(String.valueOf(response.body()), clazz);
+                        if (callBack != null) {
+                            callBack.finish(t);
+                        }
+                    }
+                });
+        return null;
+    }
 
     public interface HttpCallBack<T> {
         <T> void finish(T result);

@@ -16,6 +16,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,8 +58,8 @@ public class IFF_Select_Information1Activity extends Activity {
     @InjectView(R.id.add_attachments_rv)
     RecyclerView addAttachmentsRv;
 
-    private CommonAdapter<String> addAttachmentsAdapter;
-    private List<String> addAttachmentsList;
+    private CommonAdapter<AddOrderBean.TbOrderFileEntity> addAttachmentsAdapter;
+    private List<AddOrderBean.TbOrderFileEntity> addAttachmentsList;
     private AddOrderBean addOrderBean;
 
     @Override
@@ -82,16 +83,16 @@ public class IFF_Select_Information1Activity extends Activity {
         addAttachmentsList = new ArrayList<>();
         addAttachmentsRv.setLayoutManager(new LinearLayoutManager(this));
         if (addAttachmentsList != null) {
-            addAttachmentsAdapter = new CommonAdapter<String>(this, R.layout.item_add_attachments, addAttachmentsList) {
+            addAttachmentsAdapter = new CommonAdapter<AddOrderBean.TbOrderFileEntity>(this, R.layout.item_add_attachments, addAttachmentsList) {
                 @Override
-                protected void convert(ViewHolder holder, String s, final int position) {
+                protected void convert(ViewHolder holder, AddOrderBean.TbOrderFileEntity tbOrderFileEntity, final int position) {
                     if (addAttachmentsList.size() == position + 1) {
                         holder.setVisible(R.id.view, false);
                     } else {
                         holder.setVisible(R.id.view, true);
                     }
-                    addOrderBean.setBillsUrl(addAttachmentsList.get(0));
-                    holder.setText(R.id.attachments_name, s + "");
+                    addOrderBean.setFileList(addAttachmentsList);
+                    holder.setText(R.id.attachments_name, tbOrderFileEntity.getBillsName() + "");
                     holder.setOnClickListener(R.id.attachments_close, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -121,9 +122,12 @@ public class IFF_Select_Information1Activity extends Activity {
                 break;
             case R.id.next_step_btn:
                 addOrderBean.setContractNo(contractAgreementNumberEt.getText().toString());
+                for (int i = 0; i <addAttachmentsList.size() ; i++) {
+                    Log.e("===", "onViewClicked: "+addAttachmentsList.get(i).getBillsUrl() +"  name="+addAttachmentsList.get(i).getBillsName());
+
+                }
                 EventBus.getDefault().postSticky(addOrderBean);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_Select_Information2Activity.class);
-
                 break;
         }
     }
@@ -136,8 +140,10 @@ public class IFF_Select_Information1Activity extends Activity {
             String path = getPath(this, uri);
             if (!TextUtils.isEmpty(path)) {
                 File file = new File(path);
-                addOrderBean.setBillsUrl(file.getName());
-                addAttachmentsList.add(file.getName());
+                AddOrderBean.TbOrderFileEntity tbOrderFileEntity = new AddOrderBean.TbOrderFileEntity();
+                tbOrderFileEntity.setBillsUrl(file.getPath());
+                tbOrderFileEntity.setBillsName((file.getName()));
+                addAttachmentsList.add(tbOrderFileEntity);
                 addAttachmentsAdapter.notifyDataSetChanged();
             } else {
                 ToastStopUtils.toastShow(this, "未找此文件！");

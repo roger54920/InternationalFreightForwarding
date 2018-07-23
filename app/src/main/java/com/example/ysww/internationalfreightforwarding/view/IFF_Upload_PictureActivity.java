@@ -17,14 +17,9 @@ import com.bigkoo.alertview.OnItemClickListener;
 import com.example.ysww.internationalfreightforwarding.R;
 import com.example.ysww.internationalfreightforwarding.app.photo.ImagePagerActivity;
 import com.example.ysww.internationalfreightforwarding.app.photo.PhotoAdapter;
-import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.model.AddOrderBean;
-import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
-import com.example.ysww.internationalfreightforwarding.net.view.FlieUploadView;
-import com.example.ysww.internationalfreightforwarding.presenter.FlieUploadPresenter;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
-import com.google.gson.Gson;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
 import com.jph.takephoto.compress.CompressConfig;
@@ -36,7 +31,6 @@ import com.jph.takephoto.model.TakePhotoOptions;
 import com.jph.takephoto.permission.InvokeListener;
 import com.jph.takephoto.permission.PermissionManager;
 import com.jph.takephoto.permission.TakePhotoInvocationHandler;
-import com.lzy.okgo.OkGo;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -53,7 +47,7 @@ import butterknife.OnClick;
 /**
  * 上传图片
  */
-public class IFF_Upload_PictureActivity extends Activity implements FlieUploadView,TakePhoto.TakeResultListener, InvokeListener {
+public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.TakeResultListener, InvokeListener {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -63,17 +57,14 @@ public class IFF_Upload_PictureActivity extends Activity implements FlieUploadVi
     RecyclerView recShow;
     @InjectView(R.id.next_step_btn)
     Button nextStepBtn;
-    //保存相片名称和路径
-    private List<String> flieUploadName;
-    private List<String> flieUploadUrl;
     private AddOrderBean addOrderBean = new AddOrderBean();
+    //保存相片名称和路径
+    private List<AddOrderBean.TbOrderFileEntity> tbOrderFileEntityList;
 
     private PhotoAdapter photoAdapter;
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
 
-    private FlieUploadPresenter flieUploadPresenter = new FlieUploadPresenter();
-    private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
 
 
     @Override
@@ -83,7 +74,6 @@ public class IFF_Upload_PictureActivity extends Activity implements FlieUploadVi
         ButterKnife.inject(this);
         SystemUtils.getInstance(this).mustCallActivity(this);
         EventBus.getDefault().register(this);
-        lazyLoadProgressDialog = lazyLoadProgressDialog.createDialog(this);
         initViews();
         initData();
     }
@@ -96,8 +86,7 @@ public class IFF_Upload_PictureActivity extends Activity implements FlieUploadVi
     private void initViews() {
         iffTitleTv.setText(R.string.upload_picture);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
-        flieUploadName = new ArrayList<>();
-        flieUploadUrl = new ArrayList<>();
+        tbOrderFileEntityList = new ArrayList<>();
 
     }
 
@@ -287,8 +276,10 @@ public class IFF_Upload_PictureActivity extends Activity implements FlieUploadVi
             if (images.get(i).getCompressPath() != null) {
                 selectMedia.add(images.get(i));
                 updateMedia.add(images.get(i));
-                flieUploadName.add(getPicNameFromPath(images.get(i).getOriginalPath()));
-                flieUploadUrl.add(images.get(i).getOriginalPath());
+                AddOrderBean.TbOrderFileEntity tbOrderFileEntity = new AddOrderBean.TbOrderFileEntity();
+                tbOrderFileEntity.setName(getPicNameFromPath(images.get(i).getOriginalPath()));
+                tbOrderFileEntity.setUrl(images.get(i).getOriginalPath());
+                tbOrderFileEntityList.add(tbOrderFileEntity);
             }
         }
         if (selectMedia != null) {
@@ -324,30 +315,11 @@ public class IFF_Upload_PictureActivity extends Activity implements FlieUploadVi
                 finish();
                 break;
             case R.id.next_step_btn:
-                SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
-                flieUploadMethod();
+                addOrderBean.setFileList(tbOrderFileEntityList);
                 EventBus.getDefault().postSticky(addOrderBean);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_Select_Information1Activity.class);
                 break;
         }
     }
-    /**
-     * 上传图片
-     */
-    private void flieUploadMethod() {
-        new OkgoHttpResolve(this);
-        flieUploadPresenter.attach(this);
-        flieUploadPresenter.flieUploadResult(new Gson().toJson(flieUploadName),new Gson().toJson(flieUploadUrl),this,null);
-    }
 
-    @Override
-    public void onFlieUploadFinish(Object o) {
-
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        OkGo.getInstance().cancelTag(this);
-        flieUploadPresenter.dettach();
-    }
 }

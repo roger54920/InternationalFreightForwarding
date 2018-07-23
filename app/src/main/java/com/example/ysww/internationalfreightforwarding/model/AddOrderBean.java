@@ -63,7 +63,6 @@ public class AddOrderBean {
     private String size;
     private String packageType;
     private String contractNo;
-    private String billsUrl;
     private String manufacturer;
     private String licenseKey;
     private String approvalNumber;
@@ -71,7 +70,7 @@ public class AddOrderBean {
     private String totalNumber;
     private String selectionReceivingAddress;
     private String islnsurance;
-    private String importExportPower;//进出口权
+    private String exportPower;//进出口权
     private List<TbOrderFileEntity> fileList;//上传附件
 
     public static class TbOrderFileEntity{
@@ -79,8 +78,10 @@ public class AddOrderBean {
         private String name;
         //图片url
         private String url;
-        //附件
+        //附件上传url
         private String billsUrl;
+        //附件上传名称
+        private String billsName;
 
         public String getName() {
             return name;
@@ -105,6 +106,22 @@ public class AddOrderBean {
         public void setBillsUrl(String billsUrl) {
             this.billsUrl = billsUrl;
         }
+
+        public String getBillsName() {
+            return billsName;
+        }
+
+        public void setBillsName(String billsName) {
+            this.billsName = billsName;
+        }
+    }
+
+    public String getExportPower() {
+        return exportPower;
+    }
+
+    public void setExportPower(String exportPower) {
+        this.exportPower = exportPower;
     }
 
     public List<TbOrderFileEntity> getFileList() {
@@ -113,14 +130,6 @@ public class AddOrderBean {
 
     public void setFileList(List<TbOrderFileEntity> fileList) {
         this.fileList = fileList;
-    }
-
-    public String getImportExportPower() {
-        return importExportPower;
-    }
-
-    public void setImportExportPower(String importExportPower) {
-        this.importExportPower = importExportPower;
     }
 
     public String getIslnsurance() {
@@ -201,14 +210,6 @@ public class AddOrderBean {
 
     public void setContractNo(String contractNo) {
         this.contractNo = contractNo;
-    }
-
-    public String getBillsUrl() {
-        return billsUrl;
-    }
-
-    public void setBillsUrl(String billsUrl) {
-        this.billsUrl = billsUrl;
     }
 
     public String getTransType() {
