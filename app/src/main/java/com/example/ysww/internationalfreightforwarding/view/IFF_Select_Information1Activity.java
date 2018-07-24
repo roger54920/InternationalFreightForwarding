@@ -16,7 +16,6 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +26,7 @@ import com.example.ysww.internationalfreightforwarding.model.AddOrderBean;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
 import com.example.ysww.internationalfreightforwarding.utils.ToastStopUtils;
+import com.google.gson.Gson;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -58,9 +58,9 @@ public class IFF_Select_Information1Activity extends Activity {
     @InjectView(R.id.add_attachments_rv)
     RecyclerView addAttachmentsRv;
 
-    private CommonAdapter<AddOrderBean.TbOrderFileEntity> addAttachmentsAdapter;
-    private List<AddOrderBean.TbOrderFileEntity> addAttachmentsList;
+    private CommonAdapter<String> addAttachmentsAdapter;
     private AddOrderBean addOrderBean;
+    private List<String> fileUrls,fileNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,23 +80,30 @@ public class IFF_Select_Information1Activity extends Activity {
     private void initViews() {
         iffTitleTv.setText(R.string.select_information1);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
-        addAttachmentsList = new ArrayList<>();
+        fileUrls = new ArrayList<>();
+        fileNames = new ArrayList<>();
+
+    }
+
+    private void initAdapter() {
         addAttachmentsRv.setLayoutManager(new LinearLayoutManager(this));
-        if (addAttachmentsList != null) {
-            addAttachmentsAdapter = new CommonAdapter<AddOrderBean.TbOrderFileEntity>(this, R.layout.item_add_attachments, addAttachmentsList) {
+        if (fileNames != null && fileNames.size() > 0) {
+            addAttachmentsAdapter = new CommonAdapter<String>(this, R.layout.item_add_attachments, fileNames) {
                 @Override
-                protected void convert(ViewHolder holder, AddOrderBean.TbOrderFileEntity tbOrderFileEntity, final int position) {
-                    if (addAttachmentsList.size() == position + 1) {
+                protected void convert(ViewHolder holder, String fileName, final int position) {
+                    if (fileNames.size() == position + 1) {
                         holder.setVisible(R.id.view, false);
                     } else {
                         holder.setVisible(R.id.view, true);
                     }
-                    addOrderBean.setFileList(addAttachmentsList);
-                    holder.setText(R.id.attachments_name, tbOrderFileEntity.getBillsName() + "");
+                    //有问题
+//                    tbOrderFileEntityList.addAll(addAttachmentsList);
+                    holder.setText(R.id.attachments_name, fileName);
                     holder.setOnClickListener(R.id.attachments_close, new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            addAttachmentsList.remove(addAttachmentsList.get(position));
+                            fileNames.remove(position);
+                            fileUrls.remove(position);
                             notifyDataSetChanged();
                         }
                     });
@@ -106,8 +113,8 @@ public class IFF_Select_Information1Activity extends Activity {
         } else {
             ToastStopUtils.toastShow(this, "暂无数据");
         }
-
     }
+
     @OnClick({R.id.title_return_img, R.id.next_step_btn, R.id.add_attachments_btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -115,17 +122,18 @@ public class IFF_Select_Information1Activity extends Activity {
                 finish();
                 break;
             case R.id.add_attachments_btn:
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("*/*");//无类型限制
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                startActivityForResult(intent, 1);
+                if (fileNames.size() < 9) {
+                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType("*/*");//无类型限制
+                    intent.addCategory(Intent.CATEGORY_OPENABLE);
+                    startActivityForResult(intent, 1);
+                } else {
+                    ToastStopUtils.toastShow(this, "文件总数量不能大于9");
+                }
                 break;
             case R.id.next_step_btn:
+                addOrderBean.setFileEnclosure(new Gson().toJson(fileUrls));
                 addOrderBean.setContractNo(contractAgreementNumberEt.getText().toString());
-                for (int i = 0; i <addAttachmentsList.size() ; i++) {
-                    Log.e("===", "onViewClicked: "+addAttachmentsList.get(i).getBillsUrl() +"  name="+addAttachmentsList.get(i).getBillsName());
-
-                }
                 EventBus.getDefault().postSticky(addOrderBean);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_Select_Information2Activity.class);
                 break;
@@ -140,16 +148,22 @@ public class IFF_Select_Information1Activity extends Activity {
             String path = getPath(this, uri);
             if (!TextUtils.isEmpty(path)) {
                 File file = new File(path);
-                AddOrderBean.TbOrderFileEntity tbOrderFileEntity = new AddOrderBean.TbOrderFileEntity();
-                tbOrderFileEntity.setBillsUrl(file.getPath());
-                tbOrderFileEntity.setBillsName((file.getName()));
-                addAttachmentsList.add(tbOrderFileEntity);
-                addAttachmentsAdapter.notifyDataSetChanged();
+                fileNames.add(file.getName());
+                fileUrls.add(file.getPath());
+                for (int i = 0; i < fileNames.size(); i++)  //外循环是循环的次数
+                {
+                    for (int j = fileNames.size() - 1; j > i; j--)  //内循环是 外循环一次比较的次数
+                    {
+                        if (fileNames.get(i).equals(fileNames.get(j))) {
+                            fileNames.remove(j);
+                            fileUrls.remove(j);
+                        }
+                    }
+                }
+                initAdapter();
             } else {
                 ToastStopUtils.toastShow(this, "未找此文件！");
             }
-
-
         }
     }
 
@@ -261,6 +275,12 @@ public class IFF_Select_Information1Activity extends Activity {
      */
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    @Override
+    protected void onPause() {
+        ToastStopUtils.toastStop();
+        super.onPause();
     }
 
     @Override

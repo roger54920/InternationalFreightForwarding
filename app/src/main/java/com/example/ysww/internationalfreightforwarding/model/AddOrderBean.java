@@ -72,16 +72,17 @@ public class AddOrderBean {
     private String islnsurance;
     private String exportPower;//进出口权
     private List<TbOrderFileEntity> fileList;//上传附件
+    private String moneyType;//货币类型
+    private String filePhoto;//上传图片路径
+    private String fileEnclosure;//上传附件路径
 
     public static class TbOrderFileEntity{
-        //图片上传名称
+        //上传名称
         private String name;
-        //图片url
+        //上传url
         private String url;
-        //附件上传url
-        private String billsUrl;
-        //附件上传名称
-        private String billsName;
+        //上传文件类型
+        private String fileType;
 
         public String getName() {
             return name;
@@ -99,21 +100,43 @@ public class AddOrderBean {
             this.url = url;
         }
 
-        public String getBillsUrl() {
-            return billsUrl;
+        public String getFileType() {
+            return fileType;
         }
 
-        public void setBillsUrl(String billsUrl) {
-            this.billsUrl = billsUrl;
+        public void setFileType(String fileType) {
+            this.fileType = fileType;
         }
 
-        public String getBillsName() {
-            return billsName;
+        public TbOrderFileEntity(String name, String url, String fileType) {
+            this.name = name;
+            this.url = url;
+            this.fileType = fileType;
         }
+    }
 
-        public void setBillsName(String billsName) {
-            this.billsName = billsName;
-        }
+    public String getFilePhoto() {
+        return filePhoto;
+    }
+
+    public void setFilePhoto(String filePhoto) {
+        this.filePhoto = filePhoto;
+    }
+
+    public String getFileEnclosure() {
+        return fileEnclosure;
+    }
+
+    public void setFileEnclosure(String fileEnclosure) {
+        this.fileEnclosure = fileEnclosure;
+    }
+
+    public String getMoneyType() {
+        return moneyType;
+    }
+
+    public void setMoneyType(String moneyType) {
+        this.moneyType = moneyType;
     }
 
     public String getExportPower() {

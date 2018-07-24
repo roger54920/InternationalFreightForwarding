@@ -25,7 +25,7 @@ public class FlieUploadPresenter implements BasePresenter<FlieUploadView> {
             public void finish(Object result) {
                 FlieUploadBean flieUploadBean = (FlieUploadBean) result;
                 if (flieUploadBean != null) {
-                    SystemUtils.getInstance(activity).setLazyLadResult(lazyLoadProgressDialog);
+//                    SystemUtils.getInstance(activity).setLazyLadResult(lazyLoadProgressDialog);
                     if (flieUploadBean.getCode() == 0) {
                         if (view != null) {
                             view.onFlieUploadFinish(flieUploadBean);

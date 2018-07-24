@@ -20,6 +20,7 @@ import com.example.ysww.internationalfreightforwarding.app.photo.PhotoAdapter;
 import com.example.ysww.internationalfreightforwarding.model.AddOrderBean;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.SystemUtils;
+import com.google.gson.Gson;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
 import com.jph.takephoto.compress.CompressConfig;
@@ -58,8 +59,8 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
     @InjectView(R.id.next_step_btn)
     Button nextStepBtn;
     private AddOrderBean addOrderBean = new AddOrderBean();
-    //保存相片名称和路径
-    private List<AddOrderBean.TbOrderFileEntity> tbOrderFileEntityList;
+
+    private List<String> fileUrls;
 
     private PhotoAdapter photoAdapter;
     private TakePhoto takePhoto;
@@ -86,7 +87,7 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
     private void initViews() {
         iffTitleTv.setText(R.string.upload_picture);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
-        tbOrderFileEntityList = new ArrayList<>();
+        fileUrls = new ArrayList<>();
 
     }
 
@@ -189,6 +190,7 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
                     break;
                 case 1:  //点击删除按钮
                     selectMedia.remove(position);
+                    fileUrls.remove(position);
                     photoAdapter.notifyItemRemoved(position);
                     if (selectMedia.size() == 0) {
                         nextStepBtn.setEnabled(false);
@@ -276,10 +278,7 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
             if (images.get(i).getCompressPath() != null) {
                 selectMedia.add(images.get(i));
                 updateMedia.add(images.get(i));
-                AddOrderBean.TbOrderFileEntity tbOrderFileEntity = new AddOrderBean.TbOrderFileEntity();
-                tbOrderFileEntity.setName(getPicNameFromPath(images.get(i).getOriginalPath()));
-                tbOrderFileEntity.setUrl(images.get(i).getOriginalPath());
-                tbOrderFileEntityList.add(tbOrderFileEntity);
+                fileUrls.add(images.get(i).getOriginalPath());
             }
         }
         if (selectMedia != null) {
@@ -293,20 +292,6 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
         }
         //需上传图片，请使用updateMedia数组。
     }
-    /**
-     * 根据图片路径获取图片名字
-     *
-     * @param picturePath
-     * @return
-     */
-    public String getPicNameFromPath(String picturePath) {
-        String temp[] = picturePath.replaceAll("\\\\", "/").split("/");
-        String fileName = "";
-        if (temp.length > 1) {
-            fileName = temp[temp.length - 1];
-        }
-        return fileName;
-    }
 
     @OnClick({R.id.title_return_img, R.id.next_step_btn})
     public void onViewClicked(View view) {
@@ -315,7 +300,7 @@ public class IFF_Upload_PictureActivity extends Activity implements TakePhoto.Ta
                 finish();
                 break;
             case R.id.next_step_btn:
-                addOrderBean.setFileList(tbOrderFileEntityList);
+                addOrderBean.setFilePhoto(new Gson().toJson(fileUrls));
                 EventBus.getDefault().postSticky(addOrderBean);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_Select_Information1Activity.class);
                 break;

@@ -15,6 +15,7 @@
         android:background="@color/iff_FFFFFF"
         android:orientation="vertical"
         android:paddingBottom="10dp">
+
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
@@ -27,11 +28,13 @@
                 android:hint="请输入提货地址" />
 
             <Button
-                android:visibility="invisible"
                 style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice" />
+                android:text="@string/choice"
+                android:visibility="invisible" />
         </LinearLayout>
+
         <include layout="@layout/iff_line_view_layout" />
+
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
@@ -39,17 +42,27 @@
                 android:text="货&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;值" />
 
             <EditText
-                android:inputType="phone|number"
                 android:id="@+id/value_of_goods_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入货品价值" />
+                android:hint="请输入货品价值"
+                android:inputType="phone|number" />
 
-            <Button
+            <EditText
+                android:id="@+id/money_type"
                 style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice"
-                android:visibility="invisible" />
+                android:background="@drawable/details_of_goods_bg_style"
+                android:lines="1"
+                android:text="RMB"
+                android:gravity="center"
+                android:textColor="@color/iff_666666"
+                android:ellipsize="end"
+                android:textColorHint="@color/iff_999999"
+                android:textCursorDrawable="@drawable/edit_cursor_shape"
+                android:textSize="15sp" />
         </LinearLayout>
+
         <include layout="@layout/iff_line_view_layout" />
+
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
@@ -57,20 +70,24 @@
                 android:text="期望报价" />
 
             <EditText
-                android:inputType="phone|number"
                 android:id="@+id/offer_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入期望报价" />
+                android:hint="请输入期望报价"
+                android:inputType="phone|number" />
+
             <TextView
-                android:layout_marginLeft="-15dp"
                 style="@style/w60dp_w_666_15sp"
+                android:layout_marginLeft="-15dp"
                 android:text="元" />
+
             <Button
-                android:visibility="invisible"
                 style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice" />
+                android:text="@string/choice"
+                android:visibility="invisible" />
         </LinearLayout>
+
         <include layout="@layout/iff_line_view_layout" />
+
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
@@ -78,17 +95,19 @@
                 android:text="体积大小" />
 
             <EditText
-                android:inputType="number|phone"
                 android:id="@+id/volume_size_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入体积大小" />
+                android:hint="请输入体积大小"
+                android:inputType="number|phone" />
 
             <Button
-                android:visibility="invisible"
                 style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice" />
+                android:text="@string/choice"
+                android:visibility="invisible" />
         </LinearLayout>
+
         <include layout="@layout/iff_line_view_layout" />
+
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
@@ -101,9 +120,9 @@
                 android:hint="请输入生产厂家" />
 
             <Button
-                android:visibility="invisible"
                 style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice" />
+                android:text="@string/choice"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <include layout="@layout/iff_line_view_layout" />
@@ -115,10 +134,10 @@
                 android:text="许可证号" />
 
             <EditText
-                android:inputType="phone|number"
                 android:id="@+id/license_key_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入许可证号" />
+                android:hint="请输入许可证号"
+                android:inputType="phone|number" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -160,9 +179,9 @@
                 android:hint="请输入征免性质" />
 
             <Button
-                android:visibility="invisible"
                 style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice" />
+                android:text="@string/choice"
+                android:visibility="invisible" />
         </LinearLayout>
 
         <include layout="@layout/iff_line_view_layout" />

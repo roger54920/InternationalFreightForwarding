@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.example.ysww.internationalfreightforwarding.R;
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.model.AddOrderBean;
+import com.example.ysww.internationalfreightforwarding.model.FlieUploadBean;
 import com.example.ysww.internationalfreightforwarding.net.OkgoHttpResolve;
+import com.example.ysww.internationalfreightforwarding.net.view.FlieUploadView;
 import com.example.ysww.internationalfreightforwarding.net.view.NewOrderView;
+import com.example.ysww.internationalfreightforwarding.presenter.FlieUploadPresenter;
 import com.example.ysww.internationalfreightforwarding.presenter.NewOrderPresenter;
 import com.example.ysww.internationalfreightforwarding.utils.CrazyShadowUtils;
 import com.example.ysww.internationalfreightforwarding.utils.MyActivityManager;
@@ -24,6 +27,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -31,7 +37,7 @@ import butterknife.OnClick;
 /**
  * 选填信息-2
  */
-public class IFF_Select_Information2Activity extends AppCompatActivity implements NewOrderView {
+public class IFF_Select_Information2Activity extends AppCompatActivity implements NewOrderView, FlieUploadView {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -53,9 +59,15 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
     EditText volumeSizeEt;
     @InjectView(R.id.selection_receiving_address_et)
     EditText selectionReceivingAddressEt;
+    @InjectView(R.id.money_type)
+    EditText moneyType;
     private AddOrderBean addOrderBean;
     private NewOrderPresenter newOrderPresenter = new NewOrderPresenter();
+    private FlieUploadPresenter flieUploadPresenter = new FlieUploadPresenter();
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
+    private List<AddOrderBean.TbOrderFileEntity> tbOrderFileEntityList;
+    private int flieUploadIndex = 0, flieUploadCount = 0;
+    private String[] photos, enclosures;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +96,46 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
         newOrderPresenter.newOrderResult(addOrderStr, this, lazyLoadProgressDialog);
     }
 
+    /**
+     * 上传文件
+     */
+    private void flieUploadMethod() {
+
+        new OkgoHttpResolve(this);
+        flieUploadPresenter.attach(this);
+
+        String filePhoto = addOrderBean.getFilePhoto();
+        String fileEnclosure = addOrderBean.getFileEnclosure();
+
+        photos = fileUrl(filePhoto);
+        flieUploadCount = photos.length;
+        for (int i = 0; i < photos.length; i++) {
+            String fileUrl = photos[i].substring(1, photos[i].length() - 1);
+            flieUploadPresenter.flieUploadResult("30", fileUrl, this, lazyLoadProgressDialog);
+        }
+        if (!TextUtils.isEmpty(fileEnclosure)) {
+            enclosures = fileUrl(fileEnclosure);
+            flieUploadCount = photos.length + enclosures.length;
+            for (int i = 0; i < enclosures.length; i++) {
+                String fileUrl = enclosures[i].substring(1, enclosures[i].length() - 1);
+                flieUploadPresenter.flieUploadResult("10", fileUrl, this, lazyLoadProgressDialog);
+            }
+        }
+    }
+
+    private String[] fileUrl(String url) {
+        url = url.substring(1, url.length() - 1);
+        String[] split = url.split(",");
+        return split;
+    }
+
     private void initViews() {
         iffTitleTv.setText(R.string.select_information2);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
         SystemUtils.getInstance(this).setPricePoint(valueOfGoodsEt);
         SystemUtils.getInstance(this).setPricePoint(offerEt);
         SystemUtils.getInstance(this).setPricePoint(volumeSizeEt);
+        tbOrderFileEntityList = new ArrayList<>();
     }
 
     @OnClick({R.id.title_return_img, R.id.complete_btn})
@@ -105,13 +151,14 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
                 addOrderBean.setExemptionType(exemptedNatureEt.getText().toString());
                 addOrderBean.setPriceValue(valueOfGoodsEt.getText().toString());
                 String quote = offerEt.getText().toString();
-                if(!TextUtils.isEmpty(quote)){
+                if (!TextUtils.isEmpty(quote)) {
                     addOrderBean.setQuote(Double.parseDouble(quote));
                 }
                 addOrderBean.setVolumeSize(volumeSizeEt.getText().toString());
+                addOrderBean.setMoneyType(moneyType.getText().toString());
                 addOrderBean.setSelectionReceivingAddress(selectionReceivingAddressEt.getText().toString());
                 SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
-                newOrderMethod();
+                flieUploadMethod();
                 break;
         }
     }
@@ -123,12 +170,36 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
     }
 
     @Override
+    public void onFlieUploadFinish(Object o) {
+        FlieUploadBean flieUploadBean = (FlieUploadBean) o;
+        FlieUploadBean.DataBean data = flieUploadBean.getData();
+        flieUploadIndex++;
+        for (int i = 0; i < photos.length; i++) {
+            if (photos[i].contains(data.getName())) {
+                tbOrderFileEntityList.add(new AddOrderBean.TbOrderFileEntity(data.getName(), data.getUrl(), "30"));
+            }
+        }
+        if (enclosures.length > 0) {
+            for (int i = 0; i < enclosures.length; i++) {
+                if (enclosures[i].contains(data.getName())) {
+                    tbOrderFileEntityList.add(new AddOrderBean.TbOrderFileEntity(data.getName(), data.getUrl(), "10"));
+                }
+            }
+        }
+        if (flieUploadIndex == flieUploadCount) {
+            addOrderBean.setFileList(tbOrderFileEntityList);
+            newOrderMethod();
+        }
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         //根据 Tag 取消请求
         OkGo.getInstance().cancelTag(this);
         newOrderPresenter.dettach();
+        flieUploadPresenter.dettach();
     }
 
 
