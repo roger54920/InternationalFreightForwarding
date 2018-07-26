@@ -158,6 +158,7 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
                 addOrderBean.setVolumeSize(volumeSizeEt.getText().toString());
                 addOrderBean.setMoneyType(moneyType.getText().toString());
                 addOrderBean.setSelectionReceivingAddress(selectionReceivingAddressEt.getText().toString());
+                lazyLoadProgressDialog.setMessage("上传图片中...");
                 SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
                 flieUploadMethod();
                 break;
@@ -189,6 +190,7 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
         }
         if (flieUploadIndex == flieUploadCount) {
             addOrderBean.setFileList(tbOrderFileEntityList);
+            lazyLoadProgressDialog.setMessage("加载中...");
             newOrderMethod();
         }
     }
