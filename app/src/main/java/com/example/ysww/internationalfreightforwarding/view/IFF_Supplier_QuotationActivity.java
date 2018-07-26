@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -104,6 +105,7 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
         supplierQuotationList.get(radioCheckPosition).setIsChecked(0);
         linearLayoutManager = new LinearLayoutManager(this);
         supplierQuotationRv.setLayoutManager(linearLayoutManager);
+        affirmChannelId = supplierQuotationList.get(0).getId();
         supplierQuotationAdapter = new CommonAdapter<SupplierQuotationListBean.PageBean.ListBean>(this, R.layout.item_supplier_quotation, supplierQuotationList) {
             @Override
             protected void convert(ViewHolder holder, SupplierQuotationListBean.PageBean.ListBean listBean, final int position) {
@@ -120,7 +122,11 @@ public class IFF_Supplier_QuotationActivity extends Activity implements Supplier
                 }else{
                     holder.setVisible(R.id.order_number_tv,false);
                 }
-                holder.setText(R.id.supplier_quotation_tv, listBean.getChannelName()+" "+listBean.getChannelUserName()+ "     " + listBean.getSumChannelQuoteFrofit()+"元");
+                if(!TextUtils.isEmpty(listBean.getSumChannelQuoteFrofit())){
+                    holder.setText(R.id.supplier_quotation_tv, listBean.getChannelName()+" "+listBean.getChannelUserName()+ "     " + listBean.getSumChannelQuoteFrofit()+"元");
+                }else{
+                    holder.setText(R.id.supplier_quotation_tv, listBean.getChannelName()+" "+listBean.getChannelUserName()+ "     未报价" );
+                }
                 holder.setText(R.id.note_information, listBean.getCompanyName() + "     " + listBean.getMarketUserName());
                 final RadioButton supplier_quotation = holder.getView(R.id.supplier_quotation_rb);
                 int isChecked = supplierQuotationList.get(position).getIsChecked();
