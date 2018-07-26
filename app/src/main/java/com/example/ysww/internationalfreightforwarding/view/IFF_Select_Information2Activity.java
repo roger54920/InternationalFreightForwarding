@@ -113,8 +113,9 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
             String fileUrl = photos[i].substring(1, photos[i].length() - 1);
             flieUploadPresenter.flieUploadResult("30", fileUrl, this, lazyLoadProgressDialog);
         }
-        if (!TextUtils.isEmpty(fileEnclosure)) {
-            enclosures = fileUrl(fileEnclosure);
+
+        enclosures = fileUrl(fileEnclosure);
+        if (fileEnclosure.length()>2) {
             flieUploadCount = photos.length + enclosures.length;
             for (int i = 0; i < enclosures.length; i++) {
                 String fileUrl = enclosures[i].substring(1, enclosures[i].length() - 1);
