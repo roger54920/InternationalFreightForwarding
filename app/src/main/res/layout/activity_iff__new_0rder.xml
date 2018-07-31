@@ -59,7 +59,7 @@
 
             <TextView
                 style="@style/w60dp_w_666_15sp"
-                android:text="贸易方式" />
+                android:text="运输方式" />
 
             <RadioGroup
                 android:id="@+id/type_of_shipping_rg"
@@ -170,7 +170,7 @@
 
             <TextView
                 style="@style/w60dp_w_666_15sp"
-                android:text="服务方式" />
+                android:text="贸易方式" />
 
             <RadioGroup
                 android:id="@+id/service_mode_rg"
@@ -304,68 +304,58 @@
 
         <include layout="@layout/iff_line_view_layout" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="15dp">
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
                 style="@style/w60dp_w_666_15sp"
-                android:layout_gravity="center_vertical"
-                android:text="保&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;险" />
+                android:text="货&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;值" />
 
-            <RadioGroup
-                android:id="@+id/insurance_rg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
-                android:orientation="horizontal">
+            <EditText
+                android:id="@+id/value_of_goods_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入货品价值"
+                android:inputType="phone|number" />
 
-                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
-                    android:id="@+id/insurance_rb1"
-                    style="@style/btn_text_rb"
-                    android:text="是" />
-
-                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
-                    style="@style/btn_text_rb"
-                    android:text="否" />
-
-            </RadioGroup>
+            <EditText
+                android:id="@+id/money_type"
+                style="@style/btn_blue__70dp_65_30dp"
+                android:background="@drawable/details_of_goods_bg_style"
+                android:lines="1"
+                android:text="RMB"
+                android:gravity="center"
+                android:textColor="@color/iff_666666"
+                android:ellipsize="end"
+                android:textColorHint="@color/iff_999999"
+                android:textCursorDrawable="@drawable/edit_cursor_shape"
+                android:textSize="15sp" />
         </LinearLayout>
+
         <include layout="@layout/iff_line_view_layout" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="15dp">
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
                 style="@style/w60dp_w_666_15sp"
-                android:layout_gravity="center_vertical"
-                android:text="进出口权" />
+                android:text="期望报价" />
 
-            <RadioGroup
-                android:id="@+id/import_export_power_rg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30dp"
-                android:orientation="horizontal">
+            <EditText
+                android:id="@+id/offer_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入期望报价"
+                android:inputType="phone|number" />
 
-                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
-                    android:id="@+id/import_export_power_rb1"
-                    style="@style/btn_text_rb"
-                    android:text="是" />
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:layout_marginLeft="-15dp"
+                android:text="元" />
 
-                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
-                    style="@style/btn_text_rb"
-                    android:text="否" />
-
-            </RadioGroup>
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
         </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
     </LinearLayout>
 
     <Button

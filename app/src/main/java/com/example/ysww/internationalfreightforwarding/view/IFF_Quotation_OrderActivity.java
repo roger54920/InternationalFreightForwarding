@@ -107,9 +107,9 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         if (Constants.SOURCE_PAGE.equals("copy")) {
             statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=1,2,3", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=4", this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=4,5", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("history_order")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=5,6", this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=-1,6", this, lazyLoadProgressDialog);
         }
     }
 

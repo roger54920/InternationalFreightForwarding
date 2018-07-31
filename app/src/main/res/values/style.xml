@@ -129,6 +129,12 @@
         <item name="android:textColor">@color/iff_666666</item>
         <item name="android:textSize">15sp</item>
     </style>
+    <style name="w75dp_w_666_15sp">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/iff_666666</item>
+        <item name="android:textSize">15sp</item>
+    </style>
     <style name="w89dp_w_666_15sp">
         <item name="android:layout_width">89dp</item>
         <item name="android:layout_height">wrap_content</item>

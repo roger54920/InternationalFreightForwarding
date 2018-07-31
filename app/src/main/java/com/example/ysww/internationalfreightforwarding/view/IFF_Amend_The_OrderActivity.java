@@ -31,8 +31,6 @@ public class IFF_Amend_The_OrderActivity extends Activity {
     TextView operatingCompanyTv;
     @InjectView(R.id.forwarding_unit_tv)
     TextView forwardingUnitTv;
-    @InjectView(R.id.source_of_the_goods_tv)
-    TextView sourceOfTheGoodsTv;
     @InjectView(R.id.export_ports_tv)
     TextView exportPortsTv;
     @InjectView(R.id.export_date_tv)
@@ -45,8 +43,6 @@ public class IFF_Amend_The_OrderActivity extends Activity {
     TextView customsClearanceMethodTv;
     @InjectView(R.id.transport_to_the_country_region_tv)
     TextView transportToTheCountryRegionTv;
-    @InjectView(R.id.destination_city_tv)
-    TextView destinationCityTv;
     @InjectView(R.id.zip_code)
     TextView zipCode;
     @InjectView(R.id.receiving_address_tv)
@@ -57,12 +53,9 @@ public class IFF_Amend_The_OrderActivity extends Activity {
     TextView weightKgTv;
     @InjectView(R.id.size_cm_tv)
     TextView sizeCmTv;
-    @InjectView(R.id.volume_weight_tv)
-    TextView volumeWeightTv;
     @InjectView(R.id.product_name_tv)
     TextView productNameTv;
-    @InjectView(R.id.value_of_goods_tv)
-    TextView valueOfGoodsTv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

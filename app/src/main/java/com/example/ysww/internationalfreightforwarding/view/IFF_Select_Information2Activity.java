@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.ysww.internationalfreightforwarding.R;
@@ -51,16 +53,17 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
     EditText approvalNumberEt;
     @InjectView(R.id.exempted_nature_et)
     EditText exemptedNatureEt;
-    @InjectView(R.id.value_of_goods_et)
-    EditText valueOfGoodsEt;
-    @InjectView(R.id.offer_et)
-    EditText offerEt;
-    @InjectView(R.id.volume_size_et)
-    EditText volumeSizeEt;
-    @InjectView(R.id.selection_receiving_address_et)
-    EditText selectionReceivingAddressEt;
-    @InjectView(R.id.money_type)
-    EditText moneyType;
+    @InjectView(R.id.tariff_payment_rg)
+    RadioGroup tariffPaymentRg;
+    @InjectView(R.id.charge_sending_sending_et)
+    EditText chargeSendingSendingEt;
+    @InjectView(R.id.mail_number_et)
+    EditText mailNumberEt;
+    @InjectView(R.id.destination_city_et)
+    EditText destinationCityEt;
+    @InjectView(R.id.receiving_sending_time_et)
+    EditText receivingSendingTimeEt;
+
     private AddOrderBean addOrderBean;
     private NewOrderPresenter newOrderPresenter = new NewOrderPresenter();
     private FlieUploadPresenter flieUploadPresenter = new FlieUploadPresenter();
@@ -115,7 +118,7 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
         }
 
         enclosures = fileUrl(fileEnclosure);
-        if (fileEnclosure.length()>2) {
+        if (fileEnclosure.length() > 2) {
             flieUploadCount = photos.length + enclosures.length;
             for (int i = 0; i < enclosures.length; i++) {
                 String fileUrl = enclosures[i].substring(1, enclosures[i].length() - 1);
@@ -133,10 +136,17 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
     private void initViews() {
         iffTitleTv.setText(R.string.select_information2);
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
-        SystemUtils.getInstance(this).setPricePoint(valueOfGoodsEt);
-        SystemUtils.getInstance(this).setPricePoint(offerEt);
-        SystemUtils.getInstance(this).setPricePoint(volumeSizeEt);
         tbOrderFileEntityList = new ArrayList<>();
+
+        SystemUtils.getInstance(this).setPricePoint(chargeSendingSendingEt);
+        tariffPaymentRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbId = (RadioButton) findViewById(tariffPaymentRg.getCheckedRadioButtonId());
+                addOrderBean.setTariffPayType(rbId.getText().toString());
+
+            }
+        });
     }
 
     @OnClick({R.id.title_return_img, R.id.complete_btn})
@@ -146,18 +156,18 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
                 finish();
                 break;
             case R.id.complete_btn:
+                String postingCharges = chargeSendingSendingEt.getText().toString();
+                if(!TextUtils.isEmpty(postingCharges)){
+                    addOrderBean.setPostingCharges(Double.parseDouble(postingCharges));
+                }
+                addOrderBean.setEmsNo(mailNumberEt.getText().toString());
                 addOrderBean.setManufacturer(manufacturerEt.getText().toString());
                 addOrderBean.setLicenseKey(licenseKeyEt.getText().toString());
                 addOrderBean.setApprovalNumber(approvalNumberEt.getText().toString());
                 addOrderBean.setExemptionType(exemptedNatureEt.getText().toString());
-                addOrderBean.setPriceValue(valueOfGoodsEt.getText().toString());
-                String quote = offerEt.getText().toString();
-                if (!TextUtils.isEmpty(quote)) {
-                    addOrderBean.setQuote(Double.parseDouble(quote));
-                }
-                addOrderBean.setVolumeSize(volumeSizeEt.getText().toString());
-                addOrderBean.setMoneyType(moneyType.getText().toString());
-                addOrderBean.setSelectionReceivingAddress(selectionReceivingAddressEt.getText().toString());
+                addOrderBean.setDestinationCity(destinationCityEt.getText().toString());
+                addOrderBean.setPostingTime(receivingSendingTimeEt.getText().toString());
+
                 lazyLoadProgressDialog.setMessage("上传图片中...");
                 SystemUtils.getInstance(this).showLazyLad0neMinute(lazyLoadProgressDialog);
                 flieUploadMethod();

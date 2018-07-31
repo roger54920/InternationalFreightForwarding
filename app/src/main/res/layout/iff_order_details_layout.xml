@@ -62,21 +62,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="货源地："
-            android:textColor="@color/iff_999999" />
-
-        <TextView
-            android:id="@+id/source_of_the_goods_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/iff_2A2A2A" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/ll_mv_4dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="出口口岸："
             android:textColor="@color/iff_999999" />
 
@@ -162,22 +147,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
-
-    <LinearLayout style="@style/ll_mv_4dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="目的地城市："
-            android:textColor="@color/iff_999999" />
-
-        <TextView
-            android:id="@+id/destination_city_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/iff_2A2A2A" />
-    </LinearLayout>
-
     <LinearLayout style="@style/ll_mv_4dp">
 
         <TextView
@@ -198,7 +167,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="收货地址："
+            android:text="提货地址："
             android:textColor="@color/iff_999999" />
 
         <TextView
@@ -242,20 +211,7 @@
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
-    <LinearLayout style="@style/ll_mv_4dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="体积大小："
-            android:textColor="@color/iff_999999" />
-
-        <TextView
-            android:id="@+id/volume_weight_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/iff_2A2A2A" />
-    </LinearLayout>
 
     <LinearLayout style="@style/ll_mv_4dp">
 
@@ -272,19 +228,4 @@
             android:textColor="@color/iff_2A2A2A" />
     </LinearLayout>
 
-    <LinearLayout style="@style/ll_mv_4dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="3dp"
-            android:text="货值："
-            android:textColor="@color/iff_999999" />
-
-        <TextView
-            android:id="@+id/value_of_goods_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/iff_2A2A2A" />
-    </LinearLayout>
 </LinearLayout>

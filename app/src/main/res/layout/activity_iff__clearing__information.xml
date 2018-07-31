@@ -119,10 +119,10 @@
 
             <TextView
                 style="@style/w90dp_w_666_15sp"
-                android:text="关税支付方式" />
+                android:text="是否保险" />
 
             <RadioGroup
-                android:id="@+id/tariff_payment_rg"
+                android:id="@+id/islnsurance_rg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -130,25 +130,25 @@
                 android:orientation="horizontal">
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
-                    android:id="@+id/tariff_payment_rb1"
+                    android:id="@+id/islnsurance_rb1"
                     style="@style/btn_text_rb"
-                    android:text="收件人付" />
+                    android:text="是" />
+
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
                     style="@style/btn_text_rb"
-                    android:text="寄件人付" />
+                    android:text="否" />
 
             </RadioGroup>
         </LinearLayout>
-
         <LinearLayout style="@style/ll_mv_4dp">
 
             <TextView
                 style="@style/w90dp_w_666_15sp"
-                android:text="交货方式" />
+                android:text="进出口权" />
 
             <RadioGroup
-                android:id="@+id/delivery_mode_rg"
+                android:id="@+id/import_export_power_rg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -156,13 +156,14 @@
                 android:orientation="horizontal">
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
-                    android:id="@+id/delivery_mode_rb1"
+                    android:id="@+id/import_export_power_rb1"
                     style="@style/btn_text_rb"
-                    android:text="自送渠道仓库" />
+                    android:text="是" />
+
 
                 <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
                     style="@style/btn_text_rb"
-                    android:text="渠道上门" />
+                    android:text="否" />
 
             </RadioGroup>
         </LinearLayout>

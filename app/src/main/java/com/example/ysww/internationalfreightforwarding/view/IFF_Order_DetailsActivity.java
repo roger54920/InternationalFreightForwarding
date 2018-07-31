@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -52,8 +53,6 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
     TextView operatingCompanyTv;
     @InjectView(R.id.forwarding_unit_tv)
     TextView forwardingUnitTv;
-    @InjectView(R.id.source_of_the_goods_tv)
-    TextView sourceOfTheGoodsTv;
     @InjectView(R.id.export_ports_tv)
     TextView exportPortsTv;
     @InjectView(R.id.export_date_tv)
@@ -66,18 +65,12 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
     TextView customsClearanceMethodTv;
     @InjectView(R.id.transport_to_the_country_region_tv)
     TextView transportToTheCountryRegionTv;
-    @InjectView(R.id.destination_city_tv)
-    TextView destinationCityTv;
     @InjectView(R.id.zip_code)
     TextView zipCode;
     @InjectView(R.id.receiving_address_tv)
     TextView receivingAddressTv;
-    @InjectView(R.id.volume_weight_tv)
-    TextView volumeWeightTv;
     @InjectView(R.id.product_name_tv)
     TextView productNameTv;
-    @InjectView(R.id.value_of_goods_tv)
-    TextView valueOfGoodsTv;
     @InjectView(R.id.number_weight_size_rv)
     RecyclerView numberWeightSizeRv;
     @InjectView(R.id.total_number_tv)
@@ -134,7 +127,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
                 informationSupplementReplyProblemBtn.setVisibility(View.VISIBLE);
                 informationSupplementReplyProblemBtn.setText(R.string.information_supplement);
                 break;
-            case 5://已关闭
+            case -1://已关闭
                 titleCloseOrder.setVisibility(View.GONE);
                 break;
             case 6://已完結
@@ -235,7 +228,6 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
             orderNumberTv.setText(dataBean.getOrderId());
             operatingCompanyTv.setText(dataBean.getCompanyName());
             forwardingUnitTv.setText(dataBean.getForwardingUnit());
-            sourceOfTheGoodsTv.setText(dataBean.getSourceAddress());
             exportPortsTv.setText(dataBean.getExport());
             String departureDate = dataBean.getDepartureDate();
             if (departureDate.contains("00:00")) {
@@ -247,7 +239,6 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
             paymentMethodTv.setText(dataBean.getPayType());
             customsClearanceMethodTv.setText(dataBean.getCleanCustomsType());
             transportToTheCountryRegionTv.setText(dataBean.getDestinationCountry());
-            destinationCityTv.setText(dataBean.getDestinationCity());
             zipCode.setText(dataBean.getPostcode());
             receivingAddressTv.setText(dataBean.getDeliveryAddress());
 
@@ -259,10 +250,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
             }
             totalWeightKgTv.setText(totalWeight + "");
             orderDetailAdapter();
-
-            volumeWeightTv.setText(dataBean.getVolumeSize());
             productNameTv.setText(dataBean.getBrand());
-            valueOfGoodsTv.setText(dataBean.getPriceValue());
         }
     }
 

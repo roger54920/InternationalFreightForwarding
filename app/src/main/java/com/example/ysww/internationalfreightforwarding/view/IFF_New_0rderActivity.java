@@ -61,8 +61,6 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
     EditText exportDateEt;
     @InjectView(R.id.product_name_et)
     EditText productNameEt;
-    @InjectView(R.id.insurance_rg)
-    RadioGroup insuranceRg;
     @InjectView(R.id.next_step_btn)
     Button nextStepBtn;
     @InjectView(R.id.air_transport_rb)
@@ -71,8 +69,6 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
     ImageRadioButton customsClearanceMethodRb1;
     @InjectView(R.id.service_mode_rb1)
     ImageRadioButton serviceModeRb1;
-    @InjectView(R.id.insurance_rb1)
-    ImageRadioButton insuranceRb1;
     @InjectView(R.id.new_order_ll)
     LinearLayout newOrderLl;
     @InjectView(R.id.ocean_shipping_rb)
@@ -83,12 +79,15 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
     EditText otherEt;
     @InjectView(R.id.other_rl)
     RelativeLayout otherRl;
-    @InjectView(R.id.import_export_power_rb1)
-    ImageRadioButton importExportPowerRb1;
-    @InjectView(R.id.import_export_power_rg)
-    RadioGroup importExportPowerRg;
+    @InjectView(R.id.value_of_goods_et)
+    EditText valueOfGoodsEt;
+    @InjectView(R.id.money_type)
+    EditText moneyTypeEt;
+    @InjectView(R.id.offer_et)
+    EditText offerEt;
 
-    private String forwardingUnit, deliveryAddress, portOfExport, exportDate, productName;
+
+    private String forwardingUnit, deliveryAddress, portOfExport, exportDate, productName,valueOfGoods,moneyType,offer;
     private AddOrderBean addOrderBean;
     private TimePickerDialog mDialogYearMonthDay;
 
@@ -114,11 +113,57 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
         addOrderBean.setCleanCustomsType(customsClearanceMethodRb1.getText().toString());
         serviceModeRb1.setChecked(true);
         addOrderBean.setTransDemand(serviceModeRb1.getText().toString());
-        insuranceRb1.setChecked(true);
-        addOrderBean.setIslnsurance("1");
-        importExportPowerRb1.setChecked(true);
-        addOrderBean.setExportPower("1");
+        SystemUtils.getInstance(this).setPricePoint(valueOfGoodsEt);
+        SystemUtils.getInstance(this).setPricePoint(offerEt);
 
+        valueOfGoodsEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                isEditText();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        moneyTypeEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                isEditText();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        offerEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                isEditText();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         forwardingUnitEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -235,30 +280,6 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
                 addOrderBean.setTransDemand(rbId.getText().toString());
             }
         });
-        insuranceRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rbId = (RadioButton) findViewById(insuranceRg.getCheckedRadioButtonId());
-                String insurance = rbId.getText().toString();
-                if (insurance.equals("是")) {
-                    addOrderBean.setIslnsurance("1");
-                } else {
-                    addOrderBean.setIslnsurance("0");
-                }
-            }
-        });
-        importExportPowerRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rbId = (RadioButton) findViewById(importExportPowerRg.getCheckedRadioButtonId());
-                String importExportPower = rbId.getText().toString();
-                if (importExportPower.equals("是")) {
-                    addOrderBean.setExportPower("1");
-                } else {
-                    addOrderBean.setExportPower("0");
-                }
-            }
-        });
     }
 
     private void isEditText() {
@@ -267,7 +288,10 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
         portOfExport = portOfExportEt.getText().toString();
         exportDate = exportDateEt.getText().toString();
         productName = productNameEt.getText().toString();
-        if (!TextUtils.isEmpty(forwardingUnit) && !TextUtils.isEmpty(deliveryAddress) && !TextUtils.isEmpty(portOfExport) && !TextUtils.isEmpty(exportDate) && !TextUtils.isEmpty(productName)) {
+        valueOfGoods = valueOfGoodsEt.getText().toString();
+        moneyType = moneyTypeEt.getText().toString();
+        offer = offerEt.getText().toString();
+        if (!TextUtils.isEmpty(offer) && !TextUtils.isEmpty(moneyType) && !TextUtils.isEmpty(valueOfGoods) && !TextUtils.isEmpty(forwardingUnit) && !TextUtils.isEmpty(deliveryAddress) && !TextUtils.isEmpty(portOfExport) && !TextUtils.isEmpty(exportDate) && !TextUtils.isEmpty(productName)) {
             nextStepBtn.setEnabled(true);
         } else {
             nextStepBtn.setEnabled(false);
@@ -304,6 +328,9 @@ public class IFF_New_0rderActivity extends AppCompatActivity implements OnDateSe
                         addOrderBean.setTransType(other);
                     }
                 }
+                addOrderBean.setPriceValue(valueOfGoods);
+                addOrderBean.setMoneyType(moneyType);
+                addOrderBean.setQuote(Double.parseDouble(offer));
                 EventBus.getDefault().postSticky(addOrderBean);
                 SystemUtils.getInstance(this).noReferenceIntent(IFF_New_0rder_CopyActivity.class);
                 break;

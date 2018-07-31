@@ -51,8 +51,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     TextView operatingCompanyTv;
     @InjectView(R.id.forwarding_unit_tv)
     TextView forwardingUnitTv;
-    @InjectView(R.id.source_of_the_goods_tv)
-    TextView sourceOfTheGoodsTv;
+
     @InjectView(R.id.export_ports_tv)
     TextView exportPortsTv;
     @InjectView(R.id.export_date_tv)
@@ -65,18 +64,15 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
     TextView customsClearanceMethodTv;
     @InjectView(R.id.transport_to_the_country_region_tv)
     TextView transportToTheCountryRegionTv;
-    @InjectView(R.id.destination_city_tv)
-    TextView destinationCityTv;
+
     @InjectView(R.id.zip_code)
     TextView zipCode;
     @InjectView(R.id.receiving_address_tv)
     TextView receivingAddressTv;
-    @InjectView(R.id.volume_weight_tv)
-    TextView volumeWeightTv;
+
     @InjectView(R.id.product_name_tv)
     TextView productNameTv;
-    @InjectView(R.id.value_of_goods_tv)
-    TextView valueOfGoodsTv;
+
     @InjectView(R.id.order_number_tv)
     TextView orderNumberTv;
     @InjectView(R.id.number_weight_size_rv)
@@ -167,6 +163,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
                 break;
         }
     }
+
     //点击是否关闭订单
     private void onClickIsDeliverGoods() {
         SystemPromptDialog.Builder builder = new SystemPromptDialog.Builder(this, "您确定要关闭订单吗？");
@@ -187,6 +184,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
         builder.create().setCanceledOnTouchOutside(true);  //用户选择取消或者是点击屏幕空白部分时让dialog消失。
         builder.create().show();
     }
+
     //点击关闭订单原因
     private void onClickCloseTheOrDer() {
         CloseTheOrderDialog.Builder builder = new CloseTheOrderDialog.Builder(this);
@@ -211,7 +209,6 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
             orderNumberTv.setText(dataBean.getOrderId());
             operatingCompanyTv.setText(dataBean.getCompanyName());
             forwardingUnitTv.setText(dataBean.getForwardingUnit());
-            sourceOfTheGoodsTv.setText(dataBean.getSourceAddress());
             exportPortsTv.setText(dataBean.getExport());
             String departureDate = dataBean.getDepartureDate();
             if (departureDate.contains("00:00")) {
@@ -223,7 +220,6 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
             paymentMethodTv.setText(dataBean.getPayType());
             customsClearanceMethodTv.setText(dataBean.getCleanCustomsType());
             transportToTheCountryRegionTv.setText(dataBean.getDestinationCountry());
-            destinationCityTv.setText(dataBean.getDestinationCity());
             zipCode.setText(dataBean.getPostcode());
             receivingAddressTv.setText(dataBean.getDeliveryAddress());
 
@@ -236,9 +232,7 @@ public class IFF_Close_The_OrderActivity extends Activity implements TborderInfo
             totalWeightKgTv.setText(totalWeight + "");
             orderDetailAdapter();
 
-            volumeWeightTv.setText(dataBean.getVolumeSize());
             productNameTv.setText(dataBean.getBrand());
-            valueOfGoodsTv.setText(dataBean.getPriceValue());
         }
     }
 

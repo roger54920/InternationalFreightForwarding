@@ -48,8 +48,6 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
     EditText transportToCountryRegionEt;
     @InjectView(R.id.zip_code_et)
     EditText zipCodeEt;
-    @InjectView(R.id.destination_city_et)
-    EditText destinationCityEt;
     @InjectView(R.id.receiving_address_et)
     EditText receivingAddressEt;
     @InjectView(R.id.next_step_btn)
@@ -58,7 +56,7 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
     EditText packagingTypesEt;
     @InjectView(R.id.transportation_time_et)
     EditText transportationTimeEt;
-    private String transportToCountryRegion, zipCode, destinationCity, receivingAddress,packagingTypes,transportationTime;
+    private String transportToCountryRegion, zipCode, receivingAddress,packagingTypes,transportationTime;
     private AddOrderBean addOrderBean;
     private GetAllCountryPresenter getAllCountryPresenter = new GetAllCountryPresenter();//获取国家
     private LazyLoadProgressDialog lazyLoadProgressDialog;//延迟加载
@@ -163,22 +161,6 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
 
             }
         });
-        destinationCityEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                isEditText();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
         receivingAddressEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -219,7 +201,6 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
             case R.id.next_step_btn:
                 addOrderBean.setDestinationCountry(transportToCountryRegion);
                 addOrderBean.setPostcode(zipCode);
-                addOrderBean.setDestinationCity(destinationCity);
                 addOrderBean.setDeliveryAddress(receivingAddress);
                 EventBus.getDefault().postSticky(addOrderBean);
                 addOrderBean.setPackageType(packagingTypes);
@@ -232,11 +213,10 @@ public class IFF_New_0rder_CopyActivity extends Activity implements GetAllCountr
     private void isEditText() {
         transportToCountryRegion = transportToCountryRegionEt.getText().toString();
         zipCode = zipCodeEt.getText().toString();
-        destinationCity = destinationCityEt.getText().toString();
         receivingAddress = receivingAddressEt.getText().toString();
         packagingTypes = packagingTypesEt.getText().toString();
         transportationTime = transportationTimeEt.getText().toString();
-        if (!TextUtils.isEmpty(transportationTime) && !TextUtils.isEmpty(packagingTypes) && !TextUtils.isEmpty(transportToCountryRegion) && !TextUtils.isEmpty(zipCode) && !TextUtils.isEmpty(destinationCity) && !TextUtils.isEmpty(receivingAddress)) {
+        if (!TextUtils.isEmpty(transportationTime) && !TextUtils.isEmpty(packagingTypes) && !TextUtils.isEmpty(transportToCountryRegion) && !TextUtils.isEmpty(zipCode) && !TextUtils.isEmpty(receivingAddress)) {
             nextStepBtn.setEnabled(true);
         } else {
             nextStepBtn.setEnabled(false);

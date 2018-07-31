@@ -55,14 +55,6 @@ public class IFF_Clearing_InformationActivity extends Activity {
     ImageRadioButton paymentMethodRb1;
     @InjectView(R.id.payment_method_rg)
     RadioGroup paymentMethodRg;
-    @InjectView(R.id.tariff_payment_rb1)
-    ImageRadioButton tariffPaymentRb1;
-    @InjectView(R.id.tariff_payment_rg)
-    RadioGroup tariffPaymentRg;
-    @InjectView(R.id.delivery_mode_rb1)
-    ImageRadioButton deliveryModeRb1;
-    @InjectView(R.id.delivery_mode_rg)
-    RadioGroup deliveryModeRg;
     @InjectView(R.id.details_of_goods_rv)
     RecyclerView detailsOfGoodsRv;
     @InjectView(R.id.weight_et)
@@ -77,6 +69,14 @@ public class IFF_Clearing_InformationActivity extends Activity {
     EditText inchWidthEt;
     @InjectView(R.id.inch_height_et)
     EditText inchHeightEt;
+    @InjectView(R.id.import_export_power_rg)
+    RadioGroup importExportPowerRg;
+    @InjectView(R.id.import_export_power_rb1)
+    ImageRadioButton importExportPowerRb1;
+    @InjectView(R.id.islnsurance_rb1)
+    ImageRadioButton islnsuranceRb1;
+    @InjectView(R.id.islnsurance_rg)
+    RadioGroup islnsuranceRg;
     private CommonAdapter<DetailsOfGoodsBean> detailsOfGoodsAdapter;
     private List<DetailsOfGoodsBean> detailsOfGoodsList;
     private String number, weight, inch_length, inch_width, inch_height;
@@ -107,16 +107,40 @@ public class IFF_Clearing_InformationActivity extends Activity {
         CrazyShadowUtils.getCrazyShadowUtils(this).titleCrazyShadow(iffTitleCl);
         paymentMethodRb1.setChecked(true);
         addOrderBean.setPayType(paymentMethodRb1.getText().toString());
-        tariffPaymentRb1.setChecked(true);
-        addOrderBean.setTariffPayType(tariffPaymentRb1.getText().toString());
-        deliveryModeRb1.setChecked(true);
-        addOrderBean.setDeliveryType(deliveryModeRb1.getText().toString());
         numberEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         inchLengthEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         inchWidthEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         inchHeightEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         SystemUtils.getInstance(this).setPricePoint(weightEt);
         SystemUtils.getInstance(this).setPricePointText(totalWeight);
+        importExportPowerRb1.setChecked(true);
+        addOrderBean.setExportPower("1");
+        islnsuranceRb1.setChecked(true);
+        addOrderBean.setIslnsurance("1");
+        islnsuranceRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbId = (RadioButton) findViewById(islnsuranceRg.getCheckedRadioButtonId());
+                String islnsurance = rbId.getText().toString();
+                if (islnsurance.equals("是")) {
+                    addOrderBean.setIslnsurance("1");
+                } else {
+                    addOrderBean.setIslnsurance("0");
+                }
+            }
+        });
+        importExportPowerRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rbId = (RadioButton) findViewById(importExportPowerRg.getCheckedRadioButtonId());
+                String importExportPower = rbId.getText().toString();
+                if (importExportPower.equals("是")) {
+                    addOrderBean.setExportPower("1");
+                } else {
+                    addOrderBean.setExportPower("0");
+                }
+            }
+        });
         paymentMethodRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -125,25 +149,11 @@ public class IFF_Clearing_InformationActivity extends Activity {
 
             }
         });
-        tariffPaymentRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rbId = (RadioButton) findViewById(tariffPaymentRg.getCheckedRadioButtonId());
-                addOrderBean.setTariffPayType(rbId.getText().toString());
 
-            }
-        });
-        deliveryModeRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rbId = (RadioButton) findViewById(deliveryModeRg.getCheckedRadioButtonId());
-                addOrderBean.setDeliveryType(rbId.getText().toString());
-
-            }
-        });
         detailsOfGoodsList = new ArrayList<>();
         isEditText();
     }
+
     private void initAdapter() {
         if (detailsOfGoodsList.size() > 0) {
             detailsOfGoodsRv.setVisibility(View.VISIBLE);
@@ -370,6 +380,7 @@ public class IFF_Clearing_InformationActivity extends Activity {
         totalNumber.setText(total_number + "");
         totalWeight.setText(total_weight + "");
     }
+
     @Override
     protected void onPause() {
         ToastStopUtils.toastStop();

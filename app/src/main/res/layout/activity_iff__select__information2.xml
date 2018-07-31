@@ -19,13 +19,14 @@
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
-                style="@style/w60dp_w_666_15sp"
-                android:text="提货地址" />
+                style="@style/w75dp_w_666_15sp"
+                android:text="收寄资费" />
 
             <EditText
-                android:id="@+id/selection_receiving_address_et"
+                android:inputType="phone|number"
+                android:id="@+id/charge_sending_sending_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入提货地址" />
+                android:hint="请输入收寄费用" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -38,47 +39,13 @@
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
-                style="@style/w60dp_w_666_15sp"
-                android:text="货&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;值" />
+                style="@style/w75dp_w_666_15sp"
+                android:text="邮&#160;&#8201;件&#160;&#8201;号" />
 
             <EditText
-                android:id="@+id/value_of_goods_et"
+                android:id="@+id/mail_number_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入货品价值"
-                android:inputType="phone|number" />
-
-            <EditText
-                android:id="@+id/money_type"
-                style="@style/btn_blue__70dp_65_30dp"
-                android:background="@drawable/details_of_goods_bg_style"
-                android:lines="1"
-                android:text="RMB"
-                android:gravity="center"
-                android:textColor="@color/iff_666666"
-                android:ellipsize="end"
-                android:textColorHint="@color/iff_999999"
-                android:textCursorDrawable="@drawable/edit_cursor_shape"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <include layout="@layout/iff_line_view_layout" />
-
-        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
-
-            <TextView
-                style="@style/w60dp_w_666_15sp"
-                android:text="期望报价" />
-
-            <EditText
-                android:id="@+id/offer_et"
-                style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入期望报价"
-                android:inputType="phone|number" />
-
-            <TextView
-                style="@style/w60dp_w_666_15sp"
-                android:layout_marginLeft="-15dp"
-                android:text="元" />
+                android:hint="请输入货品邮件号" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -91,14 +58,13 @@
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
-                style="@style/w60dp_w_666_15sp"
-                android:text="体积大小" />
+                style="@style/w75dp_w_666_15sp"
+                android:text="目的地城市" />
 
             <EditText
-                android:id="@+id/volume_size_et"
+                android:id="@+id/destination_city_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入体积大小"
-                android:inputType="number|phone" />
+                android:hint="请输入目的地城市" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"
@@ -111,7 +77,26 @@
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
-                style="@style/w60dp_w_666_15sp"
+                style="@style/w75dp_w_666_15sp"
+                android:text="收寄时间" />
+
+            <EditText
+                android:id="@+id/receiving_sending_time_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入收寄时间" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w75dp_w_666_15sp"
                 android:text="生产厂家" />
 
             <EditText
@@ -130,7 +115,7 @@
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
-                style="@style/w60dp_w_666_15sp"
+                style="@style/w75dp_w_666_15sp"
                 android:text="许可证号" />
 
             <EditText
@@ -151,7 +136,7 @@
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
-                style="@style/w60dp_w_666_15sp"
+                style="@style/w75dp_w_666_15sp"
                 android:text="批准文号" />
 
             <EditText
@@ -170,7 +155,7 @@
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
-                style="@style/w60dp_w_666_15sp"
+                style="@style/w75dp_w_666_15sp"
                 android:text="征免性质" />
 
             <EditText
@@ -186,6 +171,34 @@
 
         <include layout="@layout/iff_line_view_layout" />
 
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="3dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <TextView
+                style="@style/w90dp_w_666_15sp"
+                android:text="关税支付方式" />
+
+            <RadioGroup
+                android:id="@+id/tariff_payment_rg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal">
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    android:id="@+id/tariff_payment_rb1"
+                    style="@style/btn_text_rb"
+                    android:text="收件人付" />
+
+                <com.example.ysww.internationalfreightforwarding.custom.ImageRadioButton
+                    style="@style/btn_text_rb"
+                    android:text="寄件人付" />
+
+            </RadioGroup>
+        </LinearLayout>
 
     </LinearLayout>
 

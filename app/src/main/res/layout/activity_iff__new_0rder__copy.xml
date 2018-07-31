@@ -74,31 +74,11 @@
         </LinearLayout>
 
         <include layout="@layout/iff_line_view_layout" />
-
         <LinearLayout style="@style/mw_b3dp_t8dp_ll">
 
             <TextView
                 style="@style/w89dp_w_666_15sp"
-                android:text="目&#8201;的&#8201;地&#8201;城&#8201;市" />
-
-            <EditText
-                android:id="@+id/destination_city_et"
-                style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入目的地城市" />
-
-            <Button
-                style="@style/btn_blue__70dp_65_30dp"
-                android:text="@string/choice"
-                android:visibility="invisible" />
-        </LinearLayout>
-
-        <include layout="@layout/iff_line_view_layout" />
-
-        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
-
-            <TextView
-                style="@style/w89dp_w_666_15sp"
-                android:text="收&#8201;&#8201;&#8201;货&#8201;&#8201;&#8201;地&#8201;&#8201;&#8201;址" />
+                android:text="提&#8201;货&#8201;人&#8201;地&#8201;址" />
 
             <EditText
                 android:id="@+id/receiving_address_et"

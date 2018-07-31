@@ -75,6 +75,9 @@ public class AddOrderBean {
     private String moneyType;//货币类型
     private String filePhoto;//上传图片路径
     private String fileEnclosure;//上传附件路径
+    private double postingCharges;//收寄资费
+    private String emsNo;//邮件号
+    private String postingTime;//收寄时间
 
     public static class TbOrderFileEntity{
         //上传名称
@@ -113,6 +116,30 @@ public class AddOrderBean {
             this.url = url;
             this.fileType = fileType;
         }
+    }
+
+    public double getPostingCharges() {
+        return postingCharges;
+    }
+
+    public void setPostingCharges(double postingCharges) {
+        this.postingCharges = postingCharges;
+    }
+
+    public String getEmsNo() {
+        return emsNo;
+    }
+
+    public void setEmsNo(String emsNo) {
+        this.emsNo = emsNo;
+    }
+
+    public String getPostingTime() {
+        return postingTime;
+    }
+
+    public void setPostingTime(String postingTime) {
+        this.postingTime = postingTime;
     }
 
     public String getFilePhoto() {
