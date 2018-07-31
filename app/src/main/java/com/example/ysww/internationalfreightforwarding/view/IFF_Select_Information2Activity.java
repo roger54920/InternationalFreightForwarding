@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -139,6 +140,7 @@ public class IFF_Select_Information2Activity extends AppCompatActivity implement
         tbOrderFileEntityList = new ArrayList<>();
 
         SystemUtils.getInstance(this).setPricePoint(chargeSendingSendingEt);
+        receivingSendingTimeEt.setKeyListener(DigitsKeyListener.getInstance("1234567890"));
         tariffPaymentRg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

@@ -81,6 +81,7 @@
                 android:text="收寄时间" />
 
             <EditText
+                android:inputType="phone|number"
                 android:id="@+id/receiving_sending_time_et"
                 style="@style/mv_r75dp_l15dp_et"
                 android:hint="请输入收寄时间" />
