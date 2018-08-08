@@ -89,6 +89,7 @@ public class IFF_Details_Order_TransportationActivity extends Activity implement
                 }else{
                     holder.setVisible(R.id.view, true);
                 }
+                holder.setText(R.id.dot_datetime,dataBean.getFlowDate());
                 TextView dotContext=holder.getView(R.id.dot_context);
                 dotContext.setText(Html.fromHtml("<font color=#999999>处理站着</font>"+"<font color=#2A2A2A>【"+dataBean.getFlowStation()+"】</font>" +
                         "<font color=#999999>处理动作</font>"+"<font color=#2A2A2A>【" + dataBean.getFlowPlay() + "】</font>" +
