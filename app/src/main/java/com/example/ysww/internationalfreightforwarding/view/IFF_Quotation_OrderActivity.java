@@ -107,9 +107,9 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
         if (Constants.SOURCE_PAGE.equals("copy")) {
             statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=1,2,3", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("information_supplement")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=4,5", this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=4,5,6", this, lazyLoadProgressDialog);
         } else if (Constants.SOURCE_PAGE.equals("history_order")) {
-            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=-1,6", this, lazyLoadProgressDialog);
+            statisticalOrderListPresenter.quotationOrderListResult("page=" + page + "&limit=" + limit + "&orderStatus=-1,7", this, lazyLoadProgressDialog);
         }
     }
 
@@ -130,11 +130,9 @@ public class IFF_Quotation_OrderActivity extends Activity implements QuotationOr
                     @Override
                     public void onClick(View view) {
                         int orderStatus = Integer.parseInt(dataBean.getOrderStatus());
-                        if (orderStatus == 4) {
-                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).referenceSourcePageorderIdChanneIdealerIntent(IFF_Collect_Send_InformationActivity.class, "quotation_information", dataBean.getorderId(), "");
-                        } else if (orderStatus == 5 || orderStatus == 6) {
-                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Details_Order_TransportationActivity.class, orderStatus, dataBean.getorderId(), "");
-                        } else {
+                        if (orderStatus == 4 || orderStatus == 5 || orderStatus == 6) {
+                            SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Collect_Send_InformationActivity.class, orderStatus, dataBean.getorderId(), "");
+                        }else {
                             SystemUtils.getInstance(IFF_Quotation_OrderActivity.this).orderStautsorderIdChannelUserIdIntent(IFF_Order_DetailsActivity.class, orderStatus, dataBean.getorderId(), dataBean.getChannelUserId());
                         }
                     }

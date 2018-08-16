@@ -78,6 +78,15 @@ public class AddOrderBean {
     private double postingCharges;//收寄资费
     private String emsNo;//邮件号
     private String postingTime;//收寄时间
+    private String tradeName;//英文品名
+
+    public String getTradeName() {
+        return tradeName;
+    }
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
+    }
 
     public static class TbOrderFileEntity{
         //上传名称

@@ -78,7 +78,7 @@
 
             <TextView
                 style="@style/w89dp_w_666_15sp"
-                android:text="提&#8201;货&#8201;人&#8201;地&#8201;址" />
+                android:text="收&#8201;货&#8201;人&#8201;地&#8201;址" />
 
             <EditText
                 android:id="@+id/receiving_address_et"

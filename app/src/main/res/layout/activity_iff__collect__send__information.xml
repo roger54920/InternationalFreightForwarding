@@ -99,17 +99,50 @@
         <include layout="@layout/iff_line_view_layout" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/complete_btn"
-        android:layout_width="255dp"
-        android:layout_height="45dp"
-        android:layout_gravity="center_horizontal"
+    <LinearLayout
+        style="@style/padding_left_right_13dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/btn_login_bg_style"
-        android:enabled="false"
-        android:gravity="center"
-        android:text="@string/complete"
-        android:textColor="@color/iff_FFFFFF"
-        android:textSize="18sp" />
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/temporary_storage_btn"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_login_bg_style"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="暂存"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="18sp" />
+        <Button
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:id="@+id/end_btn"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_login_bg_style"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="完结"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="18sp" />
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/look_at_logistics_btn"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_login_bg_style"
+            android:gravity="center"
+            android:enabled="false"
+            android:text="查看物流"
+            android:textColor="@color/iff_FFFFFF"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 </LinearLayout>

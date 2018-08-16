@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -130,7 +129,7 @@ public class IFF_Order_DetailsActivity extends Activity implements TborderInfoVi
             case -1://已关闭
                 titleCloseOrder.setVisibility(View.GONE);
                 break;
-            case 6://已完結
+            case 7://已完結
                 titleCloseOrder.setVisibility(View.GONE);
                 break;
             default:

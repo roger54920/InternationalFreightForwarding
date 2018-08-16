@@ -98,6 +98,51 @@ public class TborderInfoBean extends BaseBean{
         private List<OrderDetailListBean> orderDetailList;
         private String companyName;
         private String channelUserId;
+        private int postingTime;//收寄时间
+        private double carriage;//运费
+        private String freight;//货运单号
+        private String flag;//提交状态1:暂存,2:提交保存
+        private String selectionReceivingAddress;//收货地址
+
+        public String getSelectionReceivingAddress() {
+            return selectionReceivingAddress;
+        }
+
+        public void setSelectionReceivingAddress(String selectionReceivingAddress) {
+            this.selectionReceivingAddress = selectionReceivingAddress;
+        }
+
+        public int getPostingTime() {
+            return postingTime;
+        }
+
+        public void setPostingTime(int postingTime) {
+            this.postingTime = postingTime;
+        }
+
+        public double getCarriage() {
+            return carriage;
+        }
+
+        public void setCarriage(double carriage) {
+            this.carriage = carriage;
+        }
+
+        public String getFreight() {
+            return freight;
+        }
+
+        public void setFreight(String freight) {
+            this.freight = freight;
+        }
+
+        public String getFlag() {
+            return flag;
+        }
+
+        public void setFlag(String flag) {
+            this.flag = flag;
+        }
 
         public String getChannelUserId() {
             return channelUserId;

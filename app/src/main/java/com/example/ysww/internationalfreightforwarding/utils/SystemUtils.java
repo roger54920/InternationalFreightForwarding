@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.ysww.internationalfreightforwarding.R;
 import com.example.ysww.internationalfreightforwarding.custom.LazyLoadProgressDialog;
 import com.example.ysww.internationalfreightforwarding.custom.NoDataDialog;
 import com.example.ysww.internationalfreightforwarding.view.IFF_HomeActivity;
@@ -383,6 +386,30 @@ public class SystemUtils {
         return sDateFormat.format(new java.util.Date())  ;
     }
 
+    /**
+     * 限制只能输入字母和数字，默认弹出英文输入法
+     */
+    public void setDigitsKey(EditText editText){
+          /*
+         * 限制只能输入字母和数字，默认弹出英文输入法
+         */
+        editText.setKeyListener(new DigitsKeyListener() {
+            @Override
+            public int getInputType() {
+                return InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            }
+            @Override
+            protected char[] getAcceptedChars() {
+                char[] data = getStringData(R.string.english_numeric_input).toCharArray();
+                return data;
+
+            }
+
+        });
+    }
+    public String getStringData(int id) {
+        return mContext.getResources().getString(id);
+    }
     /**
      * 暂无数据弹窗
      */

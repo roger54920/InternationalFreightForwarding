@@ -294,7 +294,25 @@
             <EditText
                 android:id="@+id/product_name_et"
                 style="@style/mv_r75dp_l15dp_et"
-                android:hint="请输入货物名称（中文+英文）" />
+                android:hint="请输入货物名称（中文）" />
+
+            <Button
+                style="@style/btn_blue__70dp_65_30dp"
+                android:text="@string/choice"
+                android:visibility="invisible" />
+        </LinearLayout>
+        <include layout="@layout/iff_line_view_layout" />
+
+        <LinearLayout style="@style/mw_b3dp_t8dp_ll">
+
+            <TextView
+                style="@style/w60dp_w_666_15sp"
+                android:text="英文品名" />
+
+            <EditText
+                android:id="@+id/english_product_name_et"
+                style="@style/mv_r75dp_l15dp_et"
+                android:hint="请输入货物名称（英文）" />
 
             <Button
                 style="@style/btn_blue__70dp_65_30dp"

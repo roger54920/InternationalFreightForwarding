@@ -134,7 +134,6 @@ public class OkgoHttpResolve {
      * @return
      */
     public static <T> T postJsonUpLoadResult(String url, String category, String srcPath, String tokenId, final Class<T> clazz, final HttpCallBack callBack) {
-        Log.e(TAG, "postJsonUpLoadResult: "+srcPath);
         OkGo.<String>post(url)     // 请求方式和请求url
                 .tag(context)                       // 请求的 tag, 主要用于取消对应的请求
                 .isMultipart(true)
