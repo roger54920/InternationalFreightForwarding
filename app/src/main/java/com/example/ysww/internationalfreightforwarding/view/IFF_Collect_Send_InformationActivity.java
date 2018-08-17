@@ -32,7 +32,7 @@ import butterknife.OnClick;
 /**
  * 信息补录
  */
-public class IFF_Collect_Send_InformationActivity extends Activity implements TborderInfoView,OrderSupplementView {
+public class IFF_Collect_Send_InformationActivity extends Activity implements TborderInfoView, OrderSupplementView {
 
     @InjectView(R.id.iff_title_tv)
     TextView iffTitleTv;
@@ -154,6 +154,7 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements Tb
             }
         });
     }
+
     /**
      * 获取订单详情接口
      */
@@ -162,6 +163,7 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements Tb
         tborderInfoPresenter.attach(this);
         tborderInfoPresenter.tborderInfoResult(getIntent().getStringExtra("orderId"), this, lazyLoadProgressDialog);
     }
+
     /**
      * 补录信息接口
      */
@@ -222,23 +224,27 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements Tb
 
     @Override
     public void onDeliverOrderFinish(Object o) {
-        if(orderStatus==5){
+        if (orderStatus == 5) {
             SystemUtils.getInstance(this).returnHomeFinishAll();
-        }else{
+        } else {
             SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "history_order");
         }
     }
+
     @Override
     public void onTborderInfoFinish(Object o) {
         TborderInfoBean tborderInfoBean = (TborderInfoBean) o;
         TborderInfoBean.TbOrderBean tbOrder = tborderInfoBean.getTbOrder();
         String freight = tbOrder.getFreight();
-        freightSingleNumberEt.setText(freight);
-        freightSingleNumberEt.setSelection(freight.length());
-        receivingAddressEt.setText(tbOrder.getSelectionReceivingAddress());
-        freightEt.setText(tbOrder.getCarriage()+"");
-        receivingSendingTimeEt.setText(tbOrder.getPostingTime()+"");
+        if (!TextUtils.isEmpty(freight)) {
+            freightSingleNumberEt.setText(freight);
+            freightSingleNumberEt.setSelection(freight.length());
+            receivingAddressEt.setText(tbOrder.getSelectionReceivingAddress());
+            freightEt.setText(tbOrder.getCarriage() + "");
+            receivingSendingTimeEt.setText(tbOrder.getPostingTime() + "");
+        }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
