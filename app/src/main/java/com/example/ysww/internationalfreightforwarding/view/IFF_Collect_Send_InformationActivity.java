@@ -224,7 +224,7 @@ public class IFF_Collect_Send_InformationActivity extends Activity implements Tb
 
     @Override
     public void onDeliverOrderFinish(Object o) {
-        if (orderStatus==4 || orderStatus == 5) {
+        if (orderStatus==4 || orderStatus == 5 || orderStatus == 6) {
             SystemUtils.getInstance(this).returnHomeFinishAll();
         } else {
             SystemUtils.getInstance(this).referenceSourcePageIntent(IFF_Quotation_OrderActivity.class, "history_order");
